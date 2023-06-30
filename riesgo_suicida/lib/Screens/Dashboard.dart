@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
@@ -12,6 +13,8 @@ var first;
 var second;
 var third;
 var fourth;
+var percentage=0.0;
+var percentageText='0%';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -25,6 +28,29 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     fetchUserData();
+  }
+
+  void setPercentage(){
+    var temp=0.0;
+    var temptext='';
+    if (first>0){
+        temp+=.25;
+    }
+    if (second>0){
+        temp+=.25;
+    }
+    if (third>0){
+        temp+=.25;
+    }
+    if (fourth>0){
+        temp+=.25;
+    }
+    temptext=(temp*100).toString();
+    setState(() {
+        percentage=temp;
+        percentageText="$temptext%";
+      });
+
   }
 
   void fetchUserData() async {
@@ -50,17 +76,36 @@ class _DashboardState extends State<Dashboard> {
     } else {
       print('Document does not exist in the database');
     }
+    setPercentage();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          "First Quiz: ${first.toString()}\n"
-          "Second Quiz: ${second.toString()}\n"
-          "Third Quiz: ${third.toString()}\n"
-          "Fourth Quiz: ${fourth.toString()}",
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(height: 40,),
+            CircularPercentIndicator(
+              animation: true,
+              radius:300,
+              lineWidth:30,
+              percent: percentage,
+              progressColor: Colors.blue,
+              backgroundColor:Colors.blue.shade100,
+              circularStrokeCap: CircularStrokeCap.round,
+              center: Text(percentageText,style:const TextStyle(fontSize: 50))
+
+            ),
+            const SizedBox(height: 20),
+            Text(
+              "First Quiz: ${first.toString()}\n"
+              "Second Quiz: ${second.toString()}\n"
+              "Third Quiz: ${third.toString()}\n"
+              "Fourth Quiz: ${fourth.toString()}",
+            ),
+          ],
         ),
       ),
     );

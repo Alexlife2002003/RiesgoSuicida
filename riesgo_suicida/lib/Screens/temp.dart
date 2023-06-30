@@ -14,6 +14,7 @@ IconData secondIcon = Icons.square_outlined;
 IconData thirdIcon = Icons.square_outlined;
 IconData fourthIcon = Icons.square_outlined;
 
+
 class Temp extends StatefulWidget {
   const Temp({super.key});
   @override
@@ -110,14 +111,34 @@ class _TempState extends State<Temp> {
             if (id == 2 && glob.first == 0) {
               currentPage = DrawerSections.first;
             }
+            if(glob.first>0){
+              firstIcon=Icons.check_box;
+            }else{
+              firstIcon=Icons.square_outlined;
+            }
             if (id == 3 && glob.second == 0) {
               currentPage = DrawerSections.second;
+            }
+            if(glob.second>0){
+              secondIcon=Icons.check_box;
+            }else{
+              secondIcon=Icons.square_outlined;
             }
             if (id == 4 && glob.third == 0) {
               currentPage = DrawerSections.third;
             }
+            if(glob.third>0){
+              thirdIcon=Icons.check_box;
+            }else{
+              thirdIcon=Icons.square_outlined;
+            }
             if (id == 5 && glob.fourth == 0) {
               currentPage = DrawerSections.Fourth;
+            }
+            if(glob.fourth>0){
+              fourthIcon=Icons.check_box;
+            }else{
+             fourthIcon= Icons.square_outlined;
             }
             if (id == 6) {
               signUserOut();

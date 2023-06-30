@@ -41,7 +41,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                   child: ElevatedButton(
                     onPressed: () {
                       updateUserData(suma);
-                      globals.firstIcon = Icons.check_box;
+                      globals.firstIcon = Icons.check_box;//corregir
                       globals.currentPage = globals.DrawerSections.dashboard;
 
                       Navigator.push(
