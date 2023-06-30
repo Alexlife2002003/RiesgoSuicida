@@ -45,7 +45,9 @@ class _DashboardState extends State<Dashboard> {
     if (fourth>0){
         temp+=.25;
     }
+    if(temp>0){
     temptext=(temp*100).toString();
+    }
     setState(() {
         percentage=temp;
         percentageText="$temptext%";
