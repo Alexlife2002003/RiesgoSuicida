@@ -9,9 +9,10 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color btnColor = const Color.fromRGBO(3, 38, 173, 1.0);
     return ElevatedButton(
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
+          backgroundColor: MaterialStateProperty.all(btnColor)),
       onPressed: selectHandler,
       child: SizedBox(
         width: 240,

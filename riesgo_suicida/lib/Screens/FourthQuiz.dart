@@ -99,14 +99,26 @@ class _FourthQuiz extends State<FourthQuiz> {
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Colors.white,
-          body: Align(
-              alignment: Alignment.center,
-              child: (_indexQuestion <= 4 && _indexQuestion >= 0)
-                  ? Quiz(
-                      answerQuestion: _answerQuestion,
-                      indexQuestion: _indexQuestion,
-                      data: _data)
-                  : const glob.Dashboard())),
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+              Color.fromRGBO(3, 38, 173, 1.0),
+              Color.fromRGBO(212, 248, 251, 1.0),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            ),
+            ),
+            child: Align(
+                alignment: Alignment.center,
+                child: (_indexQuestion <= 4 && _indexQuestion >= 0)
+                    ? Quiz(
+                        answerQuestion: _answerQuestion,
+                        indexQuestion: _indexQuestion,
+                        data: _data)
+                    : const glob.Dashboard()),
+          )),
     );
   }
 }

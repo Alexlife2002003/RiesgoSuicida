@@ -1,10 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riesgo_suicida/Screens/first_quiz.dart';
 import 'package:riesgo_suicida/Screens/FourthQuiz.dart';
 import 'package:riesgo_suicida/Screens/second_quiz.dart';
 import 'package:riesgo_suicida/Screens/third_quiz.dart';
 import 'package:riesgo_suicida/Screens/Dashboard.dart';
+import 'package:riesgo_suicida/Screens/Instrucciones.dart';
 import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
 import '../util/my_header_drawer.dart';
 
@@ -13,7 +14,6 @@ IconData firstIcon = Icons.square_outlined;
 IconData secondIcon = Icons.square_outlined;
 IconData thirdIcon = Icons.square_outlined;
 IconData fourthIcon = Icons.square_outlined;
-
 
 class Temp extends StatefulWidget {
   const Temp({super.key});
@@ -33,6 +33,9 @@ class _TempState extends State<Temp> {
     if (currentPage == DrawerSections.dashboard) {
       container = const Dashboard();
     }
+    if (currentPage == DrawerSections.instrucciones){
+      container = Instrucciones();
+    }
     if (currentPage == DrawerSections.first) {
       container = const FirstQuiz();
     }
@@ -46,10 +49,6 @@ class _TempState extends State<Temp> {
       container = const FourthQuiz();
     }
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
-        title: const Text("Riesgo Suicida"),
-      ),
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(
@@ -73,8 +72,13 @@ class _TempState extends State<Temp> {
         children: [
           menuItem(
             1,
-            "dashboard",
+            "Dashboard",
             Icons.dashboard_outlined,
+          ),
+          menuItem(
+            7,
+            "Instrucciones",
+            Icons.list,
           ),
           menuItem(
             2,
@@ -100,6 +104,24 @@ class _TempState extends State<Temp> {
 
   Widget menuItem(int id, String title, IconData icon) {
     Color darkblue = const Color.fromARGB(255, 0, 0, 139);
+    Color backgorundDrawer= const Color.fromRGBO(3, 38, 173, .5);
+    Color itemBackgroundColor = Colors.transparent; // Default background color is transparent
+
+    // Determine the background color based on the current page
+    if (currentPage == DrawerSections.dashboard && id == 1) {
+      itemBackgroundColor = backgorundDrawer; 
+    } else if (currentPage == DrawerSections.first && id == 2) {
+      itemBackgroundColor = backgorundDrawer; 
+    } else if (currentPage == DrawerSections.second && id == 3) {
+      itemBackgroundColor = backgorundDrawer; 
+    } else if (currentPage == DrawerSections.third && id == 4) {
+      itemBackgroundColor = backgorundDrawer; 
+    } else if (currentPage == DrawerSections.Fourth && id == 5) {
+      itemBackgroundColor = backgorundDrawer; 
+    }else if (currentPage == DrawerSections.Fourth && id == 7) {
+      itemBackgroundColor = backgorundDrawer; 
+    }
+
     return Material(
       child: InkWell(
         onTap: () {
@@ -108,64 +130,72 @@ class _TempState extends State<Temp> {
             if (id == 1) {
               currentPage = DrawerSections.dashboard;
             }
+            if (id == 7) {
+              currentPage = DrawerSections.instrucciones;
+            }
             if (id == 2 && glob.first == 0) {
               currentPage = DrawerSections.first;
             }
-            if(glob.first>0){
-              firstIcon=Icons.check_box;
-            }else{
-              firstIcon=Icons.square_outlined;
+            if (glob.first > 0) {
+              firstIcon = Icons.check_box;
+            } else {
+              firstIcon = Icons.square_outlined;
             }
             if (id == 3 && glob.second == 0) {
               currentPage = DrawerSections.second;
             }
-            if(glob.second>0){
-              secondIcon=Icons.check_box;
-            }else{
-              secondIcon=Icons.square_outlined;
+            if (glob.second > 0) {
+              secondIcon = Icons.check_box;
+            } else {
+              secondIcon = Icons.square_outlined;
             }
             if (id == 4 && glob.third == 0) {
               currentPage = DrawerSections.third;
             }
-            if(glob.third>0){
-              thirdIcon=Icons.check_box;
-            }else{
-              thirdIcon=Icons.square_outlined;
+            if (glob.third > 0) {
+              thirdIcon = Icons.check_box;
+            } else {
+              thirdIcon = Icons.square_outlined;
             }
             if (id == 5 && glob.fourth == 0) {
               currentPage = DrawerSections.Fourth;
             }
-            if(glob.fourth>0){
-              fourthIcon=Icons.check_box;
-            }else{
-             fourthIcon= Icons.square_outlined;
+            if (glob.fourth > 0) {
+              fourthIcon = Icons.check_box;
+            } else {
+              fourthIcon = Icons.square_outlined;
             }
             if (id == 6) {
               signUserOut();
             }
           });
         },
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(children: [
-            Expanded(
-              child: Icon(
-                icon,
-                size: 20,
-                color: darkblue,
-              ),
+        child: Container(
+          color: itemBackgroundColor,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Icon(
+                    icon,
+                    size: 20,
+                    color: darkblue,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(color: darkblue, fontSize: 16),
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(color: darkblue, fontSize: 16),
-              ),
-            ),
-          ]),
+          ),
         ),
       ),
     );
   }
 }
 
-enum DrawerSections { dashboard, first, second, third, Fourth, Fifth }
+enum DrawerSections { dashboard, instrucciones, first, second, third, Fourth, Fifth }

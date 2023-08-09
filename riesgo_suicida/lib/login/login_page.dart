@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:riesgo_suicida/login/ForgotPasswordPage.dart';
 
+
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
   const LoginPage({Key? key, required this.onTap});
@@ -73,45 +74,72 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.android,
-                  size: 100,
+      backgroundColor: Colors.transparent, // Set the Scaffold background color to transparent
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors:  [
+              Color.fromRGBO(3, 38, 173, 1.0),
+              Color.fromRGBO(212, 248, 251, 1.0),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+               Image.asset(
+                'lib/assets/start.png', // Replace 'assets/image.png' with the path to your image asset
+                width: 200,
+                height: 200,
                 ),
-                const Text('Hello Again!',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 36)),
+                const SizedBox(height: 20,),
+                const Center(
+                  child:  Text('Hello again!',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 36)),
+                ),
                 const SizedBox(height: 10),
-                const Text('Welcome back, you\'ve been missed!',
-                    style: TextStyle(fontSize: 24)),
+                const Center(
+                  child: Text('Welcome back, you\'ve been missed!',
+                      style: TextStyle(fontSize: 24)),
+                ),
                 const SizedBox(
                   height: 50,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Container(
+                      decoration: BoxDecoration(
                         color: Colors.grey[200],
                         border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 20.0,
+                        borderRadius: BorderRadius.circular(14),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
                       ),
-                      child: TextField(
-                        controller: _emailController,
-                        decoration: const InputDecoration(
-                            border: InputBorder.none, hintText: 'Email'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: TextField(
+                          controller: _emailController,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Email',
+                            hintStyle: TextStyle(fontWeight: FontWeight.bold)
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -121,7 +149,17 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: BoxDecoration(
                         color: Colors.grey[200],
                         border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                        
                     child: Padding(
                       padding: const EdgeInsets.only(
                         left: 20.0,
@@ -132,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Password',
+                          hintStyle: const TextStyle(fontWeight: FontWeight.bold,),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _passwordVisible
@@ -169,9 +208,9 @@ class _LoginPageState extends State<LoginPage> {
                           );
                         },
                         child: const Text(
-                          "Forgot Password",
+                          "Forgot password",
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Color.fromRGBO(3, 38, 173, 1.0),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -189,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: Colors.lightBlue,
+                          color: const Color.fromRGBO(3, 38, 173, 1.0),
                           borderRadius: BorderRadius.circular(12)),
                       child: const Center(
                           child: Text(
@@ -197,14 +236,15 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 10,
+                          fontSize: 20,
+                          
                         ),
                       )),
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -212,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                     const Text(
                       'Not a member? ',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold, 
                       ),
                     ),
                     GestureDetector(
@@ -220,7 +260,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Text(
                         'Register now',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Color.fromRGBO(3, 38, 173, 1.0),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -232,6 +272,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

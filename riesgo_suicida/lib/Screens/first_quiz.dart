@@ -25,11 +25,11 @@ class _FirstQuizState extends State<FirstQuiz> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              Color.fromARGB(255, 231, 18, 3),
-              Color.fromARGB(255, 231, 18, 3),
+              Color.fromARGB(255, 244, 47, 33),
+              Color.fromARGB(255, 241, 94, 84),
               Color.fromARGB(255, 83, 65, 65),
-              Color.fromARGB(255, 1, 62, 32),
-              Color.fromARGB(255, 1, 62, 32)
+              Color.fromARGB(255, 8, 214, 111),
+              Color.fromARGB(255, 3, 123, 63)
             ]),
       ),
       child: Scaffold(
@@ -39,16 +39,19 @@ class _FirstQuizState extends State<FirstQuiz> {
               children: [
                 Center(
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(3, 38, 173, 1.0)),
+                    ),
                     onPressed: () {
                       updateUserData(suma);
                       globals.firstIcon = Icons.check_box;//corregir
                       globals.currentPage = globals.DrawerSections.dashboard;
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const Temp()),
                       );
                     },
+                    
                     child: const Text('Finalizar'),
                   ),
                 ),
@@ -80,7 +83,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     valueR: 1), //17
                 CardsFirst(
                     text:
-                        "Nunca consigo lo que deso, por lo que es absurdo desear cualquier cosa",
+                        "Nunca consigo lo que deseo, por lo que es absurdo desear cualquier cosa",
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,

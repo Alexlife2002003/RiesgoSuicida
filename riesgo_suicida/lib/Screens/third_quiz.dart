@@ -18,17 +18,18 @@ class _ThirdQuizState extends State<ThirdQuiz> {
   @override
   Widget build(BuildContext context) {
     suma = 0;
+    Color darkblue= const Color.fromARGB(255, 0, 0, 139);
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              Color.fromARGB(255, 231, 18, 3),
-              Color.fromARGB(255, 231, 18, 3),
+              Color.fromARGB(255, 244, 47, 33),
+              Color.fromARGB(255, 241, 94, 84),
               Color.fromARGB(255, 83, 65, 65),
-              Color.fromARGB(255, 1, 62, 32),
-              Color.fromARGB(255, 1, 62, 32)
+              Color.fromARGB(255, 8, 214, 111),
+              Color.fromARGB(255, 3, 123, 63)
             ]),
       ),
       child: Scaffold(
@@ -38,6 +39,9 @@ class _ThirdQuizState extends State<ThirdQuiz> {
               children: [
             Center(
               child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(3, 38, 173, 1.0)),
+                    ),
                 onPressed: () {
                   globals.thirdIcon = Icons.check_box;
                   globals.currentPage = globals.DrawerSections.dashboard;
@@ -52,37 +56,29 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             ),
             CardsThird(
               text: "¿Ha intentado alguna vez quitarse la vida?",
-              color: Colors.white,
-              colorText: Colors.black,
+              color: darkblue,
+              colorText: Colors.white,
               valueL: 0,
               valueR: 1,
             ),
             CardsThird(
               text:
                   "¿Le ha comentado a alguien, en alguna ocasión, que quería suicidarse?",
-              color: Colors.black,
-              colorText: Colors.white,
+              color: Colors.white,
+              colorText: Colors.black,
               valueL: 0,
               valueR: 1,
             ),
             CardsThird(
               text: "¿Ha pensado alguna vez en suicidarse?",
-              color: Colors.white,
-              colorText: Colors.black,
+              color: darkblue,
+              colorText: Colors.white,
               valueL: 0,
               valueR: 1,
             ),
             CardsThird(
               text:
                   "¿Alguna vez se ha sentido tan enfadado/a que habría sido capaz de matar a alguien?",
-              color: Colors.black,
-              colorText: Colors.white,
-              valueL: 0,
-              valueR: 1,
-            ),
-            CardsThird(
-              text:
-                  "¿Sabe si alguien de su familia ha intentado suicidarse alguna vez?",
               color: Colors.white,
               colorText: Colors.black,
               valueL: 0,
@@ -90,15 +86,23 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             ),
             CardsThird(
               text:
-                  "¿Está usted separado/a, divorciado/a o viudo/a o ha terminado recientemente una relación sentimental importante?",
-              color: Colors.black,
+                  "¿Sabe si alguien de su familia ha intentado suicidarse alguna vez?",
+              color: darkblue,
               colorText: Colors.white,
               valueL: 0,
               valueR: 1,
             ),
             CardsThird(
+              text:
+                  "¿Está usted separado/a, divorciado/a o viudo/a o ha terminado recientemente una relación sentimental importante?",
+              color: Colors.white,
+              colorText: Colors.black,
+              valueL: 0,
+              valueR: 1,
+            ),
+            CardsThird(
               text: "¿Está deprimido/a ahora?",
-              color: Colors.black,
+              color: darkblue,
               colorText: Colors.white,
               valueL: 0,
               valueR: 1,
@@ -113,7 +117,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             ),
             CardsThird(
               text: "¿Ve su futuro sin ninguna esperanza?",
-              color: Colors.black,
+              color: darkblue,
               colorText: Colors.white,
               valueL: 0,
               valueR: 1,
@@ -126,8 +130,8 @@ class _ThirdQuizState extends State<ThirdQuiz> {
               valueR: 1,
             ),
             CardsThird(
-              text: "Ve su futuro con más pesimismo que optimismo?",
-              color: Colors.black,
+              text: "¿Ve su futuro con más pesimismo que optimismo?",
+              color: darkblue,
               colorText: Colors.white,
               valueL: 0,
               valueR: 1,
@@ -142,7 +146,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             CardsThird(
               text:
                   "¿A veces nota que podría perder el control sobre sí mismo/a?",
-              color: Colors.black,
+              color: darkblue,
               colorText: Colors.white,
               valueL: 0,
               valueR: 1,
@@ -157,7 +161,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             CardsThird(
               text:
                   "¿Toma de forma habitual algún medicamento como aspirinas o pastillar para dormir?",
-              color: const Color.fromARGB(255, 0, 0, 139),
+              color: darkblue,
               colorText: Colors.white,
               valueL: 0,
               valueR: 1,
