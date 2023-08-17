@@ -4,6 +4,7 @@ import 'package:riesgo_suicida/Screens/temp.dart' as globals;
 import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class SecondQuiz extends StatefulWidget {
   const SecondQuiz({Key? key}) : super(key: key);
@@ -77,7 +78,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     {
       'questionText': 'Dimensión temporal(frecuencia del suicidio)',
       'answers': [
-        {'text': 'Raro,ocasional', 'score': 0.00},
+        {'text': 'Raro, ocasional', 'score': 0.00},
         {'text': 'Intermitente', 'score': 1.00},
         {'text': 'Persistente o continuo', 'score': 2.00},
       ]
@@ -100,7 +101,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Disuasivos para un intento activo(familia, religión,irreversibilidad)',
+          'Disuasivos para un intento activo(familia, religión, irreversibilidad)',
       'answers': [
         {'text': 'Puede no intentarlo a causa de un disuasivo', 'score': 0.00},
         {
@@ -177,11 +178,11 @@ class _SecondQuiz extends State<SecondQuiz> {
       'answers': [
         {'text': 'Ninguna', 'score': 0.00},
         {
-          'text': 'Parcial(ej. empieza a almacenar pastillas,etc)',
+          'text': 'Parcial(ej. empieza a almacenar pastillas, etc)',
           'score': 1.00
         },
         {
-          'text': 'Completa(ej. tiene las pastillas, pistola cargada,etc)',
+          'text': 'Completa(ej. tiene las pastillas, pistola cargada, etc)',
           'score': 2.00
         },
       ]
@@ -196,7 +197,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Actos finales en anticipación de la muerte(ej. testamento, póliza de seguros,etc)',
+          'Actos finales en anticipación de la muerte(ej. testamento, póliza de seguros, etc)',
       'answers': [
         {'text': 'Ninguno', 'score': 0.00},
         {'text': 'Piensa sobre ello o hace algunos arreglos', 'score': 1.00},
@@ -251,28 +252,66 @@ class _SecondQuiz extends State<SecondQuiz> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home: Scaffold(
-          backgroundColor: Colors.white,
+          appBar: _indexQuestion>=0 && _indexQuestion <=18
+          ? AppBar(
+            title: Text('Escala de Ideación Suicida', style: TextStyle(color: Colors.black),),
+            backgroundColor: Color.fromRGBO(185, 236, 245, 1),
+            elevation: 1,
+            centerTitle: true,
+
+            
+          )
+          :null,
           body: Container(
             decoration: const BoxDecoration(
               gradient:  LinearGradient(
                 colors: [
-              Color.fromRGBO(3, 38, 173, 1.0),
-              Color.fromRGBO(212, 248, 251, 1.0),
+              Color.fromRGBO(229, 251, 255, 1),
+              Color.fromRGBO(229, 251, 255, 1),
+              //Color.fromRGBO(212, 248, 251, 1.0),
             ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter
               ),
               ),
-            child: Align(
-                alignment: Alignment.center,
-                child: (_indexQuestion <= 18 && _indexQuestion >= 0)
-                    ? Quiz(
-                        answerQuestion: _answerQuestion,
-                        indexQuestion: _indexQuestion,
-                        data: _data)
-                    : const glob.Dashboard()),
-          )),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: (_indexQuestion <= 18 && _indexQuestion >= 0)
+                          ? Quiz(
+                              answerQuestion: _answerQuestion,
+                              indexQuestion: _indexQuestion,
+                              data: _data)
+                          :  glob.Dashboard()),
+                ),
+                if(_indexQuestion>=0 && _indexQuestion<19)...[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('Question ${_indexQuestion +1 } / 19',
+                  style: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  ),
+                ),
+                LinearProgressBar(
+                  maxSteps: 19,
+                  progressType: LinearProgressBar.progressTypeLinear,
+                  currentStep: _indexQuestion+1,
+                  progressColor: Color.fromARGB(255, 74, 101, 211),
+                  backgroundColor: Colors.grey,
+                ),
+                SizedBox(height: 25,)
+              ],
+              ],
+            ),
+          ),
+          ),
     );
   }
 }

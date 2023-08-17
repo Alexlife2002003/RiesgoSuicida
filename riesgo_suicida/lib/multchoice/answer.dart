@@ -9,7 +9,7 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color btnColor = const Color.fromRGBO(3, 38, 173, 1.0);
+    Color btnColor = const Color.fromARGB(255, 74, 101, 211);
     return ElevatedButton(
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(btnColor)),

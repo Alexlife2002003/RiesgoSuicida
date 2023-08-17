@@ -102,7 +102,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     valueR: 1), //14
                 CardsFirst(
                     text:
-                        "Cuando miro hacia el futuro,espero que seré más feliz de lo que soy ahora",
+                        "Cuando miro hacia el futuro, espero que seré más feliz de lo que soy ahora",
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 1,
@@ -129,7 +129,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     valueR: 0), //10
                 CardsFirst(
                     text:
-                        "No logro hacer que las cosas cambien,y no existen razones para creer que pueda en el futuro",
+                        "No logro hacer que las cosas cambien, y no existen razones para creer que pueda en el futuro",
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
@@ -177,7 +177,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     valueR: 0), //3
                 CardsFirst(
                     text:
-                        "Puedo darme por vencido, renunciar,ya que no puedo hacer las cosas por mi mismo",
+                        "Puedo darme por vencido, renunciar, ya que no puedo hacer las cosas por mi mismo",
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,

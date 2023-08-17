@@ -17,7 +17,7 @@ class Question extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 26,
-                  color: Color.fromARGB(255, 0, 0, 139),
+                  color: Colors.black//Color.fromARGB(255, 0, 0, 139),
                 ))));
   }
 }

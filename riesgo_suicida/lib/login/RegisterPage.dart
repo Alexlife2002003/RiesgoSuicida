@@ -149,15 +149,16 @@ void _showPrivacyPolicy() {
 
   @override
   Widget build(BuildContext context) {
-    Color btnColor = const Color.fromRGBO(3, 38, 173, 1.0);
+    Color btnColor = const Color.fromARGB(255, 74, 101, 211);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromRGBO(3, 38, 173, 1.0),
-              Color.fromRGBO(212, 248, 251, 1.0),
+              Color.fromRGBO(155, 212, 255, 1),
+              Color.fromRGBO(155, 212, 255, 1),
+              //Color.fromRGBO(212, 248, 251, 1.0),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -401,7 +402,7 @@ void _showPrivacyPolicy() {
                         child: const Text(
                           'Login now',
                           style: TextStyle(
-                            color: Color.fromRGBO(3, 38, 173, 1.0),
+                            color: Color.fromARGB(255, 74, 101, 211),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -417,7 +418,7 @@ void _showPrivacyPolicy() {
                     child: const Text(
                       'Privacy policy',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 25, 0, 255),
                         fontWeight: FontWeight.bold,
                       ),
                     ),

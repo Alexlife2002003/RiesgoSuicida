@@ -4,6 +4,7 @@ import 'package:riesgo_suicida/Screens/temp.dart' as globals;
 import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class FourthQuiz extends StatefulWidget {
   const FourthQuiz({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _FourthQuiz extends State<FourthQuiz> {
     },
     {
       'questionText':
-          'Me agrada pensar que mi familia acepta y apoya mis deseos de llevar a cabo nuevas actividades o seguira una nueva dirección',
+          'Me agrada pensar que mi familia acepta y apoya mis deseos de llevar a cabo nuevas actividades o seguir una nueva dirección',
       'answers': [
         {'text': 'Casi nunca', 'score': 0.00},
         {'text': 'Algunas veces', 'score': 1.00},
@@ -83,10 +84,7 @@ class _FourthQuiz extends State<FourthQuiz> {
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;
 
-      await FirebaseFirestore.instance
-          .collection('Puntajes')
-          .doc(userId)
-          .update({
+      await FirebaseFirestore.instance.collection('Puntajes').doc(userId).update({
         'cuarto': newValue, // Provide the updated value for the 'primero' field
       });
     } catch (error) {
@@ -98,27 +96,67 @@ class _FourthQuiz extends State<FourthQuiz> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          backgroundColor: Colors.white,
-          body: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-              Color.fromRGBO(3, 38, 173, 1.0),
-              Color.fromRGBO(212, 248, 251, 1.0),
+        appBar: _indexQuestion >= 0 && _indexQuestion <= 4
+            ? AppBar(
+                title: Text(
+                  'APGAR familiar',
+                  style: TextStyle(color: Colors.black),
+                ),
+                backgroundColor: Color.fromRGBO(185, 236, 245, 1), // Make the AppBar transparent
+                elevation: 1, // Remove the shadow
+                centerTitle: true,
+              )
+            : null,
+        backgroundColor: Colors.white,
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromRGBO(229, 251, 255, 1),
+                Color.fromRGBO(229, 251, 255, 1),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: (_indexQuestion <= 4 && _indexQuestion >= 0)
+                      ? Quiz(
+                          answerQuestion: _answerQuestion,
+                          indexQuestion: _indexQuestion,
+                          data: _data)
+                      : const glob.Dashboard(),
+                ),
+              ),
+              if (_indexQuestion >= 0 && _indexQuestion < 5) ...[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Question ${_indexQuestion + 1} / 5',
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                LinearProgressBar(
+                  maxSteps: 5,
+                  progressType: LinearProgressBar.progressTypeLinear,
+                  currentStep: _indexQuestion + 1,
+                  progressColor: Color.fromARGB(255, 74, 101, 211),
+                  backgroundColor: Colors.grey,
+                ),
+                SizedBox(height: 25),
+              ],
             ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            ),
-            ),
-            child: Align(
-                alignment: Alignment.center,
-                child: (_indexQuestion <= 4 && _indexQuestion >= 0)
-                    ? Quiz(
-                        answerQuestion: _answerQuestion,
-                        indexQuestion: _indexQuestion,
-                        data: _data)
-                    : const glob.Dashboard()),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

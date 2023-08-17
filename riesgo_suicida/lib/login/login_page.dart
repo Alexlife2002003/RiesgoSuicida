@@ -79,8 +79,9 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors:  [
-              Color.fromRGBO(3, 38, 173, 1.0),
-              Color.fromRGBO(212, 248, 251, 1.0),
+              Color.fromRGBO(155, 212, 255, 1),
+              Color.fromRGBO(155, 212, 255, 1),
+              //Color.fromRGBO(212, 248, 251, 1.0),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -210,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           "Forgot password",
                           style: TextStyle(
-                            color: Color.fromRGBO(3, 38, 173, 1.0),
+                            color: Color.fromARGB(255, 74, 101, 211),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -228,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: const Color.fromRGBO(3, 38, 173, 1.0),
+                          color: const Color.fromARGB(255, 74, 101, 211),
                           borderRadius: BorderRadius.circular(12)),
                       child: const Center(
                           child: Text(
@@ -260,7 +261,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Text(
                         'Register now',
                         style: TextStyle(
-                          color: Color.fromRGBO(3, 38, 173, 1.0),
+                          color: Color.fromARGB(255, 74, 101, 211),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -148,13 +148,15 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromRGBO(3, 38, 173, 1.0),
-              Color.fromRGBO(212, 248, 251, 1.0),
+              Color.fromRGBO(255, 255, 255, 1),
+              Color.fromRGBO(255, 255, 255, 1.0)
+              //Color.fromRGBO(212, 248, 251, 1.0),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -166,15 +168,15 @@ class _DashboardState extends State<Dashboard> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 60,
                 ),
                 CircularPercentIndicator(
                   animation: true,
                   radius: 300,
                   lineWidth: 30,
                   percent: percentage,
-                  progressColor: Colors.blue.shade700,
-                  backgroundColor: const Color.fromRGBO(212, 248, 251, 1.0),
+                  progressColor: Color.fromRGBO(58, 135, 193, 1),
+                  backgroundColor: Color.fromARGB(255, 177, 203, 222),
                   circularStrokeCap: CircularStrokeCap.round,
                   center: Text(
                     "      $percentageText \nCompletado",
@@ -182,12 +184,12 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text(
-                  "First Quiz: ${first.toString()}\n"
-                  "Second Quiz: ${second.toString()}\n"
-                  "Third Quiz: ${third.toString()}\n"
-                  "Fourth Quiz: ${fourth.toString()}",
-                ),
+                //Text(
+                //  "First Quiz: ${first.toString()}\n"
+                //  "Second Quiz: ${second.toString()}\n"
+                //  "Third Quiz: ${third.toString()}\n"
+                //  "Fourth Quiz: ${fourth.toString()}",
+                //),
                 SizedBox(
                   height: 30,
                 ),
@@ -200,7 +202,7 @@ class _DashboardState extends State<Dashboard> {
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                        color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -215,7 +217,7 @@ class _DashboardState extends State<Dashboard> {
                           style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Color.fromRGBO(58, 135, 193, 1)),
                           textAlign: TextAlign.center,
                         ),
                       ),
