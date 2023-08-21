@@ -103,7 +103,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                   style: TextStyle(color: Colors.black),
                 ),
                 backgroundColor: Color.fromRGBO(185, 236, 245, 1), // Make the AppBar transparent
-                elevation: 1, // Remove the shadow
+                elevation: 0, // Remove the shadow
                 centerTitle: true,
               )
             : null,
