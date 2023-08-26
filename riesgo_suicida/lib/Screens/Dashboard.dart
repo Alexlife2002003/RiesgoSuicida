@@ -148,7 +148,6 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
@@ -211,7 +210,7 @@ class _DashboardState extends State<Dashboard> {
                   child: Column(
                     children: [
                       const Padding(
-                        padding:  EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(16.0),
                         child: Text(
                           "¡Felicidades! ¡Has completado todos los cuestionarios!",
                           style: TextStyle(
@@ -226,19 +225,23 @@ class _DashboardState extends State<Dashboard> {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Column(
                           children: [
-                            if(first >= 9 || second>=8 || third>=19 || fourth<=5)...{
-                            const Text(
-                              "Aquí tienes algunas recomendaciones:",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
-                              textAlign: TextAlign.center,
-                            ),}else ...{
+                            if (first >= 9 ||
+                                second >= 8 ||
+                                third >= 19 ||
+                                fourth <= 5) ...{
                               const Text(
-                              "No se tienen recomendaciones.",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
-                              textAlign: TextAlign.center,
-                            ),
+                                "Aquí tienes algunas recomendaciones:",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                                textAlign: TextAlign.center,
+                              ),
+                            } else ...{
+                              const Text(
+                                "No se tienen recomendaciones.",
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                                textAlign: TextAlign.center,
+                              ),
                             },
                             const SizedBox(height: 10),
                             if (first >= 9) ...{

@@ -33,7 +33,7 @@ class _TempState extends State<Temp> {
     if (currentPage == DrawerSections.dashboard) {
       container = const Dashboard();
     }
-    if (currentPage == DrawerSections.instrucciones){
+    if (currentPage == DrawerSections.instrucciones) {
       container = Instrucciones();
     }
     if (currentPage == DrawerSections.first) {
@@ -104,22 +104,23 @@ class _TempState extends State<Temp> {
 
   Widget menuItem(int id, String title, IconData icon) {
     Color darkblue = const Color.fromARGB(255, 0, 0, 139);
-    Color backgorundDrawer= const Color.fromRGBO(3, 38, 173, .5);
-    Color itemBackgroundColor = Colors.transparent; // Default background color is transparent
+    Color backgorundDrawer = const Color.fromRGBO(3, 38, 173, .5);
+    Color itemBackgroundColor =
+        Colors.transparent; // Default background color is transparent
 
     // Determine the background color based on the current page
     if (currentPage == DrawerSections.dashboard && id == 1) {
-      itemBackgroundColor = backgorundDrawer; 
+      itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.first && id == 2) {
-      itemBackgroundColor = backgorundDrawer; 
+      itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.second && id == 3) {
-      itemBackgroundColor = backgorundDrawer; 
+      itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.third && id == 4) {
-      itemBackgroundColor = backgorundDrawer; 
+      itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.Fourth && id == 5) {
-      itemBackgroundColor = backgorundDrawer; 
-    }else if (currentPage == DrawerSections.Fourth && id == 7) {
-      itemBackgroundColor = backgorundDrawer; 
+      itemBackgroundColor = backgorundDrawer;
+    } else if (currentPage == DrawerSections.Fourth && id == 7) {
+      itemBackgroundColor = backgorundDrawer;
     }
 
     return Material(
@@ -198,4 +199,12 @@ class _TempState extends State<Temp> {
   }
 }
 
-enum DrawerSections { dashboard, instrucciones, first, second, third, Fourth, Fifth }
+enum DrawerSections {
+  dashboard,
+  instrucciones,
+  first,
+  second,
+  third,
+  Fourth,
+  Fifth
+}

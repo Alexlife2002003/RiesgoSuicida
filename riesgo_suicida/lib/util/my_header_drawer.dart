@@ -35,7 +35,9 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               const Text(
                 "Welcome,",
                 style: TextStyle(color: Colors.white, fontSize: 24),

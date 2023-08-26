@@ -84,7 +84,10 @@ class _FourthQuiz extends State<FourthQuiz> {
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;
 
-      await FirebaseFirestore.instance.collection('Puntajes').doc(userId).update({
+      await FirebaseFirestore.instance
+          .collection('Puntajes')
+          .doc(userId)
+          .update({
         'cuarto': newValue, // Provide the updated value for the 'primero' field
       });
     } catch (error) {
@@ -102,7 +105,8 @@ class _FourthQuiz extends State<FourthQuiz> {
                   'APGAR familiar',
                   style: TextStyle(color: Colors.black),
                 ),
-                backgroundColor: Color.fromRGBO(185, 236, 245, 1), // Make the AppBar transparent
+                backgroundColor: Color.fromRGBO(
+                    185, 236, 245, 1), // Make the AppBar transparent
                 elevation: 0, // Remove the shadow
                 centerTitle: true,
               )

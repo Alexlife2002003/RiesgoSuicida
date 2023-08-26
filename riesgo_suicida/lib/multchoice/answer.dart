@@ -11,8 +11,7 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     Color btnColor = const Color.fromARGB(255, 74, 101, 211);
     return ElevatedButton(
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(btnColor)),
+      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(btnColor)),
       onPressed: selectHandler,
       child: SizedBox(
         width: 240,

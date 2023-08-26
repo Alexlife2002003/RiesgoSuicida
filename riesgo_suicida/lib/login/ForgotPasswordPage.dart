@@ -52,20 +52,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color btnColor=Color.fromARGB(255, 74, 101, 211);
+    Color btnColor = Color.fromARGB(255, 74, 101, 211);
     return Scaffold(
       body: Container(
-        decoration:const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(155, 212, 255, 1),
-              Color.fromRGBO(155, 212, 255, 1),
-              //Color.fromRGBO(212, 248, 251, 1.0),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-            ),
-            ),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(155, 212, 255, 1),
+            Color.fromRGBO(155, 212, 255, 1),
+            //Color.fromRGBO(212, 248, 251, 1.0),
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -74,7 +70,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               child: Text(
                 'Enter your email and we will send you a password reset link',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(
@@ -84,18 +80,18 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(14),
-                    boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
+                  color: Colors.grey[200],
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
                     ),
+                  ],
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: 20.0,
@@ -104,8 +100,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     controller: _emailController,
                     decoration: const InputDecoration(
                         border: InputBorder.none,
-                         hintText: 'Email',
-                         hintStyle: TextStyle(fontWeight: FontWeight.bold)),
+                        hintText: 'Email',
+                        hintStyle: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                 ),
               ),
@@ -114,7 +110,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               height: 10,
             ),
             ClipRRect(
-              borderRadius: BorderRadius.circular(12), // Adjust the radius as per your preference
+              borderRadius: BorderRadius.circular(
+                  12), // Adjust the radius as per your preference
               child: MaterialButton(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 onPressed: passwordReset,
@@ -122,9 +119,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 child: const Text(
                   'Reset password',
                   style: TextStyle(color: Colors.white),
-                  ),
-                  ),
-                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

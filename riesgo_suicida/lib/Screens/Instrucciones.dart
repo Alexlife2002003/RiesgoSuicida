@@ -16,20 +16,15 @@ class Instrucciones extends StatelessWidget {
 class InstructionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      
+    return Scaffold(
       body: Container(
-        decoration:const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(255, 255, 255, 1),
-              Color.fromRGBO(255, 255, 255, 1),
-              //Color.fromRGBO(212, 248, 251, 1.0),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-            ),
-            ),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(255, 255, 255, 1),
+            Color.fromRGBO(255, 255, 255, 1),
+            //Color.fromRGBO(212, 248, 251, 1.0),
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        ),
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Center(
@@ -37,7 +32,7 @@ class InstructionsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height:30),
+                  SizedBox(height: 30),
                   Text(
                     'Instrucciones para completar los quizzes y cuidar tu salud mental',
                     style: TextStyle(
@@ -57,7 +52,7 @@ class InstructionsScreen extends StatelessWidget {
                     textAlign: TextAlign.justify,
                   ),
                   SizedBox(height: 10),
-                  NumberedSection( 
+                  NumberedSection(
                     number: '1',
                     title: 'Acceso a los quizzes:',
                     content:

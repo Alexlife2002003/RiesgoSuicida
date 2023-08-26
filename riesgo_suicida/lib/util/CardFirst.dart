@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
 import 'package:riesgo_suicida/Screens/first_quiz.dart' as globals;
 
-
 class CardsFirst extends StatefulWidget {
   final color;
   final text;
@@ -40,7 +39,6 @@ class _CardsFirstState extends State<CardsFirst> {
           setState(() {
             cardPositionY = 0.0;
           });
-          
         },
         child: Transform.translate(
           offset: Offset(0.0, cardPositionY),
@@ -52,7 +50,6 @@ class _CardsFirstState extends State<CardsFirst> {
               widget.onSwiped?.call();
             },
             onSwipeLeft: (finalPosition) {
-              
               globals.suma += widget.valueL;
               print('Suma after left swipe: ${globals.suma}');
               print('----------------------------------------');

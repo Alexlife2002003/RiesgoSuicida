@@ -68,7 +68,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Dimensión temporal(duración de la ideación/deseo suicida)',
+          'Dimensión temporal (duración de la ideación/deseo suicida)',
       'answers': [
         {'text': 'Breve, períodos pasajeros', 'score': 0.00},
         {'text': 'Por amplios períodos de tiempo', 'score': 1.00},
@@ -76,7 +76,7 @@ class _SecondQuiz extends State<SecondQuiz> {
       ]
     },
     {
-      'questionText': 'Dimensión temporal(frecuencia del suicidio)',
+      'questionText': 'Dimensión temporal (frecuencia del suicidio)',
       'answers': [
         {'text': 'Raro, ocasional', 'score': 0.00},
         {'text': 'Intermitente', 'score': 1.00},
@@ -101,7 +101,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Disuasivos para un intento activo(familia, religión, irreversibilidad)',
+          'Disuasivos para un intento activo (familia, religión, irreversibilidad)',
       'answers': [
         {'text': 'Puede no intentarlo a causa de un disuasivo', 'score': 0.00},
         {
@@ -131,7 +131,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Método(especificidad/planificación del intento contemplado)',
+          'Método (especificidad/planificación del intento contemplado)',
       'answers': [
         {'text': 'No considerado', 'score': 0.00},
         {'text': 'Considerado, pero detalles no calculados', 'score': 1.00},
@@ -140,7 +140,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Método(accesibilidad/oportunidad para el intento contemplado)',
+          'Método (accesibilidad/oportunidad para el intento contemplado)',
       'answers': [
         {
           'text': 'Método no disponible, inaccesible. No hay oportunidad',
@@ -197,7 +197,7 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
     {
       'questionText':
-          'Actos finales en anticipación de la muerte(ej. testamento, póliza de seguros, etc)',
+          'Actos finales en anticipación de la muerte (ej. testamento, póliza de seguros, etc)',
       'answers': [
         {'text': 'Ninguno', 'score': 0.00},
         {'text': 'Piensa sobre ello o hace algunos arreglos', 'score': 1.00},
@@ -252,66 +252,65 @@ class _SecondQuiz extends State<SecondQuiz> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       home: Scaffold(
-          appBar: _indexQuestion>=0 && _indexQuestion <=18
-          ? AppBar(
-            title: Text('Escala de Ideación Suicida', style: TextStyle(color: Colors.black),),
-            backgroundColor: Color.fromRGBO(185, 236, 245, 1),
-            elevation: 1,
-            centerTitle: true,
-
-            
-          )
-          :null,
-          body: Container(
-            decoration: const BoxDecoration(
-              gradient:  LinearGradient(
-                colors: [
+        appBar: _indexQuestion >= 0 && _indexQuestion <= 18
+            ? AppBar(
+                title: Text(
+                  'Escala de Ideación Suicida',
+                  style: TextStyle(color: Colors.black),
+                ),
+                backgroundColor: Color.fromRGBO(185, 236, 245, 1),
+                elevation: 1,
+                centerTitle: true,
+              )
+            : null,
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
               Color.fromRGBO(229, 251, 255, 1),
               Color.fromRGBO(229, 251, 255, 1),
               //Color.fromRGBO(212, 248, 251, 1.0),
-            ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: Align(
+                    alignment: Alignment.center,
+                    child: (_indexQuestion <= 18 && _indexQuestion >= 0)
+                        ? Quiz(
+                            answerQuestion: _answerQuestion,
+                            indexQuestion: _indexQuestion,
+                            data: _data)
+                        : glob.Dashboard()),
               ),
-              ),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Align(
-                      alignment: Alignment.center,
-                      child: (_indexQuestion <= 18 && _indexQuestion >= 0)
-                          ? Quiz(
-                              answerQuestion: _answerQuestion,
-                              indexQuestion: _indexQuestion,
-                              data: _data)
-                          :  glob.Dashboard()),
-                ),
-                if(_indexQuestion>=0 && _indexQuestion<19)...[
+              if (_indexQuestion >= 0 && _indexQuestion < 19) ...[
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.all(16.0),
-                  child: Text('Question ${_indexQuestion +1 } / 19',
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  child: Text(
+                    'Question ${_indexQuestion + 1} / 19',
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 LinearProgressBar(
                   maxSteps: 19,
                   progressType: LinearProgressBar.progressTypeLinear,
-                  currentStep: _indexQuestion+1,
+                  currentStep: _indexQuestion + 1,
                   progressColor: Color.fromARGB(255, 74, 101, 211),
                   backgroundColor: Colors.grey,
                 ),
-                SizedBox(height: 25,)
+                SizedBox(
+                  height: 25,
+                )
               ],
-              ],
-            ),
+            ],
           ),
-          ),
+        ),
+      ),
     );
   }
 }
