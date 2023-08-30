@@ -47,7 +47,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
           appBar: AppBar(
             leading: Builder(
               builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
+                return IconButton(icon:Icon(Icons.menu),color:Colors.black,onPressed: (){
                   
                 },);
               },

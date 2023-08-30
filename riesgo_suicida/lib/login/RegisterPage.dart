@@ -382,7 +382,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: GestureDetector(
                       onTap: signUserUp,
                       child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: btnColor,
                           borderRadius: BorderRadius.circular(12),
