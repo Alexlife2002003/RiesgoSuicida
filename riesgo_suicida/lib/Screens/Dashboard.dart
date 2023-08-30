@@ -174,8 +174,8 @@ class _DashboardState extends State<Dashboard> {
                   radius: 300,
                   lineWidth: 30,
                   percent: percentage,
-                  progressColor: Color.fromRGBO(58, 135, 193, 1),
-                  backgroundColor: Color.fromARGB(255, 177, 203, 222),
+                  progressColor: const Color.fromRGBO(58, 135, 193, 1),
+                  backgroundColor: const Color.fromARGB(255, 177, 203, 222),
                   circularStrokeCap: CircularStrokeCap.round,
                   center: Text(
                     "      $percentageText \nCompletado",
@@ -189,7 +189,7 @@ class _DashboardState extends State<Dashboard> {
                 //  "Third Quiz: ${third.toString()}\n"
                 //  "Fourth Quiz: ${fourth.toString()}",
                 //),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 // Conditional message for 100% completion
@@ -331,7 +331,7 @@ class RecommendationCard extends StatelessWidget {
       ),
       child: Text(
         recommendation,
-        style: TextStyle(fontSize: 16),
+        style: const TextStyle(fontSize: 16),
         textAlign: TextAlign.center,
       ),
     );

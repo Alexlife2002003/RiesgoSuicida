@@ -25,7 +25,7 @@ class InstructionsScreen extends StatelessWidget {
             //Color.fromRGBO(212, 248, 251, 1.0),
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
-        child: Padding(
+        child:const Padding(
           padding: EdgeInsets.all(16.0),
           child: Center(
             child: SingleChildScrollView(

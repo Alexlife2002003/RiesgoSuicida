@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:riesgo_suicida/multchoice/quiz.dart';
-import 'package:riesgo_suicida/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:riesgo_suicida/multchoice/quiz.dart';
+import 'package:riesgo_suicida/Screens/temp.dart' as globals;
+import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
 
 class FourthQuiz extends StatefulWidget {
   const FourthQuiz({Key? key}) : super(key: key);
@@ -16,6 +16,9 @@ class FourthQuiz extends StatefulWidget {
 }
 
 class _FourthQuiz extends State<FourthQuiz> {
+  final CollectionReference userAnswersCollection =
+      FirebaseFirestore.instance.collection('APGARanswers');
+
   static const _data = [
     {
       'questionText':
@@ -67,8 +70,19 @@ class _FourthQuiz extends State<FourthQuiz> {
   var _indexQuestion = 0;
   double _totalScore = 0.00;
 
-  void _answerQuestion(double score) {
+  void _answerQuestion(double score) async {
     _totalScore += score;
+
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+
+    await userAnswersCollection
+        .doc(userId)
+        .collection('Answers')
+        .doc(_indexQuestion.toString())
+        .set({
+      'questionIndex': _indexQuestion,
+      'answerScore': score,
+    });
 
     setState(() {
       _indexQuestion += 1;
@@ -88,7 +102,7 @@ class _FourthQuiz extends State<FourthQuiz> {
           .collection('Puntajes')
           .doc(userId)
           .update({
-        'cuarto': newValue, // Provide the updated value for the 'primero' field
+        'cuarto': newValue,
       });
     } catch (error) {
       print('Error updating user data: $error');
@@ -101,13 +115,12 @@ class _FourthQuiz extends State<FourthQuiz> {
       home: Scaffold(
         appBar: _indexQuestion >= 0 && _indexQuestion <= 4
             ? AppBar(
-                title: Text(
+                title: const Text(
                   'APGAR familiar',
                   style: TextStyle(color: Colors.black),
                 ),
-                backgroundColor: Color.fromRGBO(
-                    185, 236, 245, 1), // Make the AppBar transparent
-                elevation: 0, // Remove the shadow
+                backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
+                elevation: 0,
                 centerTitle: true,
               )
             : null,
@@ -152,10 +165,10 @@ class _FourthQuiz extends State<FourthQuiz> {
                   maxSteps: 5,
                   progressType: LinearProgressBar.progressTypeLinear,
                   currentStep: _indexQuestion + 1,
-                  progressColor: Color.fromARGB(255, 74, 101, 211),
+                  progressColor:const Color.fromARGB(255, 74, 101, 211),
                   backgroundColor: Colors.grey,
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
               ],
             ],
           ),

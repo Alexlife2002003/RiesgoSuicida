@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:riesgo_suicida/multchoice/quiz.dart';
-import 'package:riesgo_suicida/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
 
-class SecondQuiz extends StatefulWidget {
-  const SecondQuiz({Key? key}) : super(key: key);
-
+class IdeacionAnswersPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _SecondQuiz();
-  }
+  _IdeacionAnswersPageState createState() => _IdeacionAnswersPageState();
 }
 
-class _SecondQuiz extends State<SecondQuiz> {
-  final CollectionReference userAnswersCollection =
-      FirebaseFirestore.instance.collection('IdeacionAnswers');
-
+class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
   static const _data = [
     {
       'questionText': 'Deseo de vivir',
@@ -184,110 +173,58 @@ class _SecondQuiz extends State<SecondQuiz> {
     },
   ];
 
-  var _indexQuestion = 0;
-  double _totalScore = 0.00;
-
-  void _answerQuestion(double score) async {
-    _totalScore += score;
-
-    String userId = FirebaseAuth.instance.currentUser!.uid;
-
-    await userAnswersCollection
-        .doc(userId)
-        .collection('Answers')
-        .doc(_indexQuestion.toString())
-        .set({
-      'questionIndex': _indexQuestion,
-      'answerScore': score,
-    });
-
-    setState(() {
-      _indexQuestion += 1;
-    });
-
-    if (_indexQuestion == 19) {
-      updateUserData(_totalScore.toInt());
-      globals.secondIcon = Icons.check_box;
-    }
-  }
-
-  void updateUserData(int newValue) async {
-    try {
-      String userId = FirebaseAuth.instance.currentUser!.uid;
-
-      await FirebaseFirestore.instance
-          .collection('Puntajes')
-          .doc(userId)
-          .update({
-        'segundo':
-            newValue, // Provide the updated value for the 'primero' field
-      });
-    } catch (error) {
-      print('Error updating user data: $error');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: _indexQuestion >= 0 && _indexQuestion <= 18
-            ? AppBar(
-                title: const Text(
-                  'Escala de Ideación Suicida',
-                  style: TextStyle(color: Colors.black),
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ideacion Suicida respuestas'),
+        centerTitle: true,
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('IdeacionAnswers')
+            .doc(userId)
+            .collection('Answers')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return const Text('No answers found.');
+          }
+
+          // Build and return a widget to display the answers
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              var answerData =
+                  snapshot.data!.docs[index].data() as Map<String, dynamic>;
+              return ListTile(
+                title: Text('Question: ${_data[index]['questionText']}'),
+                subtitle: Column(
+                  children: [   
+                    // Adding the extraction logic here
+                    ...(_data[index]['answers'] as List<Map<String, dynamic>>?)
+                            ?.where((answer) => answer['score'] == 0.0)
+                            .map((answer) =>
+                                Text('Answer: ${answer['text']}'))
+                            .toList() ??
+                        [],
+                        Text('Score: ${answerData['answerScore']}'),
+                  ],
                 ),
-                backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
-                elevation: 1,
-                centerTitle: true,
-              )
-            : null,
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Color.fromRGBO(229, 251, 255, 1),
-              Color.fromRGBO(229, 251, 255, 1),
-              //Color.fromRGBO(212, 248, 251, 1.0),
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-          ),
-          child: Column(
-            children: [
-              Expanded(
-                child: Align(
-                    alignment: Alignment.center,
-                    child: (_indexQuestion <= 18 && _indexQuestion >= 0)
-                        ? Quiz(
-                            answerQuestion: _answerQuestion,
-                            indexQuestion: _indexQuestion,
-                            data: _data)
-                        : glob.Dashboard()),
-              ),
-              if (_indexQuestion >= 0 && _indexQuestion < 19) ...[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Question ${_indexQuestion + 1} / 19',
-                    style: const TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                LinearProgressBar(
-                  maxSteps: 19,
-                  progressType: LinearProgressBar.progressTypeLinear,
-                  currentStep: _indexQuestion + 1,
-                  progressColor: const Color.fromARGB(255, 74, 101, 211),
-                  backgroundColor: Colors.grey,
-                ),
-                const SizedBox(
-                  height: 25,
-                )
-              ],
-            ],
-          ),
-        ),
+              );
+            },
+          );
+        },
       ),
     );
   }
