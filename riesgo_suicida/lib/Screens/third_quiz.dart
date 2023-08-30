@@ -45,6 +45,13 @@ class _ThirdQuizState extends State<ThirdQuiz> {
       ),
       child: Scaffold(
           appBar: AppBar(
+            leading: Builder(
+              builder: (BuildContext context){
+                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
+                  
+                },);
+              },
+            ),
             title: Text(
               'Escala de Riesgo Suicida',
               style: TextStyle(color: Colors.black),
