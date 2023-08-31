@@ -115,6 +115,13 @@ class _FourthQuiz extends State<FourthQuiz> {
       home: Scaffold(
         appBar: _indexQuestion >= 0 && _indexQuestion <= 4
             ? AppBar(
+              leading: Builder(
+              builder: (BuildContext context){
+                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
+                  
+                },);
+              },
+            ),
                 title: const Text(
                   'APGAR familiar',
                   style: TextStyle(color: Colors.black),

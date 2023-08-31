@@ -233,6 +233,13 @@ class _SecondQuiz extends State<SecondQuiz> {
       home: Scaffold(
         appBar: _indexQuestion >= 0 && _indexQuestion <= 18
             ? AppBar(
+              leading: Builder(
+              builder: (BuildContext context){
+                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
+                  
+                },);
+              },
+            ),
                 title: const Text(
                   'Escala de Ideación Suicida',
                   style: TextStyle(color: Colors.black),

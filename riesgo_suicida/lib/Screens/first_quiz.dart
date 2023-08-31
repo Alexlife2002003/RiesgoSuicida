@@ -70,6 +70,13 @@ class _FirstQuizState extends State<FirstQuiz> {
           ),
         ),
         appBar: AppBar(
+          leading: Builder(
+              builder: (BuildContext context){
+                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
+                  
+                },);
+              },
+            ),
           title: Text(
             'Escala de Desesperanza de Beck',
             style: TextStyle(color: Colors.black),
