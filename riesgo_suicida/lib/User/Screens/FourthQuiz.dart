@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
-import 'package:riesgo_suicida/multchoice/quiz.dart';
-import 'package:riesgo_suicida/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
+import 'package:riesgo_suicida/User/multchoice/quiz.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
+import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
 
 class FourthQuiz extends StatefulWidget {
   const FourthQuiz({Key? key}) : super(key: key);
@@ -115,13 +115,15 @@ class _FourthQuiz extends State<FourthQuiz> {
       home: Scaffold(
         appBar: _indexQuestion >= 0 && _indexQuestion <= 4
             ? AppBar(
-              leading: Builder(
-              builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
-                  
-                },);
-              },
-            ),
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: Icon(Icons.menu),
+                      color: Colors.black,
+                      onPressed: () {},
+                    );
+                  },
+                ),
                 title: const Text(
                   'APGAR familiar',
                   style: TextStyle(color: Colors.black),
@@ -172,7 +174,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                   maxSteps: 5,
                   progressType: LinearProgressBar.progressTypeLinear,
                   currentStep: _indexQuestion + 1,
-                  progressColor:const Color.fromARGB(255, 74, 101, 211),
+                  progressColor: const Color.fromARGB(255, 74, 101, 211),
                   backgroundColor: Colors.grey,
                 ),
                 const SizedBox(height: 25),

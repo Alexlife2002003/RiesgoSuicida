@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
-import 'package:riesgo_suicida/Screens/first_quiz.dart' as globals;
+import 'package:riesgo_suicida/User/Screens/first_quiz.dart' as globals;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CardsFirst extends StatefulWidget {
+  final id;
   final color;
   final text;
   final colorText;
@@ -11,6 +15,7 @@ class CardsFirst extends StatefulWidget {
   final VoidCallback? onSwiped;
 
   CardsFirst({
+    required this.id,
     required this.text,
     this.color,
     this.colorText,
@@ -25,6 +30,21 @@ class CardsFirst extends StatefulWidget {
 
 class _CardsFirstState extends State<CardsFirst> {
   double cardPositionY = 0.0;
+  final CollectionReference userAnswersCollection =
+      FirebaseFirestore.instance.collection('DesesperanzaAnswers');
+
+  Future<void> _registerAnswer(int question, bool answer) async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+
+    await userAnswersCollection
+        .doc(userId)
+        .collection('Answers')
+        .doc(question.toString())
+        .set({
+      'questionIndex': question,
+      'answer': answer,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +64,14 @@ class _CardsFirstState extends State<CardsFirst> {
           offset: Offset(0.0, cardPositionY),
           child: Swipable(
             onSwipeRight: (finalPosition) {
+              _registerAnswer(widget.id, true);
               globals.suma += widget.valueR;
               print('Suma after right swipe: ${globals.suma}');
               print('----------------------------------------');
               widget.onSwiped?.call();
             },
             onSwipeLeft: (finalPosition) {
+              _registerAnswer(widget.id, false);
               globals.suma += widget.valueL;
               print('Suma after left swipe: ${globals.suma}');
               print('----------------------------------------');

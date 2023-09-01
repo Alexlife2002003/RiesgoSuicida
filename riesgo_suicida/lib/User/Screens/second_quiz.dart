@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riesgo_suicida/multchoice/quiz.dart';
-import 'package:riesgo_suicida/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
+import 'package:riesgo_suicida/User/multchoice/quiz.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
+import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
@@ -41,7 +41,10 @@ class _SecondQuiz extends State<SecondQuiz> {
       'answers': [
         {'text': 'Porque seguir viviendo vale más que morir', 'score': 0.00},
         {'text': 'Aproxidamente iguales', 'score': 1.00},
-        {'text': 'Porque la muerte vale más que seguir viviendo','score': 2.00},
+        {
+          'text': 'Porque la muerte vale más que seguir viviendo',
+          'score': 2.00
+        },
       ]
     },
     {
@@ -60,7 +63,10 @@ class _SecondQuiz extends State<SecondQuiz> {
           'score': 0.00
         },
         {'text': 'Puede dejar de vivir/morir por casualidad', 'score': 1.00},
-        {'text': 'Puede evitar las etapas necesarias para seguir con vida','score': 2.00},
+        {
+          'text': 'Puede evitar las etapas necesarias para seguir con vida',
+          'score': 2.00
+        },
       ]
     },
     {
@@ -101,16 +107,29 @@ class _SecondQuiz extends State<SecondQuiz> {
           'Disuasivos para un intento activo (familia, religión, irreversibilidad)',
       'answers': [
         {'text': 'Puede no intentarlo a causa de un disuasivo', 'score': 0.00},
-        {'text': 'Alguna preocupación sobre los medios pueden disuadirlo','score': 1.00},
-        {'text': 'Mínima o ninguna preocupación o interés por ellos','score': 2.00},
+        {
+          'text': 'Alguna preocupación sobre los medios pueden disuadirlo',
+          'score': 1.00
+        },
+        {
+          'text': 'Mínima o ninguna preocupación o interés por ellos',
+          'score': 2.00
+        },
       ]
     },
     {
       'questionText': 'Razones para el intento contemplado',
       'answers': [
-        {'text': 'Manipular el entorno, llamar la atención, vengarse','score': 0.00},
+        {
+          'text': 'Manipular el entorno, llamar la atención, vengarse',
+          'score': 0.00
+        },
         {'text': 'Combinación de las respuestas', 'score': 1.00},
-        {'text':'Escapar, solucionar los problemas, finalizar de forma absoluta','score': 2.00},
+        {
+          'text':
+              'Escapar, solucionar los problemas, finalizar de forma absoluta',
+          'score': 2.00
+        },
       ]
     },
     {
@@ -126,8 +145,14 @@ class _SecondQuiz extends State<SecondQuiz> {
       'questionText':
           'Método (accesibilidad/oportunidad para el intento contemplado)',
       'answers': [
-        {'text': 'Método no disponible, inaccesible. No hay oportunidad','score': 0.00},
-        {'text': 'El método puede tomar tiempo o esfuerzo. Oportunidad escasa','score': 1.00},
+        {
+          'text': 'Método no disponible, inaccesible. No hay oportunidad',
+          'score': 0.00
+        },
+        {
+          'text': 'El método puede tomar tiempo o esfuerzo. Oportunidad escasa',
+          'score': 1.00
+        },
         {'text': 'Método y oportunidad accesibles', 'score': 2.00},
       ]
     },
@@ -135,7 +160,10 @@ class _SecondQuiz extends State<SecondQuiz> {
       'questionText':
           'Sentido de <<capacidad>> para llevar adelante el intento ',
       'answers': [
-        {'text': 'No tiene el valor, demasiado débil, miedoso, incompetente','score': 0.00},
+        {
+          'text': 'No tiene el valor, demasiado débil, miedoso, incompetente',
+          'score': 0.00
+        },
         {'text': 'Inseguridad sobre su valor', 'score': 1.00},
         {'text': 'Seguros de su valor, capacidad', 'score': 2.00},
       ]
@@ -152,8 +180,14 @@ class _SecondQuiz extends State<SecondQuiz> {
       'questionText': 'Preparación actual para el intento contemplado',
       'answers': [
         {'text': 'Ninguna', 'score': 0.00},
-        {'text': 'Parcial(ej. empieza a almacenar pastillas, etc)','score': 1.00},
-        {'text': 'Completa(ej. tiene las pastillas, pistola cargada, etc)','score': 2.00},
+        {
+          'text': 'Parcial(ej. empieza a almacenar pastillas, etc)',
+          'score': 1.00
+        },
+        {
+          'text': 'Completa(ej. tiene las pastillas, pistola cargada, etc)',
+          'score': 2.00
+        },
       ]
     },
     {
@@ -170,7 +204,9 @@ class _SecondQuiz extends State<SecondQuiz> {
       'answers': [
         {'text': 'Ninguno', 'score': 0.00},
         {'text': 'Piensa sobre ello o hace algunos arreglos', 'score': 1.00},
-        {'text': 'Hace planes definitivos o terminó los arreglos finales','score': 2.00
+        {
+          'text': 'Hace planes definitivos o terminó los arreglos finales',
+          'score': 2.00
         },
       ]
     },
@@ -233,13 +269,15 @@ class _SecondQuiz extends State<SecondQuiz> {
       home: Scaffold(
         appBar: _indexQuestion >= 0 && _indexQuestion <= 18
             ? AppBar(
-              leading: Builder(
-              builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
-                  
-                },);
-              },
-            ),
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: Icon(Icons.menu),
+                      color: Colors.black,
+                      onPressed: () {},
+                    );
+                  },
+                ),
                 title: const Text(
                   'Escala de Ideación Suicida',
                   style: TextStyle(color: Colors.black),

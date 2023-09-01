@@ -147,18 +147,25 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
-        leading: Builder(
+            
+            leading: Builder(
               builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
+                return IconButton(icon:Icon(Icons.menu),color:Colors.black,onPressed: (){
                   
                 },);
               },
             ),
-      ),
-      
+            title: Text(
+              'Escala de Riesgo Suicida',
+              style: TextStyle(color: Colors.black),
+            ),
+            backgroundColor: appbarColor,
+            elevation: 1,
+            centerTitle: true,
+          ),
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
@@ -185,8 +192,8 @@ class _DashboardState extends State<Dashboard> {
                   radius: 300,
                   lineWidth: 30,
                   percent: percentage,
-                  progressColor: const Color.fromRGBO(58, 135, 193, 1),
-                  backgroundColor: const Color.fromARGB(255, 177, 203, 222),
+                  progressColor: Color.fromRGBO(58, 135, 193, 1),
+                  backgroundColor: Color.fromARGB(255, 177, 203, 222),
                   circularStrokeCap: CircularStrokeCap.round,
                   center: Text(
                     "      $percentageText \nCompletado",
@@ -200,7 +207,7 @@ class _DashboardState extends State<Dashboard> {
                 //  "Third Quiz: ${third.toString()}\n"
                 //  "Fourth Quiz: ${fourth.toString()}",
                 //),
-                const SizedBox(
+                SizedBox(
                   height: 30,
                 ),
                 // Conditional message for 100% completion
@@ -324,28 +331,26 @@ class RecommendationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: 400, // Adjust the width as needed
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        padding: const EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.grey,
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Text(
-          recommendation,
-          style: const TextStyle(fontSize: 16),
-          textAlign: TextAlign.center,
-        ),
+    return Container(
+      width: 400, // Adjust the width as needed
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.grey,
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Text(
+        recommendation,
+        style: TextStyle(fontSize: 16),
+        textAlign: TextAlign.center,
       ),
     );
   }

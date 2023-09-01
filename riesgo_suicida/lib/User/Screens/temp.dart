@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riesgo_suicida/Answers/APGAR_answers.dart';
+import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
 import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
-import 'package:riesgo_suicida/Screens/first_quiz.dart';
-import 'package:riesgo_suicida/Screens/FourthQuiz.dart';
-import 'package:riesgo_suicida/Screens/second_quiz.dart';
-import 'package:riesgo_suicida/Screens/third_quiz.dart';
-import 'package:riesgo_suicida/Screens/Dashboard.dart';
-import 'package:riesgo_suicida/Screens/Instrucciones.dart';
-import 'package:riesgo_suicida/Screens/Dashboard.dart' as glob;
+import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
+import 'package:riesgo_suicida/User/Screens/first_quiz.dart';
+import 'package:riesgo_suicida/User/Screens/FourthQuiz.dart';
+import 'package:riesgo_suicida/User/Screens/second_quiz.dart';
+import 'package:riesgo_suicida/User/Screens/third_quiz.dart';
+import 'package:riesgo_suicida/User/Screens/Dashboard.dart';
+import 'package:riesgo_suicida/User/Screens/Instrucciones.dart';
+import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
 import '../util/my_header_drawer.dart';
 
 var currentPage = DrawerSections.dashboard;
@@ -33,13 +35,23 @@ class _TempState extends State<Temp> {
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSections.dashboard) {
-      container =  Dashboard();
+      container = Dashboard();
     }
-    if (currentPage == DrawerSections.secondAnswers){//delete
+    if (currentPage == DrawerSections.firstAnswers) {
+      //delete
+      container = DesesperanzaAnswersPage();
+    }
+    if (currentPage == DrawerSections.secondAnswers) {
+      //delete
       container = IdeacionAnswersPage();
     }
-    if (currentPage == DrawerSections.fourthAnswers){//delete
-      container=APGARAnswersPage();
+    if (currentPage == DrawerSections.thirdAnswers) {
+      //delete
+      container = PlutchikAnswersPage();
+    }
+    if (currentPage == DrawerSections.fourthAnswers) {
+      //delete
+      container = APGARAnswersPage();
     }
     if (currentPage == DrawerSections.instrucciones) {
       container = Instrucciones();
@@ -57,7 +69,6 @@ class _TempState extends State<Temp> {
       container = const FourthQuiz();
     }
     return Scaffold(
-     
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(
@@ -106,8 +117,10 @@ class _TempState extends State<Temp> {
             "Sign Out",
             Icons.exit_to_app,
           ),
-          menuItem(15, "Ideacion Answers", Icons.list),//delete
-          menuItem(16, "APGAR Answers", Icons.list)//delete
+          menuItem(15, "Ideacion Answers", Icons.list), //delete
+          menuItem(16, "APGAR Answers", Icons.list), //delete
+          menuItem(17, "Desesperanza Answers", Icons.list), //delete
+          menuItem(18, "Plutchik  Answers", Icons.list), //delete
         ],
       ),
     );
@@ -120,7 +133,7 @@ class _TempState extends State<Temp> {
         Colors.transparent; // Default background color is transparent
 
     // Determine the background color based on the current page
-    
+
     if (currentPage == DrawerSections.dashboard && id == 1) {
       itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.first && id == 2) {
@@ -133,18 +146,24 @@ class _TempState extends State<Temp> {
       itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.Fourth && id == 7) {
       itemBackgroundColor = backgorundDrawer;
-    } 
+    }
 
     return Material(
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
           setState(() {
-            if(id==15){
-              currentPage=DrawerSections.secondAnswers;
+            if (id == 15) {
+              currentPage = DrawerSections.secondAnswers;
             }
-             if(id==16){
-              currentPage=DrawerSections.fourthAnswers;
+            if (id == 16) {
+              currentPage = DrawerSections.fourthAnswers;
+            }
+            if (id == 17) {
+              currentPage = DrawerSections.firstAnswers;
+            }
+            if (id == 18) {
+              currentPage = DrawerSections.thirdAnswers;
             }
             if (id == 1) {
               currentPage = DrawerSections.dashboard;

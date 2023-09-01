@@ -4,13 +4,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
+final CollectionReference usersDetails = firestore.collection('Users');
 
-void createUserDatabase(String UID) {
+void createUserDatabase(String UID, String firstName, String lastName) {
   usersCollection.doc(UID).set({
     'primero': 0,
     'segundo': 0,
     'tercero': 0,
     'cuarto': 0,
+  });
+
+  usersDetails.doc(UID).set({
+    'firstname': firstName,
+    'lastname': lastName,
+    'admin': false,
   });
 }
 
@@ -52,7 +59,8 @@ class _RegisterPageState extends State<RegisterPage> {
         FirebaseAuth.instance.currentUser!.updateDisplayName(dis);
 
         //database
-        createUserDatabase(FirebaseAuth.instance.currentUser!.uid);
+        createUserDatabase(
+            FirebaseAuth.instance.currentUser!.uid, firstName, lastName);
 
         Navigator.of(context).pop();
       } else {

@@ -4,9 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
-import 'package:riesgo_suicida/Screens/temp.dart';
-import 'package:riesgo_suicida/util/card_third.dart';
-import 'package:riesgo_suicida/Screens/temp.dart' as globals;
+import 'package:riesgo_suicida/User/Screens/temp.dart';
+import 'package:riesgo_suicida/User/util/card_third.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
 
 var suma = 0;
 
@@ -45,12 +45,13 @@ class _ThirdQuizState extends State<ThirdQuiz> {
       ),
       child: Scaffold(
           appBar: AppBar(
-            
             leading: Builder(
-              builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color:Colors.black,onPressed: (){
-                  
-                },);
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: Icon(Icons.menu),
+                  color: Colors.black,
+                  onPressed: () {},
+                );
               },
             ),
             title: Text(
@@ -116,6 +117,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                   ),
                 ),
                 CardsThird(
+                    id: 15,
                     text: "¿Ha intentado alguna vez quitarse la vida?",
                     color: darkblue,
                     colorText: Colors.white,
@@ -127,6 +129,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 14,
                     text:
                         "¿Le ha comentado a alguien, en alguna ocasión, que quería suicidarse?",
                     color: Colors.white,
@@ -139,6 +142,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 13,
                     text: "¿Ha pensado alguna vez en suicidarse?",
                     color: darkblue,
                     colorText: Colors.white,
@@ -150,6 +154,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 12,
                     text:
                         "¿Alguna vez se ha sentido tan enfadado/a que habría sido capaz de matar a alguien?",
                     color: Colors.white,
@@ -162,6 +167,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 11,
                     text:
                         "¿Sabe si alguien de su familia ha intentado suicidarse alguna vez?",
                     color: darkblue,
@@ -174,6 +180,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 10,
                     text:
                         "¿Está usted separado/a, divorciado/a o viudo/a o ha terminado recientemente una relación sentimental importante?",
                     color: Colors.white,
@@ -186,6 +193,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 9,
                     text: "¿Está deprimido/a ahora?",
                     color: darkblue,
                     colorText: Colors.white,
@@ -197,6 +205,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 8,
                     text:
                         "¿Se ha sentido alguna vez tan fracasado/a que sólo quería meterse en la cama y abandonarlo todo?",
                     color: Colors.white,
@@ -209,6 +218,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 7,
                     text: "¿Ve su futuro sin ninguna esperanza?",
                     color: darkblue,
                     colorText: Colors.white,
@@ -220,6 +230,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 6,
                     text: "¿Se ha sentido alguna vez inútil o inservible?",
                     color: Colors.white,
                     colorText: Colors.black,
@@ -231,6 +242,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 5,
                     text: "¿Ve su futuro con más pesimismo que optimismo?",
                     color: darkblue,
                     colorText: Colors.white,
@@ -242,6 +254,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 4,
                     text: "¿Tiene poco interés en relacionarse con la gente?",
                     color: Colors.white,
                     colorText: Colors.black,
@@ -253,6 +266,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 3,
                     text:
                         "¿A veces nota que podría perder el control sobre sí mismo/a?",
                     color: darkblue,
@@ -265,6 +279,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 2,
                     text: "¿Tiene dificultades para conciliar el sueño?",
                     color: Colors.white,
                     colorText: Colors.black,
@@ -276,6 +291,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                       });
                     }),
                 CardsThird(
+                    id: 1,
                     text:
                         "¿Toma de forma habitual algún medicamento como aspirinas o pastillar para dormir?",
                     color: darkblue,

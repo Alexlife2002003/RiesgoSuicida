@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:riesgo_suicida/pages/auth_page.dart';
+import 'package:riesgo_suicida/login/auth_page.dart';
 import 'firebase_options.dart';
 
 void main() async {

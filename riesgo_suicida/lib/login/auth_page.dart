@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:riesgo_suicida/Screens/temp.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/login/LoginOrRegisterPage.dart';
 
 class AuthPage extends StatelessWidget {

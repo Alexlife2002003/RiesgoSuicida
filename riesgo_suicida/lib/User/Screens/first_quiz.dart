@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:riesgo_suicida/Screens/temp.dart';
-import 'package:riesgo_suicida/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/multchoice/quiz.dart';
-import 'package:riesgo_suicida/util/CardFirst.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
+import 'package:riesgo_suicida/User/multchoice/quiz.dart';
+import 'package:riesgo_suicida/User/util/CardFirst.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
@@ -71,12 +71,14 @@ class _FirstQuizState extends State<FirstQuiz> {
         ),
         appBar: AppBar(
           leading: Builder(
-              builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
-                  
-                },);
-              },
-            ),
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: Icon(Icons.menu),
+                color: Colors.black,
+                onPressed: () {},
+              );
+            },
+          ),
           title: Text(
             'Escala de Desesperanza de Beck',
             style: TextStyle(color: Colors.black),
@@ -112,6 +114,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               ),
 
               CardsFirst(
+                  id: 20,
                   text:
                       "No merece la pena que intente conseguir algo que desee, porque probablemente no lo lograré",
                   color: Colors.white,
@@ -124,6 +127,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //20
               CardsFirst(
+                  id: 19,
                   text: "Espero más bien épocas buenas que malas",
                   color: darkblue,
                   colorText: Colors.white,
@@ -136,6 +140,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                   }), //19
 
               CardsFirst(
+                  id: 18,
                   text: "El futuro me parece vago e incierto",
                   color: Colors.white,
                   colorText: Colors.black,
@@ -147,6 +152,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //18
               CardsFirst(
+                  id: 17,
                   text:
                       "Es muy improbable que pueda lograr una satisfacción real en el futuro",
                   color: darkblue,
@@ -159,6 +165,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //17
               CardsFirst(
+                  id: 16,
                   text:
                       "Nunca consigo lo que deseo, por lo que es absurdo desear cualquier cosa",
                   color: Colors.white,
@@ -171,6 +178,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //16
               CardsFirst(
+                  id: 15,
                   text: "Tengo una gran confianza en el futuro",
                   color: darkblue,
                   colorText: Colors.white,
@@ -182,6 +190,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //15
               CardsFirst(
+                  id: 14,
                   text: "Las cosas no marchan como yo quisiera",
                   color: Colors.white,
                   colorText: Colors.black,
@@ -193,6 +202,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //14
               CardsFirst(
+                  id: 13,
                   text:
                       "Cuando miro hacia el futuro, espero que seré más feliz de lo que soy ahora",
                   color: darkblue,
@@ -205,6 +215,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //13
               CardsFirst(
+                  id: 12,
                   text: "No espero conseguir lo que realmente deseo",
                   color: Colors.white,
                   colorText: Colors.black,
@@ -216,6 +227,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //12
               CardsFirst(
+                  id: 11,
                   text:
                       "Todo lo que puedo ver por delante de mí es más desagradable que agradable",
                   color: darkblue,
@@ -228,6 +240,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //11
               CardsFirst(
+                  id: 10,
                   text:
                       "Mis pasadas experiencias me han preparado bien para el futuro",
                   color: Colors.white,
@@ -240,6 +253,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //10
               CardsFirst(
+                  id: 9,
                   text:
                       "No logro hacer que las cosas cambien, y no existen razones para creer que pueda en el futuro",
                   color: darkblue,
@@ -252,6 +266,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //9
               CardsFirst(
+                  id: 8,
                   text:
                       "Espero más cosas buenas de la vida que lo que la gente suele conseguir por término medio",
                   color: Colors.white,
@@ -264,6 +279,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //8
               CardsFirst(
+                  id: 7,
                   text: "Mi futuro me parece oscuro",
                   color: darkblue,
                   colorText: Colors.white,
@@ -275,6 +291,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //7
               CardsFirst(
+                  id: 6,
                   text:
                       "En el futuro, espero conseguir lo que me pueda interesar",
                   color: Colors.white,
@@ -287,6 +304,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //6
               CardsFirst(
+                  id: 5,
                   text:
                       "Tengo bastante tiempo para llevar a cabo las cosas que quisiera poder hacer",
                   color: darkblue,
@@ -299,6 +317,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //5
               CardsFirst(
+                  id: 4,
                   text: "No puedo imaginar cómo será mi vida dentro de 10 años",
                   color: Colors.white,
                   colorText: Colors.black,
@@ -310,6 +329,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //4
               CardsFirst(
+                  id: 3,
                   text:
                       "Cuando las cosas van mal me alivia saber que las cosas no pueden permanecer tiempo así",
                   color: darkblue,
@@ -322,6 +342,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //3
               CardsFirst(
+                  id: 2,
                   text:
                       "Puedo darme por vencido, renunciar, ya que no puedo hacer las cosas por mi mismo",
                   color: Colors.white,
@@ -335,6 +356,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                   }), //2
 
               CardsFirst(
+                  id: 1,
                   text: "Espero el futuro con esperanza y entusiasmo",
                   color: darkblue,
                   colorText: Colors.white,
