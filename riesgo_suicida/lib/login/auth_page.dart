@@ -1,52 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riesgo_suicida/Admin/AdminMain.dart';
-import 'package:riesgo_suicida/User/Screens/first_quiz.dart';
+import 'package:riesgo_suicida/Admin/Screens.dart/AdminMenu.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/login/LoginOrRegisterPage.dart';
 
-class AuthPage extends StatefulWidget {
-  @override
-  _AuthPageState createState() => _AuthPageState();
-}
-
-class _AuthPageState extends State<AuthPage> {
-  bool isAdmin = false;
-
-  @override
-  void initState() {
-    super.initState();
-    fetchUserData();
-  }
-
-  Future<void> fetchUserData() async {
-    try {
-      DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
-          .collection('Users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .get();
-
-      if (documentSnapshot.exists) {
-        Map<String, dynamic>? userData =
-            documentSnapshot.data() as Map<String, dynamic>;
-        setState(() {
-          isAdmin = userData['admin'];
-        });
-        print('user data isadmin $isAdmin');
-      } else {
-        // User document does not exist
-        setState(() {
-          isAdmin = false;
-        });
-      }
-    } catch (e) {
-      print('Error fetching user data: $e');
-      setState(() {
-        isAdmin = false;
-      });
-    }
-  }
+class AuthPage extends StatelessWidget {
+  const AuthPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +15,31 @@ class _AuthPageState extends State<AuthPage> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (isAdmin == false) {
-              return const Temp();
-            } else {
-              return const AdminMain();
-            }
+            return FutureBuilder<DocumentSnapshot>(
+              future: FirebaseFirestore.instance
+                  .collection('Users')
+                  .doc(snapshot.data!.uid)
+                  .get(),
+              builder: (context, userSnapshot) {
+                if (userSnapshot.hasData && userSnapshot.data != null) {
+                  // Check if the user is an admin based on the "admin" variable
+                  bool isAdmin = userSnapshot.data!.get('admin') ?? false;
+                  print('is Admin $isAdmin');
+                  if (isAdmin) {
+                    // User is an admin, navigate to the admin page (Temp)
+                    return const AdminMenu();
+                  } else {
+                    // User is not an admin, navigate to the login or register page
+                    return const Temp();
+                  }
+                } else {
+                  // Unable to fetch user data, you can handle this case as needed
+                  return const LoginOrRegisterPage();
+                }
+              },
+            );
           } else {
+            // User is not authenticated, navigate to the login or register page
             return const LoginOrRegisterPage();
           }
         },
