@@ -3,8 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class APGARAnswersPage extends StatefulWidget {
+  final String uid;
+
+  APGARAnswersPage(
+    {required this.uid}
+  );
+
   @override
-  _APGARAnswersPageState createState() => _APGARAnswersPageState();
+  State<APGARAnswersPage> createState() => _APGARAnswersPageState();
 }
 
 class _APGARAnswersPageState extends State<APGARAnswersPage> {
@@ -63,17 +69,21 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
 
   @override
   Widget build(BuildContext context) {
-    String userId = FirebaseAuth.instance.currentUser!.uid;
+    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
+    Color backgroundColor =Color.fromRGBO(229, 251, 255, 1);
 
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: const Text('APGAR respuestas'),
+        title: const Text('APGAR respuestas',style: TextStyle(color: Colors.black),),
         centerTitle: true,
+        backgroundColor: appbarColor,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('APGARanswers')
-            .doc(userId)
+            .doc(widget.uid)
             .collection('Answers')
             .snapshots(),
         builder: (context, snapshot) {
@@ -99,10 +109,10 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
                 margin: EdgeInsets.all(16),
                 decoration: BoxDecoration(boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(.5),
+                    color: Colors.white,
                     spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
+                    blurRadius: 2,
+                    
                   )
                 ]),
                 child: ListTile(

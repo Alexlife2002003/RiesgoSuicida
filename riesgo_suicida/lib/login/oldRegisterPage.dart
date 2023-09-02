@@ -6,7 +6,7 @@ final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
 final CollectionReference usersDetails = firestore.collection('Users');
 
-void createUserDatabase(String UID, String firstName, String lastName, String age, String genero) {
+void createUserDatabase(String UID, String firstName, String lastName) {
   usersCollection.doc(UID).set({
     'primero': 0,
     'segundo': 0,
@@ -18,8 +18,6 @@ void createUserDatabase(String UID, String firstName, String lastName, String ag
     'firstname': firstName,
     'lastname': lastName,
     'admin': false,
-    'edad':age,
-    'genero':genero,
   });
 }
 
@@ -37,8 +35,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  final _ageController= TextEditingController();
-  final _generoController=TextEditingController();
 
   Future<void> signUserUp() async {
     showDialog(
@@ -60,13 +56,11 @@ class _RegisterPageState extends State<RegisterPage> {
         String firstName = _firstNameController.text;
         String lastName = _lastNameController.text;
         String dis = "$firstName $lastName";
-        String age=_ageController.text;
-        String genero=_generoController.text;
         FirebaseAuth.instance.currentUser!.updateDisplayName(dis);
 
         //database
         createUserDatabase(
-            FirebaseAuth.instance.currentUser!.uid, firstName, lastName,age,genero);
+            FirebaseAuth.instance.currentUser!.uid, firstName, lastName);
 
         Navigator.of(context).pop();
       } else {
@@ -170,8 +164,6 @@ class _RegisterPageState extends State<RegisterPage> {
     _confirmPasswordController.dispose();
     _firstNameController.dispose();
     _lastNameController.dispose();
-    _ageController.dispose();
-    _generoController.dispose();
     super.dispose();
   }
 
@@ -314,76 +306,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Email',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextFormField(
-                          controller: _ageController,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Edad',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _generoController,
-                          
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Genero',
                             hintStyle: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),

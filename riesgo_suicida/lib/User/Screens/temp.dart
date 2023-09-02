@@ -51,7 +51,7 @@ class _TempState extends State<Temp> {
     }
     if (currentPage == DrawerSections.fourthAnswers) {
       //delete
-      container = APGARAnswersPage();
+      container = Instrucciones();
     }
     if (currentPage == DrawerSections.instrucciones) {
       container = Instrucciones();

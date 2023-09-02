@@ -80,10 +80,7 @@ class _AdminMainState extends State<AdminMain> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: appbarColor.withOpacity(.5),
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          
+                          color:Colors.white,                          
 
                         )
                       ]
