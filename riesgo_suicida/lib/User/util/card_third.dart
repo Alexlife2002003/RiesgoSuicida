@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
 import 'package:riesgo_suicida/User/Screens/third_quiz.dart' as globals;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CardsThird extends StatefulWidget {
   final id;

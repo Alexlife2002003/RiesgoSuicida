@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +27,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
   @override
   Widget build(BuildContext context) {
     Color darkblue = const Color.fromARGB(255, 0, 0, 139);
-    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -48,13 +46,13 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             leading: Builder(
               builder: (BuildContext context) {
                 return IconButton(
-                  icon: Icon(Icons.menu),
+                  icon: const Icon(Icons.menu),
                   color: Colors.black,
                   onPressed: () {},
                 );
               },
             ),
-            title: Text(
+            title: const Text(
               'Escala de Riesgo Suicida',
               style: TextStyle(color: Colors.black),
             ),
@@ -72,10 +70,11 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     'Question ${cardCount + 1} /15',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Padding(

@@ -1,17 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riesgo_suicida/Admin/AdminMain.dart';
-import 'package:riesgo_suicida/Answers/APGAR_answers.dart';
-import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
-import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
-import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
-import 'package:riesgo_suicida/User/Screens/first_quiz.dart';
-import 'package:riesgo_suicida/User/Screens/FourthQuiz.dart';
-import 'package:riesgo_suicida/User/Screens/second_quiz.dart';
-import 'package:riesgo_suicida/User/Screens/third_quiz.dart';
-import 'package:riesgo_suicida/User/Screens/Dashboard.dart';
-import 'package:riesgo_suicida/User/Screens/Instrucciones.dart';
-import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
 import 'package:riesgo_suicida/User/util/my_header_drawer.dart';
 
 var currentPage = DrawerSections.dashboard;
@@ -36,11 +25,10 @@ class _AdminMenuState extends State<AdminMenu> {
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSections.dashboard) {
-      container = AdminMain();
+      container = const AdminMain();
     }
 
     return Scaffold(
-      
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(

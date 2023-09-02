@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class APGARAnswersPage extends StatefulWidget {
   final String uid;
 
-  APGARAnswersPage(
-    {required this.uid}
-  );
+  const APGARAnswersPage({super.key, required this.uid});
 
   @override
   State<APGARAnswersPage> createState() => _APGARAnswersPageState();
@@ -69,16 +66,19 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
-    Color backgroundColor =Color.fromRGBO(229, 251, 255, 1);
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
+    Color backgroundColor = const Color.fromRGBO(229, 251, 255, 1);
 
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: const Text('APGAR respuestas',style: TextStyle(color: Colors.black),),
+        title: const Text(
+          'APGAR respuestas',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
         backgroundColor: appbarColor,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -106,13 +106,12 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
               var answerData =
                   snapshot.data!.docs[index].data() as Map<String, dynamic>;
               return Container(
-                margin: EdgeInsets.all(16),
-                decoration: BoxDecoration(boxShadow: [
+                margin: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(boxShadow: [
                   BoxShadow(
                     color: Colors.white,
                     spreadRadius: 2,
                     blurRadius: 2,
-                    
                   )
                 ]),
                 child: ListTile(
@@ -122,18 +121,14 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
                       children: <TextSpan>[
                         const TextSpan(
                           text: 'Pregunta:',
-                          style:  TextStyle(
-                            fontWeight:
-                                FontWeight.bold, 
-                                fontSize: 18
-                          ),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
-                        
                         TextSpan(
-                          text: '\n${_data[index]['questionText']}',
-                          style: TextStyle(fontSize: 16,)
-                          
-                        ),
+                            text: '\n${_data[index]['questionText']}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                            )),
                       ],
                     ),
                   ),
@@ -151,23 +146,18 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
                       RichText(
                         textAlign: TextAlign.start,
                         text: TextSpan(
-                          style: DefaultTextStyle.of(context).style,
-                          children: <TextSpan>[
-                            const TextSpan(
-                              text:'Score:',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18
+                            style: DefaultTextStyle.of(context).style,
+                            children: <TextSpan>[
+                              const TextSpan(
+                                text: 'Score:',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
                               ),
-                            ),
-                            TextSpan(
-                              text: ' ${answerData['answerScore']}',
-                              style: TextStyle(fontSize: 16)
-                            ),
-                          ]
-                        ),
+                              TextSpan(
+                                  text: ' ${answerData['answerScore']}',
+                                  style: const TextStyle(fontSize: 16)),
+                            ]),
                       ),
-                     
                     ],
                   ),
                 ),

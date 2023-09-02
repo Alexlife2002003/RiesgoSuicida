@@ -272,7 +272,7 @@ class _SecondQuiz extends State<SecondQuiz> {
                 leading: Builder(
                   builder: (BuildContext context) {
                     return IconButton(
-                      icon: Icon(Icons.menu),
+                      icon: const Icon(Icons.menu),
                       color: Colors.black,
                       onPressed: () {},
                     );
@@ -305,7 +305,7 @@ class _SecondQuiz extends State<SecondQuiz> {
                             answerQuestion: _answerQuestion,
                             indexQuestion: _indexQuestion,
                             data: _data)
-                        : glob.Dashboard()),
+                        : const glob.Dashboard()),
               ),
               if (_indexQuestion >= 0 && _indexQuestion < 19) ...[
                 Container(

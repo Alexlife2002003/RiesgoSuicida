@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Instrucciones extends StatelessWidget {
+  const Instrucciones({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -8,24 +10,28 @@ class Instrucciones extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: InstructionsScreen(),
+      home: const InstructionsScreen(),
     );
   }
 }
 
 class InstructionsScreen extends StatelessWidget {
+  const InstructionsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
         leading: Builder(
-              builder: (BuildContext context){
-                return IconButton(icon:Icon(Icons.menu),color: Colors.black,onPressed: (){
-                  
-                },);
-              },
-            ),
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              color: Colors.black,
+              onPressed: () {},
+            );
+          },
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -35,14 +41,13 @@ class InstructionsScreen extends StatelessWidget {
             //Color.fromRGBO(212, 248, 251, 1.0),
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
-        child:const Padding(
+        child: const Padding(
           padding: EdgeInsets.all(16.0),
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  
                   Text(
                     'Instrucciones para completar los quizzes y cuidar tu salud mental',
                     style: TextStyle(
@@ -114,6 +119,7 @@ class NumberedSection extends StatelessWidget {
   final String content;
 
   const NumberedSection({
+    super.key,
     required this.number,
     required this.title,
     required this.content,

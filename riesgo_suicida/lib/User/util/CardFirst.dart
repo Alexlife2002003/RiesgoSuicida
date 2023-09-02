@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipable/flutter_swipable.dart';
 import 'package:riesgo_suicida/User/Screens/first_quiz.dart' as globals;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CardsFirst extends StatefulWidget {
   final id;
@@ -14,7 +13,7 @@ class CardsFirst extends StatefulWidget {
   var valueR = 0;
   final VoidCallback? onSwiped;
 
-  CardsFirst({
+  CardsFirst({super.key, 
     required this.id,
     required this.text,
     this.color,
@@ -66,15 +65,11 @@ class _CardsFirstState extends State<CardsFirst> {
             onSwipeRight: (finalPosition) {
               _registerAnswer(widget.id, true);
               globals.suma += widget.valueR;
-              print('Suma after right swipe: ${globals.suma}');
-              print('----------------------------------------');
               widget.onSwiped?.call();
             },
             onSwipeLeft: (finalPosition) {
               _registerAnswer(widget.id, false);
               globals.suma += widget.valueL;
-              print('Suma after left swipe: ${globals.suma}');
-              print('----------------------------------------');
               widget.onSwiped?.call();
             },
             child: Center(

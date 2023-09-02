@@ -118,7 +118,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                 leading: Builder(
                   builder: (BuildContext context) {
                     return IconButton(
-                      icon: Icon(Icons.menu),
+                      icon: const Icon(Icons.menu),
                       color: Colors.black,
                       onPressed: () {},
                     );

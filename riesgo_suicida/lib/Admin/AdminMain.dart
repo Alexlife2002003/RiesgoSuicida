@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riesgo_suicida/Admin/Screens.dart/Temporal.dart';
 
@@ -15,12 +14,11 @@ class _AdminMainState extends State<AdminMain> {
     List<Map<String, dynamic>> users = [];
 
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('Users')
-          .get();
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('Users').get();
 
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
-        String userName = document['firstname']+" "+ document['lastname'];
+        String userName = document['firstname'] + " " + document['lastname'];
         String uid = document.id; // Get the UID of the user document
         users.add({'name': userName, 'uid': uid});
       }
@@ -33,28 +31,31 @@ class _AdminMainState extends State<AdminMain> {
 
   @override
   Widget build(BuildContext context) {
-    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(229, 251, 255, 1),
+      backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
       appBar: AppBar(
         backgroundColor: appbarColor,
         leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: Icon(Icons.menu),
-                color: Colors.black,
-                onPressed: () {},
-              );
-            },
-          ),
-        title: Text('Admin Main',style: TextStyle(color: Colors.black),),
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              color: Colors.black,
+              onPressed: () {},
+            );
+          },
+        ),
+        title: const Text(
+          'Admin Main',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchUsers(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -70,23 +71,25 @@ class _AdminMainState extends State<AdminMain> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  Temporal(uid: user['uid'], fullname: user['name']),
+                        builder: (context) =>
+                            Temporal(uid: user['uid'], fullname: user['name']),
                       ),
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.all(6),
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color:Colors.white,                          
-
-                        )
-                      ]
-                    ),
+                    margin: const EdgeInsets.all(6),
+                    padding: const EdgeInsets.all(16),
+                    decoration: const BoxDecoration(boxShadow: [
+                      BoxShadow(
+                        color: Colors.white,
+                      )
+                    ]),
                     child: ListTile(
-                      title: Center(child: Text(user['name'],style: TextStyle(fontSize: 18),)),
+                      title: Center(
+                          child: Text(
+                        user['name'],
+                        style: const TextStyle(fontSize: 18),
+                      )),
                     ),
                   ),
                 );

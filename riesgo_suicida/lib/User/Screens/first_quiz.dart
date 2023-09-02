@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/User/multchoice/quiz.dart';
 import 'package:riesgo_suicida/User/util/CardFirst.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,7 +27,7 @@ class _FirstQuizState extends State<FirstQuiz> {
   @override
   Widget build(BuildContext context) {
     Color darkblue = const Color.fromARGB(255, 0, 0, 139);
-    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -50,10 +49,11 @@ class _FirstQuizState extends State<FirstQuiz> {
                 alignment: Alignment.bottomLeft,
                 child: Text(
                   'Question ${cardCount + 1}/20',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Padding(
@@ -73,13 +73,13 @@ class _FirstQuizState extends State<FirstQuiz> {
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(
-                icon: Icon(Icons.menu),
+                icon: const Icon(Icons.menu),
                 color: Colors.black,
                 onPressed: () {},
               );
             },
           ),
-          title: Text(
+          title: const Text(
             'Escala de Desesperanza de Beck',
             style: TextStyle(color: Colors.black),
           ),

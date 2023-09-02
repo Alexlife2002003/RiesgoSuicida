@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 class Ideacion extends StatelessWidget {
   final String uid;
-  const Ideacion(
-    {required this.uid});
+  const Ideacion({super.key, required this.uid});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: Text('Ideacion Suicida Answers'),
+        title: const Text('Ideacion Suicida Answers'),
         centerTitle: true,
       ),
     );

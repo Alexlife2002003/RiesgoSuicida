@@ -52,7 +52,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color btnColor = Color.fromARGB(255, 74, 101, 211);
+    Color btnColor = const Color.fromARGB(255, 74, 101, 211);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DesesperanzaAnswersPage extends StatefulWidget {
+  const DesesperanzaAnswersPage({super.key});
+
   @override
   _DesesperanzaAnswersPageState createState() =>
       _DesesperanzaAnswersPageState();

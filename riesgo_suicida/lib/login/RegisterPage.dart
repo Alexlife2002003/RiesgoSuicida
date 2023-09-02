@@ -25,7 +25,7 @@ void createUserDatabase(String UID, String firstName, String lastName, String ag
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const RegisterPage({Key? key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();

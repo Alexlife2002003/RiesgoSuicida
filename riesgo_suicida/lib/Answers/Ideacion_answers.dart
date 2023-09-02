@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class IdeacionAnswersPage extends StatefulWidget {
+  const IdeacionAnswersPage({super.key});
+
   @override
   _IdeacionAnswersPageState createState() => _IdeacionAnswersPageState();
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:riesgo_suicida/Answers/APGAR_answers.dart';
 import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
 import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
 import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
@@ -35,15 +34,15 @@ class _TempState extends State<Temp> {
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSections.dashboard) {
-      container = Dashboard();
+      container = const Dashboard();
     }
     if (currentPage == DrawerSections.firstAnswers) {
       //delete
-      container = DesesperanzaAnswersPage();
+      container = const DesesperanzaAnswersPage();
     }
     if (currentPage == DrawerSections.secondAnswers) {
       //delete
-      container = IdeacionAnswersPage();
+      container = const IdeacionAnswersPage();
     }
     if (currentPage == DrawerSections.thirdAnswers) {
       //delete
@@ -51,10 +50,10 @@ class _TempState extends State<Temp> {
     }
     if (currentPage == DrawerSections.fourthAnswers) {
       //delete
-      container = Instrucciones();
+      container = const Instrucciones();
     }
     if (currentPage == DrawerSections.instrucciones) {
-      container = Instrucciones();
+      container = const Instrucciones();
     }
     if (currentPage == DrawerSections.first) {
       container = const FirstQuiz();
