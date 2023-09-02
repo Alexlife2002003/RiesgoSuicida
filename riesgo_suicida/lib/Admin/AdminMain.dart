@@ -33,9 +33,22 @@ class _AdminMainState extends State<AdminMain> {
 
   @override
   Widget build(BuildContext context) {
+    Color appbarColor = Color.fromRGBO(185, 236, 245, 1);
     return Scaffold(
+      backgroundColor: Color.fromRGBO(229, 251, 255, 1),
       appBar: AppBar(
-        title: Text('Admin Main'),
+        backgroundColor: appbarColor,
+        leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: Icon(Icons.menu),
+                color: Colors.black,
+                onPressed: () {},
+              );
+            },
+          ),
+        title: Text('Admin Main',style: TextStyle(color: Colors.black),),
+        centerTitle: true,
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchUsers(),
@@ -61,8 +74,23 @@ class _AdminMainState extends State<AdminMain> {
                       ),
                     );
                   },
-                  child: ListTile(
-                    title: Text(user['name']),
+                  child: Container(
+                    margin: EdgeInsets.all(6),
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: appbarColor.withOpacity(.5),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          
+
+                        )
+                      ]
+                    ),
+                    child: ListTile(
+                      title: Center(child: Text(user['name'],style: TextStyle(fontSize: 18),)),
+                    ),
                   ),
                 );
               },

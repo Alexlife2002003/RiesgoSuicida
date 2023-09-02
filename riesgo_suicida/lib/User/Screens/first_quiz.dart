@@ -355,18 +355,20 @@ class _FirstQuizState extends State<FirstQuiz> {
                     });
                   }), //2
 
-              CardsFirst(
-                  id: 1,
-                  text: "Espero el futuro con esperanza y entusiasmo",
-                  color: darkblue,
-                  colorText: Colors.white,
-                  valueL: 1,
-                  valueR: 0,
-                  onSwiped: () {
-                    setState(() {
-                      cardCount++;
-                    });
-                  }),
+              Container(
+                child: CardsFirst(
+                    id: 1,
+                    text: "Espero el futuro con esperanza y entusiasmo",
+                    color: darkblue,
+                    colorText: Colors.white,
+                    valueL: 1,
+                    valueR: 0,
+                    onSwiped: () {
+                      setState(() {
+                        cardCount++;
+                      });
+                    }),
+              ),
             ],
           ),
         ),

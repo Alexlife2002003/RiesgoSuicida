@@ -61,7 +61,7 @@ class _CardsFirstState extends State<CardsFirst> {
           });
         },
         child: Transform.translate(
-          offset: Offset(0.0, cardPositionY),
+          offset: Offset(0, cardPositionY),
           child: Swipable(
             onSwipeRight: (finalPosition) {
               _registerAnswer(widget.id, true);
