@@ -3,8 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PlutchikAnswersPage extends StatefulWidget {
+  final String uid;
+  const PlutchikAnswersPage({required this.uid});
+
   @override
-  _PlutchikAnswersPageState createState() => _PlutchikAnswersPageState();
+  State<PlutchikAnswersPage> createState() => _PlutchikAnswersPageState();
 }
 
 class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
@@ -49,8 +52,6 @@ class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
 
   @override
   Widget build(BuildContext context) {
-    String userId = FirebaseAuth.instance.currentUser!.uid;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plutchik respuestas'),
@@ -59,7 +60,7 @@ class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('PlutchikAnswers')
-            .doc(userId)
+            .doc(widget.uid)
             .collection('Answers')
             .snapshots(),
         builder: (context, snapshot) {

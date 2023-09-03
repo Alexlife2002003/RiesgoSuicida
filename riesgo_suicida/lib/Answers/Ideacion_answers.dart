@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class IdeacionAnswersPage extends StatefulWidget {
-  const IdeacionAnswersPage({super.key});
+  final String uid;
+  const IdeacionAnswersPage({required this.uid});
 
   @override
-  _IdeacionAnswersPageState createState() => _IdeacionAnswersPageState();
+  State<IdeacionAnswersPage> createState() => _IdeacionAnswersPageState();
 }
 
 class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
@@ -213,17 +214,23 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
 
   @override
   Widget build(BuildContext context) {
-    String userId = FirebaseAuth.instance.currentUser!.uid;
-
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
+    Color backgroundColor = const Color.fromRGBO(229, 251, 255, 1);
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: const Text('Ideacion Suicida respuestas'),
+        title: const Text(
+          'Ideacion Suicida respuestas',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
+        backgroundColor: appbarColor,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('IdeacionAnswers')
-            .doc(userId)
+            .doc(widget.uid)
             .collection('Answers')
             .snapshots(),
         builder: (context, snapshot) {
@@ -245,18 +252,36 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
             itemBuilder: (context, index) {
               var answerData =
                   snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              return ListTile(
-                title: Text('Question: ${_data[index]['questionText']}'),
-                subtitle: Column(
-                  children: [
-                    // Adding the extraction logic here
-                    ...(_data[index]['answers'] as List<Map<String, dynamic>>?)
-                            ?.where((answer) => answer['score'] == 0.0)
-                            .map((answer) => Text('Answer: ${answer['text']}'))
-                            .toList() ??
-                        [],
-                    Text('Score: ${answerData['answerScore']}'),
-                  ],
+              return SizedBox(
+                child: Container(
+                  margin: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.black, width: 2),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 2,
+                            offset: Offset(0, 3))
+                      ]),
+                  child: ListTile(
+                    title: Text('Question: ${_data[index]['questionText']}'),
+                    subtitle: Column(
+                      children: [
+                        // Adding the extraction logic here
+                        ...(_data[index]['answers']
+                                    as List<Map<String, dynamic>>?)
+                                ?.where((answer) => answer['score'] == 0.0)
+                                .map((answer) =>
+                                    Text('Answer: ${answer['text']}'))
+                                .toList() ??
+                            [],
+                        Text('Score: ${answerData['answerScore']}'),
+                      ],
+                    ),
+                  ),
                 ),
               );
             },

@@ -4,6 +4,8 @@ import 'package:riesgo_suicida/Admin/Answers/Desesperanza.dart';
 import 'package:riesgo_suicida/Admin/Answers/Ideacion.dart';
 import 'package:riesgo_suicida/Admin/Answers/Plutchik.dart';
 import 'package:riesgo_suicida/Answers/APGAR_answers.dart';
+import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
+import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
 
 var edad = "";
 var genero = "";
@@ -140,9 +142,12 @@ class _TemporalState extends State<Temporal> {
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Desesperanza(uid: widget.uid)));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          DesesperanzaAnswersPage(uid: widget.uid),
+                    ),
+                  );
                 },
                 child: const Text('Escala de Desesperanza de Beck'),
               ),
@@ -163,7 +168,8 @@ class _TemporalState extends State<Temporal> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Ideacion(uid: widget.uid)));
+                          builder: (context) =>
+                              IdeacionAnswersPage(uid: widget.uid)));
                 },
                 child: const Text('Escala de Ideacion Suicida'),
               ),

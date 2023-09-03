@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class APGARAnswersPage extends StatefulWidget {
   final String uid;
 
-  const APGARAnswersPage({super.key, required this.uid});
+  const APGARAnswersPage({required this.uid});
 
   @override
   State<APGARAnswersPage> createState() => _APGARAnswersPageState();
@@ -105,60 +105,71 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
             itemBuilder: (context, index) {
               var answerData =
                   snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              return Container(
-                margin: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(boxShadow: [
-                  BoxShadow(
+              return SizedBox(
+                child: Container(
+                  margin: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
                     color: Colors.white,
-                    spreadRadius: 2,
-                    blurRadius: 2,
-                  )
-                ]),
-                child: ListTile(
-                  title: RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        const TextSpan(
-                          text: 'Pregunta:',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: Colors.black, // Set the border color to black
+                      width: 2, // Set the border width as needed
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey, // Set the shadow color to grey
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: Offset(0, 3)),
+                    ],
+                  ),
+                  child: ListTile(
+                    title: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Pregunta:',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          TextSpan(
+                              text: '\n${_data[index]['questionText']}',
+                              style: const TextStyle(
+                                fontSize: 16,
+                              )),
+                        ],
+                      ),
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Adding the extraction logic here
+                        ...(_data[index]['answers']
+                                    as List<Map<String, dynamic>>?)
+                                ?.where((answer) => answer['score'] == 0.0)
+                                .map((answer) =>
+                                    Text('Answer: ${answer['text']}'))
+                                .toList() ??
+                            [],
+                        RichText(
+                          textAlign: TextAlign.start,
+                          text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                const TextSpan(
+                                  text: 'Score:',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                TextSpan(
+                                    text: ' ${answerData['answerScore']}',
+                                    style: const TextStyle(fontSize: 16)),
+                              ]),
                         ),
-                        TextSpan(
-                            text: '\n${_data[index]['questionText']}',
-                            style: const TextStyle(
-                              fontSize: 16,
-                            )),
                       ],
                     ),
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Adding the extraction logic here
-                      ...(_data[index]['answers']
-                                  as List<Map<String, dynamic>>?)
-                              ?.where((answer) => answer['score'] == 0.0)
-                              .map(
-                                  (answer) => Text('Answer: ${answer['text']}'))
-                              .toList() ??
-                          [],
-                      RichText(
-                        textAlign: TextAlign.start,
-                        text: TextSpan(
-                            style: DefaultTextStyle.of(context).style,
-                            children: <TextSpan>[
-                              const TextSpan(
-                                text: 'Score:',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              ),
-                              TextSpan(
-                                  text: ' ${answerData['answerScore']}',
-                                  style: const TextStyle(fontSize: 16)),
-                            ]),
-                      ),
-                    ],
                   ),
                 ),
               );

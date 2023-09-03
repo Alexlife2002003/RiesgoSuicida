@@ -38,15 +38,15 @@ class _TempState extends State<Temp> {
     }
     if (currentPage == DrawerSections.firstAnswers) {
       //delete
-      container = const DesesperanzaAnswersPage();
+      container = const Instrucciones();
     }
     if (currentPage == DrawerSections.secondAnswers) {
       //delete
-      container = const IdeacionAnswersPage();
+      container = const Instrucciones();
     }
     if (currentPage == DrawerSections.thirdAnswers) {
       //delete
-      container = PlutchikAnswersPage();
+      container = Instrucciones();
     }
     if (currentPage == DrawerSections.fourthAnswers) {
       //delete

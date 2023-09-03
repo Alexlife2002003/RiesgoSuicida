@@ -3,10 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DesesperanzaAnswersPage extends StatefulWidget {
-  const DesesperanzaAnswersPage({super.key});
+  final String uid;
+  const DesesperanzaAnswersPage({super.key, required this.uid});
 
   @override
-  _DesesperanzaAnswersPageState createState() =>
+  State<DesesperanzaAnswersPage> createState() =>
       _DesesperanzaAnswersPageState();
 }
 
@@ -94,17 +95,24 @@ class _DesesperanzaAnswersPageState extends State<DesesperanzaAnswersPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    String userId = FirebaseAuth.instance.currentUser!.uid;
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
+    Color backgroundColor = const Color.fromRGBO(229, 251, 255, 1);
 
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: const Text('Desesperanza respuestas'),
+        title: const Text(
+          'Desesperanza respuestas',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
+        backgroundColor: appbarColor,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('DesesperanzaAnswers')
-            .doc(userId)
+            .doc(widget.uid)
             .collection('Answers')
             .snapshots(),
         builder: (context, snapshot) {
@@ -120,18 +128,68 @@ class _DesesperanzaAnswersPageState extends State<DesesperanzaAnswersPage> {
             return const Text('No answers found.');
           }
 
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
-              var answerData =
-                  snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              var answer = answerData['answer'];
+          return Container(
+            child: ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                var answerData =
+                    snapshot.data!.docs[index].data() as Map<String, dynamic>;
+                var answer = answerData['answer'];
 
-              return ListTile(
-                title:
-                    Text('Respuesta: $answer ${_data[index]['questionText']}'),
-              );
-            },
+                return Container(
+                    margin: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.black, width: 2),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 2,
+                              blurRadius: 2,
+                              offset: Offset(0, 3))
+                        ]),
+                    child: ListTile(
+                      title: RichText(
+                          text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Pregunta:',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          TextSpan(
+                              text: '\n${_data[index]['questionText']}',
+                              style: const TextStyle(
+                                fontSize: 16,
+                              )),
+                        ],
+                      )),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                            textAlign: TextAlign.start,
+                            text: TextSpan(
+                                style: DefaultTextStyle.of(context).style,
+                                children: <TextSpan>[
+                                  const TextSpan(
+                                    text: 'Respuesta:',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                  TextSpan(
+                                      text: ' $answer',
+                                      style: TextStyle(fontSize: 16))
+                                ]),
+                          )
+                        ],
+                      ),
+                    ));
+              },
+            ),
           );
         },
       ),
