@@ -33,39 +33,29 @@ class _TempState extends State<Temp> {
   @override
   Widget build(BuildContext context) {
     var container;
-    if (currentPage == DrawerSections.dashboard) {
-      container = const Dashboard();
-    }
-    if (currentPage == DrawerSections.firstAnswers) {
-      //delete
-      container = const Instrucciones();
-    }
-    if (currentPage == DrawerSections.secondAnswers) {
-      //delete
-      container = const Instrucciones();
-    }
-    if (currentPage == DrawerSections.thirdAnswers) {
-      //delete
-      container = const Instrucciones();
-    }
-    if (currentPage == DrawerSections.fourthAnswers) {
-      //delete
-      container = const Instrucciones();
-    }
-    if (currentPage == DrawerSections.instrucciones) {
-      container = const Instrucciones();
-    }
-    if (currentPage == DrawerSections.first) {
-      container = const FirstQuiz();
-    }
-    if (currentPage == DrawerSections.second) {
-      container = const SecondQuiz();
-    }
-    if (currentPage == DrawerSections.third) {
-      container = const ThirdQuiz();
-    }
-    if (currentPage == DrawerSections.Fourth) {
-      container = const FourthQuiz();
+
+    switch (currentPage) {
+      case DrawerSections.dashboard:
+        container = const Dashboard();
+        break;
+      case DrawerSections.instrucciones:
+        container = const Instrucciones();
+        break;
+      case DrawerSections.first:
+        container = const FirstQuiz();
+        break;
+      case DrawerSections.second:
+        container = const SecondQuiz();
+        break;
+      case DrawerSections.third:
+        container = const ThirdQuiz();
+        break;
+      case DrawerSections.Fourth:
+        container = const FourthQuiz();
+        break;
+      default:
+        container = const Dashboard();
+        break;
     }
     return Scaffold(
       body: container,
@@ -116,10 +106,6 @@ class _TempState extends State<Temp> {
             "Sign Out",
             Icons.exit_to_app,
           ),
-          menuItem(15, "Ideacion Answers", Icons.list), //delete
-          menuItem(16, "APGAR Answers", Icons.list), //delete
-          menuItem(17, "Desesperanza Answers", Icons.list), //delete
-          menuItem(18, "Plutchik  Answers", Icons.list), //delete
         ],
       ),
     );
@@ -152,18 +138,6 @@ class _TempState extends State<Temp> {
         onTap: () {
           Navigator.pop(context);
           setState(() {
-            if (id == 15) {
-              currentPage = DrawerSections.secondAnswers;
-            }
-            if (id == 16) {
-              currentPage = DrawerSections.fourthAnswers;
-            }
-            if (id == 17) {
-              currentPage = DrawerSections.firstAnswers;
-            }
-            if (id == 18) {
-              currentPage = DrawerSections.thirdAnswers;
-            }
             if (id == 1) {
               currentPage = DrawerSections.dashboard;
             }
@@ -242,10 +216,6 @@ enum DrawerSections {
   second,
   third,
   Fourth,
-  Fifth,
-  firstAnswers,
-  secondAnswers,
-  thirdAnswers,
-  fourthAnswers
+  Fifth
 }
 //Remove answers pages
