@@ -76,18 +76,65 @@ class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
             return const Text('No answers found.');
           }
 
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
-              var answerData =
-                  snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              var answer = answerData['answer'];
+          return Container(
+            child: ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                var answerData =
+                    snapshot.data!.docs[index].data() as Map<String, dynamic>;
+                var answer = answerData['answer'];
 
-              return ListTile(
-                title:
-                    Text('Respuesta: $answer ${_data[index]['questionText']}'),
-              );
-            },
+                return Container(
+                  margin: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 4,
+                            blurRadius: 8,
+                            offset: Offset(0, 3))
+                      ]),
+                  child: ListTile(
+                    title: RichText(
+                        text: TextSpan(
+                            style: DefaultTextStyle.of(context).style,
+                            children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Pregunta:',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          TextSpan(
+                              text: '\n${_data[index]['questionText']}',
+                              style: TextStyle(fontSize: 16))
+                        ])),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          textAlign: TextAlign.start,
+                          text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                const TextSpan(
+                                  text: 'Respuesta:',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                TextSpan(
+                                    text: ' $answer',
+                                    style: TextStyle(fontSize: 16))
+                              ]),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),

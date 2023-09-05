@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riesgo_suicida/Admin/Screens.dart/Temporal.dart';
+import 'package:riesgo_suicida/Admin/Screens/Temporal.dart';
 
 class AdminMain extends StatefulWidget {
   const AdminMain({Key? key}) : super(key: key);
@@ -14,8 +14,10 @@ class _AdminMainState extends State<AdminMain> {
     List<Map<String, dynamic>> users = [];
 
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('Users').get();
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .orderBy('timestamp', descending: true)
+          .get();
 
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         String userName = document['firstname'] + " " + document['lastname'];
@@ -77,13 +79,17 @@ class _AdminMainState extends State<AdminMain> {
                     );
                   },
                   child: Container(
-                    margin: const EdgeInsets.all(6),
-                    padding: const EdgeInsets.all(16),
-                    decoration: const BoxDecoration(boxShadow: [
-                      BoxShadow(
+                    margin: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
                         color: Colors.white,
-                      )
-                    ]),
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 4,
+                              blurRadius: 8,
+                              offset: Offset(0, 3))
+                        ]),
                     child: ListTile(
                       title: Center(
                           child: Text(

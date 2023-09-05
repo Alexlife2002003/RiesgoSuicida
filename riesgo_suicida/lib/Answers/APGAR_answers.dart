@@ -111,15 +111,11 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: Colors.black, // Set the border color to black
-                      width: 2, // Set the border width as needed
-                    ),
                     boxShadow: [
                       BoxShadow(
                           color: Colors.grey, // Set the shadow color to grey
-                          spreadRadius: 2,
-                          blurRadius: 2,
+                          spreadRadius: 4,
+                          blurRadius: 8,
                           offset: Offset(0, 3)),
                     ],
                   ),

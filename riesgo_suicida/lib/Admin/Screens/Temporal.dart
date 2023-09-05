@@ -6,9 +6,11 @@ import 'package:riesgo_suicida/Admin/Answers/Plutchik.dart';
 import 'package:riesgo_suicida/Answers/APGAR_answers.dart';
 import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
 import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
+import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
 
 var edad = "";
 var genero = "";
+var programaAcademico = "";
 
 class Temporal extends StatefulWidget {
   final String uid;
@@ -35,6 +37,7 @@ class _TemporalState extends State<Temporal> {
         setState(() {
           edad = data['edad'];
           genero = data['genero'];
+          programaAcademico = data['programaAcademico'];
         });
       } else {
         print('"primero" field does not exist in the document');
@@ -69,11 +72,17 @@ class _TemporalState extends State<Temporal> {
               width: 320,
               child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: const [
-                      BoxShadow(spreadRadius: 2, blurRadius: 2)
-                    ],
                     color: Colors.white,
+                    borderRadius: BorderRadius.circular(
+                      16,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(.8),
+                          spreadRadius: 4,
+                          blurRadius: 8,
+                          offset: Offset(0, 3))
+                    ],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +117,7 @@ class _TemporalState extends State<Temporal> {
                       const SizedBox(
                         height: 5,
                       ),
-                      const Text('  Ingenieria de Software'),
+                      Text(' $programaAcademico'),
                       const Text(
                         ' Genero:',
                         style: TextStyle(
@@ -190,7 +199,8 @@ class _TemporalState extends State<Temporal> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Plutchik(uid: widget.uid)));
+                          builder: (context) =>
+                              PlutchikAnswersPage(uid: widget.uid)));
                 },
                 child: const Text('Escala de Riesgo Suicida de Plutchik'),
               ),

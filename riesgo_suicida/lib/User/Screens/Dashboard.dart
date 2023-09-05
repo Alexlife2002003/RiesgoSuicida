@@ -160,7 +160,7 @@ class _DashboardState extends State<Dashboard> {
           },
         ),
         title: const Text(
-          'Escala de Riesgo Suicida',
+          '',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: appbarColor,

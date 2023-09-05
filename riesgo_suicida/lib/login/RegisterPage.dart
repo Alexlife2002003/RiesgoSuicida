@@ -6,7 +6,8 @@ final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
 final CollectionReference usersDetails = firestore.collection('Users');
 
-void createUserDatabase(String UID, String firstName, String lastName, String age, String genero) {
+void createUserDatabase(String UID, String firstName, String lastName,
+    String age, String genero, String programaAcademico, String correo) {
   usersCollection.doc(UID).set({
     'primero': 0,
     'segundo': 0,
@@ -18,8 +19,11 @@ void createUserDatabase(String UID, String firstName, String lastName, String ag
     'firstname': firstName,
     'lastname': lastName,
     'admin': false,
-    'edad':age,
-    'genero':genero,
+    'edad': age,
+    'genero': genero,
+    'programaAcademico': programaAcademico,
+    'correo': correo,
+    'timestamp': FieldValue.serverTimestamp(),
   });
 }
 
@@ -37,36 +41,34 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  final _ageController= TextEditingController();
-  final _generoController=TextEditingController();
+  final _ageController = TextEditingController();
+  final _generoController = TextEditingController();
+  final _programaAcademicoController = TextEditingController();
 
   Future<void> signUserUp() async {
     showDialog(
       context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+      builder: (_) => const Center(child: CircularProgressIndicator()),
     );
     try {
       if (_passwordController.text == _confirmPasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text,
         );
 
-        // User creation successful, save the first name and last name
-        String firstName = _firstNameController.text;
-        String lastName = _lastNameController.text;
-        String dis = "$firstName $lastName";
-        String age=_ageController.text;
-        String genero=_generoController.text;
-        FirebaseAuth.instance.currentUser!.updateDisplayName(dis);
+        final firstName = _firstNameController.text;
+        final lastName = _lastNameController.text;
+        final displayName = "$firstName $lastName";
+        final age = _ageController.text;
+        final genero = _generoController.text;
+        final programaAcademico = _programaAcademicoController.text;
+        final email = _emailController.text;
 
-        //database
-        createUserDatabase(
-            FirebaseAuth.instance.currentUser!.uid, firstName, lastName,age,genero);
+        userCredential.user!.updateDisplayName(displayName);
+        createUserDatabase(userCredential.user!.uid, firstName, lastName, age,
+            genero, programaAcademico, email);
 
         Navigator.of(context).pop();
       } else {
@@ -83,83 +85,54 @@ class _RegisterPageState extends State<RegisterPage> {
   void showErrorMessage(String message) {
     showDialog(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor: Colors.lightBlue,
-          title: Center(
-            child: Text(
-              message,
-              style: const TextStyle(color: Colors.white),
-            ),
+      builder: (_) => AlertDialog(
+        backgroundColor: Colors.lightBlue,
+        title: Center(
+          child: Text(
+            message,
+            style: const TextStyle(color: Colors.white),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
   void _showPrivacyPolicy() {
     showDialog(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor:
-              Colors.grey.withOpacity(0.9), // Grey and transparent background
-          title: const Text('Políticas de privacidad',
+      builder: (_) => AlertDialog(
+        backgroundColor: Colors.grey.withOpacity(0.9),
+        title: const Text(
+          'Políticas de privacidad',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Privacy policy content
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text(
+              'Close',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)), // Title text
-          content: const SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'La Universidad Autónoma de Zacatecas “Francisco García Salinas”, con domicilio en Jardín Juárez #147, Centro Histórico, C.P. 98000, Zacatecas, Zacatecas, es la responsable del tratamiento de los datos personales proporcionados y de protegerlos en términos de lo dispuesto en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados, la Ley de Protección de Datos Personales en Posesión de los Sujetos Obligados del Estado de Zacatecas y demás normatividad que resulte aplicable.',
-                  style: TextStyle(fontSize: 16, color: Colors.black),
-                ),
-                SizedBox(height: 12),
-                Text(
-                  '¿Para qué fines utilizaremos tus datos personales?',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-                SizedBox(height: 6),
-                Text(
-                  'Tus datos personales serán utilizados con la finalidad de realizar los análisis, estudios, informes y estadísticas pertinentes para llevar a cabo la investigación “Análisis del Riesgo suicida en estudiantes de la Unidad Académica de Ingeniería Eléctrica de la Universidad Autónoma de Zacatecas”, quedando almacenados de forma anónima y no serán utilizados para fines diferentes a los definidos en la misma. El objetivo general de la investigación es analizar el riesgo suicida en estudiantes de la Unidad Académica de Ingeniería Eléctrica de la Universidad Autónoma de Zacatecas, y en específico se pretende: valorar el riesgo suicida de los estudiantes de la población investigada, evaluando intentos autolíticos previos, intensidad de la ideación actual, sentimientos de depresión y desesperanza y otros aspectos relacionados con las tentativas; identificar las expectativas de los estudiantes de la población investigada en relación a su futuro y su bienestar así como la habilidad para salvar las dificultades y conseguir éxito en su vida; y determinar la intencionalidad suicida, o grado de seriedad e intensidad de los estudiantes de la población investigada.',
-                  style: TextStyle(fontSize: 16, color: Colors.black),
-                ),
-                SizedBox(height: 12),
-                Text(
-                  'Para las finalidades anteriores se recabarán los siguientes datos personales:',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-                SizedBox(height: 6),
-                Text(
-                  'Nombre completo, correo electrónico, edad, programa académico, semestre, género, lugar de residencia (urbana/rural), ' +
-                      'estado civil, así como datos personales sensibles relacionados con tus emociones y creencias religiosas.',
-                  style: TextStyle(fontSize: 16, color: Colors.black),
-                ),
-              ],
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.black,
+              ),
             ),
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Close',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.black)), // Close button text
-            ),
-          ],
-        );
-      },
+        ],
+      ),
     );
   }
 
@@ -177,7 +150,43 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color btnColor = const Color.fromARGB(255, 74, 101, 211);
+    const btnColor = Color.fromARGB(255, 74, 101, 211);
+
+    Widget buildInputField(String hintText, TextEditingController controller,
+        bool obscureText, TextInputType inputType) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.grey,
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(0, 3),
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: TextField(
+              controller: controller,
+              obscureText: obscureText,
+              keyboardType: inputType,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: hintText,
+                hintStyle: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
@@ -186,7 +195,6 @@ class _RegisterPageState extends State<RegisterPage> {
             colors: [
               Color.fromRGBO(155, 212, 255, 1),
               Color.fromRGBO(155, 212, 255, 1),
-              //Color.fromRGBO(212, 248, 251, 1.0),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -199,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'lib/assets/start.png', // Replace 'assets/image.png' with the path to your image asset
+                    'lib/assets/start.png',
                     width: 200,
                     height: 200,
                   ),
@@ -221,248 +229,30 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _firstNameController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'First Name',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _lastNameController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Last Name',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _emailController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Email',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextFormField(
-                          controller: _ageController,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Edad',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _generoController,
-                          
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Genero',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Password',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: TextField(
-                          controller: _confirmPasswordController,
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Confirm Password',
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  buildInputField('First Name', _firstNameController, false,
+                      TextInputType.text),
+                  const SizedBox(height: 10),
+                  buildInputField('Last Name', _lastNameController, false,
+                      TextInputType.text),
+                  const SizedBox(height: 10),
+                  buildInputField('Email', _emailController, false,
+                      TextInputType.emailAddress),
+                  const SizedBox(height: 10),
+                  buildInputField(
+                      'Edad', _ageController, false, TextInputType.number),
+                  const SizedBox(height: 10),
+                  buildInputField(
+                      'Genero', _generoController, false, TextInputType.text),
+                  const SizedBox(height: 10),
+                  buildInputField('Programa Academico',
+                      _programaAcademicoController, false, TextInputType.text),
+                  const SizedBox(height: 10),
+                  buildInputField('Password', _passwordController, true,
+                      TextInputType.text),
+                  const SizedBox(height: 10),
+                  buildInputField('Confirm Password',
+                      _confirmPasswordController, true, TextInputType.text),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: GestureDetector(
@@ -486,9 +276,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -510,10 +298,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  // Privacy Policy Button
+                  const SizedBox(height: 10),
                   TextButton(
                     onPressed: _showPrivacyPolicy,
                     child: const Text(

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riesgo_suicida/Admin/Screens.dart/AdminMenu.dart';
+import 'package:riesgo_suicida/Admin/Screens/AdminMenu.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/login/LoginOrRegisterPage.dart';
 

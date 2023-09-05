@@ -141,12 +141,11 @@ class _DesesperanzaAnswersPageState extends State<DesesperanzaAnswersPage> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.black, width: 2),
                         boxShadow: const [
                           BoxShadow(
                               color: Colors.grey,
-                              spreadRadius: 2,
-                              blurRadius: 2,
+                              spreadRadius: 4,
+                              blurRadius: 8,
                               offset: Offset(0, 3))
                         ]),
                     child: ListTile(

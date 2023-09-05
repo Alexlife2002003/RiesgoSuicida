@@ -258,17 +258,29 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.black, width: 2),
                       boxShadow: [
                         BoxShadow(
                             color: Colors.grey,
-                            spreadRadius: 2,
-                            blurRadius: 2,
+                            spreadRadius: 4,
+                            blurRadius: 8,
                             offset: Offset(0, 3))
                       ]),
                   child: ListTile(
-                    title: Text('Question: ${_data[index]['questionText']}'),
+                    title: RichText(
+                        text: TextSpan(
+                            style: DefaultTextStyle.of(context).style,
+                            children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Pregunta: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          TextSpan(
+                              text: '\n ${_data[index]['questionText']}',
+                              style: const TextStyle(fontSize: 16))
+                        ])),
                     subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Adding the extraction logic here
                         ...(_data[index]['answers']
@@ -278,7 +290,21 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
                                     Text('Answer: ${answer['text']}'))
                                 .toList() ??
                             [],
-                        Text('Score: ${answerData['answerScore']}'),
+                        RichText(
+                          textAlign: TextAlign.start,
+                          text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                const TextSpan(
+                                    text: 'Score:',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18)),
+                                TextSpan(
+                                    text: ' ${answerData['answerScore']}',
+                                    style: const TextStyle(fontSize: 16))
+                              ]),
+                        )
                       ],
                     ),
                   ),
