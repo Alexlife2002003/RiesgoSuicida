@@ -136,7 +136,6 @@ class _TemporalState extends State<Temporal> {
             const SizedBox(
               height: 50,
             ),
-            Text('UID: ${widget.uid}'),
             const SizedBox(
               height: 20,
             ),

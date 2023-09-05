@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MyHeaderDrawer extends StatefulWidget {
-  const MyHeaderDrawer({super.key});
+  const MyHeaderDrawer({Key? key});
 
   @override
   State<MyHeaderDrawer> createState() => _MyHeaderDrawerState();
@@ -14,39 +14,28 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: themeColor,
-      width: double.infinity,
-      height: 100,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+    String displayName = user.displayName ?? '';
+// Split the display name by whitespace
+    List<String> nameParts = displayName.split(' ');
+
+// Get the first name (if available)
+    String firstName = nameParts.isNotEmpty ? nameParts.first : '';
+    return AppBar(
+      backgroundColor: themeColor,
+      automaticallyImplyLeading: false,
+      title: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            margin: const EdgeInsets.only(right: 8),
-            height: 100,
-            // ignore: prefer_const_constructors
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              // image: DecorationImage(image: ),
-            ),
+          const SizedBox(
+            height: 20,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Welcome,",
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-              Text(
-                user.displayName.toString(),
-                style: TextStyle(color: Colors.grey[200], fontSize: 14),
-              ),
-            ],
+          Text(
+            "Welcome, ",
+            style: TextStyle(color: Colors.white, fontSize: 24),
+          ),
+          Text(
+            firstName,
+            style: TextStyle(color: Colors.grey[200], fontSize: 22),
           ),
         ],
       ),
