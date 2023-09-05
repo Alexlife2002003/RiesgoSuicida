@@ -11,6 +11,7 @@ import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
 var edad = "";
 var genero = "";
 var programaAcademico = "";
+var correo = "";
 
 class Temporal extends StatefulWidget {
   final String uid;
@@ -38,6 +39,7 @@ class _TemporalState extends State<Temporal> {
           edad = data['edad'];
           genero = data['genero'];
           programaAcademico = data['programaAcademico'];
+          correo = data['correo'];
         });
       } else {
         print('"primero" field does not exist in the document');
@@ -129,7 +131,7 @@ class _TemporalState extends State<Temporal> {
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      const Text('  20200992@uaz.edu.mx'),
+                      Text(' $correo'),
                     ],
                   )),
             ),
