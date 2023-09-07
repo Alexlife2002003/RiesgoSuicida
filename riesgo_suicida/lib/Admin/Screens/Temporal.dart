@@ -131,7 +131,7 @@ class _TemporalState extends State<Temporal> {
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      Text(' $correo'),
+                      Text('  $correo'),
                     ],
                   )),
             ),
