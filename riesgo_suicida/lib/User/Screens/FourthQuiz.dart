@@ -125,7 +125,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                   },
                 ),
                 title: const Text(
-                  'APGAR familiar',
+                  'Cuestionario 4',
                   style: TextStyle(color: Colors.black),
                 ),
                 backgroundColor: const Color.fromRGBO(185, 236, 245, 1),

@@ -80,7 +80,7 @@ class _FirstQuizState extends State<FirstQuiz> {
             },
           ),
           title: const Text(
-            'Escala de Desesperanza de Beck',
+            'Cuestionario 1',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: appbarColor,

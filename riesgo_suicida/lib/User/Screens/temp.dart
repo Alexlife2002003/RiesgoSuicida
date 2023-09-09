@@ -91,14 +91,14 @@ class _TempState extends State<Temp> {
           ),
           menuItem(
             2,
-            "Escala de Desesperanza de Beck",
+            "Cuestionario 1",
             firstIcon,
           ),
-          menuItem(3, "Escala de Ideación Suicida", secondIcon),
-          menuItem(4, "Escala de Riesgo Suicida de Plutchik Quiz", thirdIcon),
+          menuItem(3, "Cuestionario 2", secondIcon),
+          menuItem(4, "Cuestionario 3", thirdIcon),
           menuItem(
             5,
-            "APGAR familiar",
+            "Cuestionario 4",
             fourthIcon,
           ),
           menuItem(

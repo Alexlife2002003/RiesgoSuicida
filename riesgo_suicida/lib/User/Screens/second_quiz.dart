@@ -279,7 +279,7 @@ class _SecondQuiz extends State<SecondQuiz> {
                   },
                 ),
                 title: const Text(
-                  'Escala de Ideación Suicida',
+                  'Cuestionario 2',
                   style: TextStyle(color: Colors.black),
                 ),
                 backgroundColor: const Color.fromRGBO(185, 236, 245, 1),

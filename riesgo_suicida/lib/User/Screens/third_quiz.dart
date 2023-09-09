@@ -50,7 +50,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
               },
             ),
             title: const Text(
-              'Escala de Riesgo Suicida',
+              'Cuestionario 3',
               style: TextStyle(color: Colors.black),
             ),
             backgroundColor: appbarColor,
