@@ -81,7 +81,7 @@ class _TempState extends State<Temp> {
         children: [
           menuItem(
             1,
-            "Dashboard",
+            "Panel",
             Icons.dashboard_outlined,
           ),
           menuItem(
@@ -103,7 +103,7 @@ class _TempState extends State<Temp> {
           ),
           menuItem(
             6,
-            "Sign Out",
+            "Cerrar Sesión",
             Icons.exit_to_app,
           ),
         ],

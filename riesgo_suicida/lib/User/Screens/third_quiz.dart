@@ -66,7 +66,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                 Container(
                   alignment: Alignment.bottomLeft,
                   child: Text(
-                    'Question ${cardCount + 1} /15',
+                    'Pregunta ${cardCount + 1} /15',
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),

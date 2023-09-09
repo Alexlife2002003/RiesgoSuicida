@@ -216,7 +216,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const Center(
                     child: Text(
-                      'Hello again!',
+                      'Hola nuevamente',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
                     ),
@@ -224,33 +224,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 10),
                   const Center(
                     child: Text(
-                      'Let\'s create an account for you!',
+                      '¡Hagamos una cuenta para ti!',
                       style: TextStyle(fontSize: 24),
                     ),
                   ),
                   const SizedBox(height: 40),
-                  buildInputField('First Name', _firstNameController, false,
+                  buildInputField('Nombre', _firstNameController, false,
                       TextInputType.text),
                   const SizedBox(height: 10),
-                  buildInputField('Last Name', _lastNameController, false,
+                  buildInputField('Apellidos', _lastNameController, false,
                       TextInputType.text),
                   const SizedBox(height: 10),
-                  buildInputField('Email', _emailController, false,
+                  buildInputField('Correo Electrónico', _emailController, false,
                       TextInputType.emailAddress),
                   const SizedBox(height: 10),
                   buildInputField(
                       'Edad', _ageController, false, TextInputType.number),
                   const SizedBox(height: 10),
                   buildInputField(
-                      'Genero', _generoController, false, TextInputType.text),
+                      'Género', _generoController, false, TextInputType.text),
                   const SizedBox(height: 10),
                   buildInputField('Programa Academico',
                       _programaAcademicoController, false, TextInputType.text),
                   const SizedBox(height: 10),
-                  buildInputField('Password', _passwordController, true,
+                  buildInputField('Contraseña', _passwordController, true,
                       TextInputType.text),
                   const SizedBox(height: 10),
-                  buildInputField('Confirm Password',
+                  buildInputField('Confirmar contraseña',
                       _confirmPasswordController, true, TextInputType.text),
                   const SizedBox(height: 10),
                   Padding(
@@ -265,7 +265,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         child: const Center(
                           child: Text(
-                            'Sign up',
+                            'Registrarte',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -281,7 +281,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Already have an account? ',
+                        '¿Ya tienes cuenta? ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -289,7 +289,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       GestureDetector(
                         onTap: widget.onTap,
                         child: const Text(
-                          'Login now',
+                          'Iniciar sesión',
                           style: TextStyle(
                             color: Color.fromARGB(255, 74, 101, 211),
                             fontWeight: FontWeight.bold,
@@ -302,7 +302,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   TextButton(
                     onPressed: _showPrivacyPolicy,
                     child: const Text(
-                      'Privacy policy',
+                      'Políticas de privacidad',
                       style: TextStyle(
                         color: Color.fromARGB(255, 25, 0, 255),
                         fontWeight: FontWeight.bold,

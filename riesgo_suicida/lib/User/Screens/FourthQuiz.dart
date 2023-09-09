@@ -163,7 +163,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Question ${_indexQuestion + 1} / 5',
+                    'Pregunta ${_indexQuestion + 1} / 5',
                     style: const TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,

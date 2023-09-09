@@ -102,13 +102,13 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20,
                     ),
                     const Center(
-                      child: Text('Hello again!',
+                      child: Text('Hola nuevamente',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 36)),
                     ),
                     const SizedBox(height: 10),
                     const Center(
-                      child: Text('Welcome back, you\'ve been missed!',
+                      child: Text('¡Te hemos extrañado!',
                           style: TextStyle(fontSize: 24)),
                     ),
                     const SizedBox(
@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                             controller: _emailController,
                             decoration: const InputDecoration(
                                 border: InputBorder.none,
-                                hintText: 'Email',
+                                hintText: 'Correo Electrónico',
                                 hintStyle:
                                     TextStyle(fontWeight: FontWeight.bold)),
                           ),
@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                             obscureText: !_passwordVisible,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Password',
+                              hintText: 'Contraseña',
                               hintStyle: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -214,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
                               );
                             },
                             child: const Text(
-                              "Forgot password",
+                              "¿Olvidaste tu contraseña?",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 74, 101, 211),
                                 fontWeight: FontWeight.bold,
@@ -238,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(12)),
                           child: const Center(
                               child: Text(
-                            'Sign in',
+                            'Iniciar sesión',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -255,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Not a member? ',
+                          '¿No eres miembro? ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -263,7 +263,7 @@ class _LoginPageState extends State<LoginPage> {
                         GestureDetector(
                           onTap: widget.onTap,
                           child: const Text(
-                            'Register now',
+                            'Registrate ahora',
                             style: TextStyle(
                               color: Color.fromARGB(255, 74, 101, 211),
                               fontWeight: FontWeight.bold,

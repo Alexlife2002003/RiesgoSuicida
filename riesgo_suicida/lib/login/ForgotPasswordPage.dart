@@ -68,7 +68,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: Text(
-                'Enter your email and we will send you a password reset link',
+                'Ingresa tu correo electrónico para resetear tu contraseña',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -100,7 +100,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     controller: _emailController,
                     decoration: const InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Email',
+                        hintText: 'Correo Electrónico',
                         hintStyle: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                 ),
@@ -117,7 +117,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 onPressed: passwordReset,
                 color: btnColor,
                 child: const Text(
-                  'Reset password',
+                  'Resetear contraseña',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

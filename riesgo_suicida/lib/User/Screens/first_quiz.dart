@@ -48,7 +48,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               Container(
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  'Question ${cardCount + 1}/20',
+                  'Pregunta ${cardCount + 1}/20',
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
