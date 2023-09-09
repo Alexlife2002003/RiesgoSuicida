@@ -34,11 +34,8 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              Color.fromARGB(255, 244, 47, 33),
-              Color.fromARGB(255, 241, 94, 84),
-              Color.fromARGB(255, 83, 65, 65),
-              Color.fromARGB(255, 8, 214, 111),
-              Color.fromARGB(255, 3, 123, 63)
+              Color.fromRGBO(229, 251, 255, 1),
+              Color.fromRGBO(229, 251, 255, 1),
             ]),
       ),
       child: Scaffold(
@@ -94,6 +91,22 @@ class _ThirdQuizState extends State<ThirdQuiz> {
           body: Center(
             child: Stack(
               children: [
+                Positioned(
+                  left: 50,
+                  top: 125,
+                  child: Text(
+                    'No',
+                    style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Positioned(
+                  right: 50,
+                  top: 125,
+                  child: Text(
+                    'Si',
+                    style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 Center(
                   child: ElevatedButton(
                     style: ButtonStyle(

@@ -91,6 +91,22 @@ class _FirstQuizState extends State<FirstQuiz> {
         body: Center(
           child: Stack(
             children: [
+              Positioned(
+                left: 50,
+                top: 125,
+                child: Text(
+                  'No',
+                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Positioned(
+                right: 50,
+                top: 125,
+                child: Text(
+                  'Si',
+                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+                ),
+              ),
               Center(
                 child: ElevatedButton(
                   style: ButtonStyle(
