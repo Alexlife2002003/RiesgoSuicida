@@ -52,12 +52,12 @@ class _AdminMenuState extends State<AdminMenu> {
         children: [
           menuItem(
             1,
-            "Dashboard",
+            "Panel",
             Icons.dashboard_outlined,
           ),
           menuItem(
             6,
-            "Sign Out",
+            "Cerrar sesión",
             Icons.exit_to_app,
           ),
         ],

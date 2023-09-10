@@ -73,7 +73,7 @@ class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return const Text('No answers found.');
+            return const Text('No fueron encontradas respuestas.');
           }
 
           return Container(

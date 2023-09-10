@@ -83,7 +83,7 @@ class _AdminMainState extends State<AdminMain> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               color: Colors.grey,
                               spreadRadius: 4,

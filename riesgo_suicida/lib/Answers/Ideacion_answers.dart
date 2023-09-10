@@ -243,7 +243,7 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return const Text('No answers found.');
+            return const Text('No fueron encontradas respuestas.');
           }
 
           // Build and return a widget to display the answers
