@@ -107,7 +107,7 @@ class _DesesperanzaAnswersPageState extends State<DesesperanzaAnswersPage> {
         ),
         centerTitle: true,
         backgroundColor: appbarColor,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -153,7 +153,7 @@ class _DesesperanzaAnswersPageState extends State<DesesperanzaAnswersPage> {
                           text: TextSpan(
                         style: DefaultTextStyle.of(context).style,
                         children: <TextSpan>[
-                          TextSpan(
+                          const TextSpan(
                             text: 'Pregunta:',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
@@ -181,7 +181,7 @@ class _DesesperanzaAnswersPageState extends State<DesesperanzaAnswersPage> {
                                   ),
                                   TextSpan(
                                       text: ' $answer',
-                                      style: TextStyle(fontSize: 16))
+                                      style: const TextStyle(fontSize: 16))
                                 ]),
                           )
                         ],

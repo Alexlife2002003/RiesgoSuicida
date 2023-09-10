@@ -29,7 +29,7 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
           const SizedBox(
             height: 20,
           ),
-          Text(
+          const Text(
             "Welcome, ",
             style: TextStyle(color: Colors.white, fontSize: 24),
           ),

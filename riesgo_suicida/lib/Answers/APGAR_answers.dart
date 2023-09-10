@@ -111,7 +111,7 @@ class _APGARAnswersPageState extends State<APGARAnswersPage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Colors.grey, // Set the shadow color to grey
                           spreadRadius: 4,

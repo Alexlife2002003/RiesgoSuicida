@@ -225,7 +225,7 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
         ),
         centerTitle: true,
         backgroundColor: appbarColor,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -258,7 +258,7 @@ class _IdeacionAnswersPageState extends State<IdeacionAnswersPage> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             color: Colors.grey,
                             spreadRadius: 4,

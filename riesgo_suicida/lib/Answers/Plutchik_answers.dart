@@ -108,7 +108,7 @@ class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
                           ),
                           TextSpan(
                               text: '\n${_data[index]['questionText']}',
-                              style: TextStyle(fontSize: 16))
+                              style: const TextStyle(fontSize: 16))
                         ])),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +126,7 @@ class _PlutchikAnswersPageState extends State<PlutchikAnswersPage> {
                                 ),
                                 TextSpan(
                                     text: ' $answer',
-                                    style: TextStyle(fontSize: 16))
+                                    style: const TextStyle(fontSize: 16))
                               ]),
                         )
                       ],

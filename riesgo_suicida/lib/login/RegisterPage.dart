@@ -109,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.black,
           ),
         ),
-        content: SingleChildScrollView(
+        content: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

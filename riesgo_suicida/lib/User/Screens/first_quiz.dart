@@ -91,7 +91,7 @@ class _FirstQuizState extends State<FirstQuiz> {
         body: Center(
           child: Stack(
             children: [
-              Positioned(
+              const Positioned(
                 left: 50,
                 top: 125,
                 child: Text(
@@ -99,7 +99,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                   style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 right: 50,
                 top: 125,
                 child: Text(
