@@ -144,7 +144,7 @@ class _TempState extends State<Temp> {
             if (id == 7) {
               currentPage = DrawerSections.instrucciones;
             }
-            if (id == 2 && glob.first == 0) {
+            if (id == 2 && glob.first == -1) {
               currentPage = DrawerSections.first;
             }
             if (glob.first > 0) {
@@ -152,7 +152,7 @@ class _TempState extends State<Temp> {
             } else {
               firstIcon = Icons.square_outlined;
             }
-            if (id == 3 && glob.second == 0) {
+            if (id == 3 && glob.second == -1) {
               currentPage = DrawerSections.second;
             }
             if (glob.second > 0) {
@@ -160,7 +160,7 @@ class _TempState extends State<Temp> {
             } else {
               secondIcon = Icons.square_outlined;
             }
-            if (id == 4 && glob.third == 0) {
+            if (id == 4 && glob.third == -1) {
               currentPage = DrawerSections.third;
             }
             if (glob.third > 0) {
@@ -168,7 +168,7 @@ class _TempState extends State<Temp> {
             } else {
               thirdIcon = Icons.square_outlined;
             }
-            if (id == 5 && glob.fourth == 0) {
+            if (id == 5 && glob.fourth == -1) {
               currentPage = DrawerSections.Fourth;
             }
             if (glob.fourth > 0) {

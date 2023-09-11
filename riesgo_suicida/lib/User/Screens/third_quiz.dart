@@ -134,7 +134,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount = cardCount;
@@ -147,7 +147,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -159,7 +159,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -172,7 +172,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -185,7 +185,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -198,7 +198,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -210,7 +210,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -223,7 +223,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -235,7 +235,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -247,7 +247,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -259,7 +259,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -271,7 +271,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -284,7 +284,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -296,7 +296,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;
@@ -309,7 +309,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                     color: darkblue,
                     colorText: Colors.white,
                     valueL: 0,
-                    valueR: 2,
+                    valueR: 1,
                     onSwiped: () {
                       setState(() {
                         cardCount++;

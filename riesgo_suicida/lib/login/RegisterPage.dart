@@ -9,10 +9,10 @@ final CollectionReference usersDetails = firestore.collection('Users');
 void createUserDatabase(String UID, String firstName, String lastName,
     String age, String genero, String programaAcademico, String correo) {
   usersCollection.doc(UID).set({
-    'primero': 0,
-    'segundo': 0,
-    'tercero': 0,
-    'cuarto': 0,
+    'primero': -1,
+    'segundo': -1,
+    'tercero': -1,
+    'cuarto': -1,
   });
 
   usersDetails.doc(UID).set({

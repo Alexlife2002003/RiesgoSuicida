@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart';
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
@@ -155,7 +156,9 @@ class _DashboardState extends State<Dashboard> {
             return IconButton(
               icon: const Icon(Icons.menu),
               color: Colors.black,
-              onPressed: () {},
+              onPressed: () {
+                Temp();
+              },
             );
           },
         ),

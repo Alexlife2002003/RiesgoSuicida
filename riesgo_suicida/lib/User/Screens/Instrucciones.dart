@@ -83,7 +83,7 @@ class InstructionsScreen extends StatelessWidget {
                     number: '3',
                     title: 'Tipos de quizzes:',
                     content:
-                        'Encuentra dos tipos de quizzes: opción múltiple y tarjetas. Responde preguntas de opción múltiple seleccionando la respuesta correcta. Para los quizzes de tarjetas, desliza hacia la derecha si estás de acuerdo con el enunciado (marcado en verde) o hacia la izquierda si estás en desacuerdo (marcado en rojo).',
+                        'Encuentra dos tipos de quizzes: opción múltiple y tarjetas. Responde preguntas de opción múltiple seleccionando la respuesta correcta. Para los quizzes de tarjetas, desliza hacia la derecha si estás de acuerdo con el enunciado o hacia la izquierda si estás en desacuerdo].',
                   ),
                   NumberedSection(
                     number: '4',
