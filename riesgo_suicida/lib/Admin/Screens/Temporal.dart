@@ -204,7 +204,7 @@ class _TemporalState extends State<Temporal> {
             height: 50,
           ),
           Container(
-            width: 250, // Adjust the width as needed
+            width: 350, // Adjust the width as needed
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
@@ -217,60 +217,81 @@ class _TemporalState extends State<Temporal> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 12,
-                      height: 12,
+                      width: 24,
+                      height: 24,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: firstCircle, // Define your colors here
                       ),
                     ),
                     SizedBox(width: 20),
-                    Text('Desesperanza de Beck: $firstquiz'),
+                    Text(
+                      'Desesperanza de Beck: $firstquiz',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 12,
-                      height: 12,
+                      width: 24,
+                      height: 24,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: secondCircle, // Define your colors here
                       ),
                     ),
                     SizedBox(width: 20),
-                    Text('Ideacion Suicida: $secondquiz'),
+                    Text(
+                      'Ideacion Suicida: $secondquiz',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 12,
-                      height: 12,
+                      width: 24,
+                      height: 24,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: thirdCircle, // Define your colors here
                       ),
                     ),
                     SizedBox(width: 20),
-                    Text('Riesgo Suicida de Plutchik: $thirdquiz'),
+                    Text(
+                      'Riesgo Suicida de Plutchik: $thirdquiz',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 12,
-                      height: 12,
+                      width: 24,
+                      height: 24,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: fourthCircle, // Define your colors here
                       ),
                     ),
                     SizedBox(width: 20),
-                    Text('Apgar Familiar: $fourthquiz'),
+                    Text(
+                      'Apgar Familiar: $fourthquiz',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ],
                 ),
               ],
