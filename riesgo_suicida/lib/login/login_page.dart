@@ -231,20 +231,25 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: GestureDetector(
                         onTap: signIn,
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
+                        child: Material(
+                          elevation: 5,
+                          borderRadius: BorderRadius.circular(12),
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 74, 101, 211),
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const Center(
-                              child: Text(
-                            'Iniciar sesión',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                          )),
+                            child: const Center(
+                                child: Text(
+                              'Iniciar sesión',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            )),
+                          ),
                         ),
                       ),
                     ),
