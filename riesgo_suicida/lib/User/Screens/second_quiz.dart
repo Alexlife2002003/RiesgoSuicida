@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riesgo_suicida/User/multchoice/quiz.dart';
+import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
 import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -283,13 +284,24 @@ class _SecondQuiz extends State<SecondQuiz> {
             children: [
               Expanded(
                 child: Align(
-                    alignment: Alignment.center,
-                    child: (_indexQuestion <= 18 && _indexQuestion >= 0)
-                        ? Quiz(
-                            answerQuestion: _answerQuestion,
-                            indexQuestion: _indexQuestion,
-                            data: _data)
-                        : const glob.Dashboard()),
+                  alignment: Alignment.center,
+                  child: (_indexQuestion <= 18 && _indexQuestion >= 0)
+                      ? Quiz(
+                          answerQuestion: _answerQuestion,
+                          indexQuestion: _indexQuestion,
+                          data: _data)
+                      : ElevatedButton(
+                          onPressed: () {
+                            globals.currentPage = DrawerSections.dashboard;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Temp()),
+                            );
+                          },
+                          child: Text('Finalizar'),
+                        ),
+                ),
               ),
               if (_indexQuestion >= 0 && _indexQuestion < 19) ...[
                 Container(

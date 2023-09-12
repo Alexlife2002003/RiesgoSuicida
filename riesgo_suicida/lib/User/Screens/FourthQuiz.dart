@@ -139,10 +139,11 @@ class _FourthQuiz extends State<FourthQuiz> {
                           data: _data)
                       : ElevatedButton(
                           onPressed: () {
+                            globals.currentPage = DrawerSections.dashboard;
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const globals.Temp()),
+                                  builder: (context) => const Temp()),
                             );
                           },
                           child: Text('Finalizar'),

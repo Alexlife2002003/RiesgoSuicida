@@ -197,8 +197,10 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 // Conditional message for 100% completion
                 Visibility(
-                  visible:
-                      first == 0 && second == 0 && third == 0 && fourth == 0,
+                  visible: first == -1 &&
+                      second == -1 &&
+                      third == -1 &&
+                      fourth == -1,
                   child: const Text(
                     "Desliza hacia la derecha",
                     style: TextStyle(
