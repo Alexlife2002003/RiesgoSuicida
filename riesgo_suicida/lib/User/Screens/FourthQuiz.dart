@@ -5,7 +5,7 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:riesgo_suicida/User/multchoice/quiz.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
 import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
-
+import 'package:riesgo_suicida/User/Screens/temp.dart';
 class FourthQuiz extends StatefulWidget {
   const FourthQuiz({Key? key}) : super(key: key);
 
@@ -135,7 +135,16 @@ class _FourthQuiz extends State<FourthQuiz> {
                           answerQuestion: _answerQuestion,
                           indexQuestion: _indexQuestion,
                           data: _data)
-                      : const glob.Dashboard(),
+                      : ElevatedButton(
+                        onPressed: () {
+                           Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Temp()),
+                    );
+                        },
+                        child: Text('Finalizar'),
+                      ),
+                      
                 ),
               ),
               if (_indexQuestion >= 0 && _indexQuestion < 5) ...[
