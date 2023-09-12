@@ -35,7 +35,7 @@ class _TempState extends State<Temp> {
   Widget build(BuildContext context) {
     var container;
     Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
-
+    appbarTitle = "";
     switch (currentPage) {
       case DrawerSections.dashboard:
         appbarTitle = "";

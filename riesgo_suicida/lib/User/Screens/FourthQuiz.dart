@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:riesgo_suicida/User/multchoice/quiz.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
+import 'package:riesgo_suicida/User/Screens/Dashboard.dart';
 
 class FourthQuiz extends StatefulWidget {
   const FourthQuiz({Key? key}) : super(key: key);
@@ -135,7 +135,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                           answerQuestion: _answerQuestion,
                           indexQuestion: _indexQuestion,
                           data: _data)
-                      : const glob.Dashboard(),
+                      : const Dashboard(),
                 ),
               ),
               if (_indexQuestion >= 0 && _indexQuestion < 5) ...[

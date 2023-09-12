@@ -258,6 +258,10 @@ class _SecondQuiz extends State<SecondQuiz> {
         'segundo':
             newValue, // Provide the updated value for the 'primero' field
       });
+
+      setState(() {
+        globals.appbarTitle = "smkdlakfl";
+      });
     } catch (error) {
       print('Error updating user data: $error');
     }
