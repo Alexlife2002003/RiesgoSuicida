@@ -62,6 +62,7 @@ class _TempState extends State<Temp> {
         container = const FourthQuiz();
         break;
       default:
+        appbarTitle = " ";
         container = const Dashboard();
         break;
     }
