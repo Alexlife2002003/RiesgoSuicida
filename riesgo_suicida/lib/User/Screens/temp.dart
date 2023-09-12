@@ -17,6 +17,7 @@ IconData firstIcon = Icons.square_outlined;
 IconData secondIcon = Icons.square_outlined;
 IconData thirdIcon = Icons.square_outlined;
 IconData fourthIcon = Icons.square_outlined;
+var appbarTitle = '';
 
 class Temp extends StatefulWidget {
   const Temp({super.key});
@@ -33,24 +34,31 @@ class _TempState extends State<Temp> {
   @override
   Widget build(BuildContext context) {
     var container;
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
 
     switch (currentPage) {
       case DrawerSections.dashboard:
+        appbarTitle = "";
         container = const Dashboard();
         break;
       case DrawerSections.instrucciones:
+        appbarTitle = "";
         container = const Instrucciones();
         break;
       case DrawerSections.first:
+        appbarTitle = "Cuestionario 1";
         container = const FirstQuiz();
         break;
       case DrawerSections.second:
+        appbarTitle = "Cuestionario 2";
         container = const SecondQuiz();
         break;
       case DrawerSections.third:
+        appbarTitle = "Cuestionario 3";
         container = const ThirdQuiz();
         break;
       case DrawerSections.Fourth:
+        appbarTitle = "Cuestionario 4";
         container = const FourthQuiz();
         break;
       default:
@@ -58,6 +66,16 @@ class _TempState extends State<Temp> {
         break;
     }
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: appbarColor,
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          appbarTitle,
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 1,
+        centerTitle: true,
+      ),
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(

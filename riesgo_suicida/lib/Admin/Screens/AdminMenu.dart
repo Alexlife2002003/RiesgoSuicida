@@ -24,11 +24,16 @@ class _AdminMenuState extends State<AdminMenu> {
   @override
   Widget build(BuildContext context) {
     var container;
+    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     if (currentPage == DrawerSections.dashboard) {
       container = const AdminMain();
     }
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: appbarColor,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(

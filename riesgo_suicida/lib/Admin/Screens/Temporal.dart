@@ -136,7 +136,7 @@ class _TemporalState extends State<Temporal> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           SizedBox(
             height: 240,
-            width: 320,
+            width: 360,
             child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,

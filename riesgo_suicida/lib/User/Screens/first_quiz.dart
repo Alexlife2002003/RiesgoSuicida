@@ -69,24 +69,6 @@ class _FirstQuizState extends State<FirstQuiz> {
             ],
           ),
         ),
-        appBar: AppBar(
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                color: Colors.black,
-                onPressed: () {},
-              );
-            },
-          ),
-          title: const Text(
-            'Cuestionario 1',
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: appbarColor,
-          elevation: 1,
-          centerTitle: true,
-        ),
         backgroundColor: Colors.transparent,
         body: Center(
           child: Stack(

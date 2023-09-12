@@ -113,26 +113,6 @@ class _FourthQuiz extends State<FourthQuiz> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: _indexQuestion >= 0 && _indexQuestion <= 4
-            ? AppBar(
-                leading: Builder(
-                  builder: (BuildContext context) {
-                    return IconButton(
-                      icon: const Icon(Icons.menu),
-                      color: Colors.black,
-                      onPressed: () {},
-                    );
-                  },
-                ),
-                title: const Text(
-                  'Cuestionario 4',
-                  style: TextStyle(color: Colors.black),
-                ),
-                backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
-                elevation: 0,
-                centerTitle: true,
-              )
-            : null,
         backgroundColor: Colors.white,
         body: Container(
           decoration: const BoxDecoration(

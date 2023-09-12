@@ -36,23 +36,6 @@ class _AdminMainState extends State<AdminMain> {
     Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     return Scaffold(
       backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
-      appBar: AppBar(
-        backgroundColor: appbarColor,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              color: Colors.black,
-              onPressed: () {},
-            );
-          },
-        ),
-        title: const Text(
-          'Admin Main',
-          style: TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-      ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchUsers(),
         builder: (context, snapshot) {

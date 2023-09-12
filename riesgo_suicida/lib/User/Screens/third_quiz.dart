@@ -39,24 +39,6 @@ class _ThirdQuizState extends State<ThirdQuiz> {
             ]),
       ),
       child: Scaffold(
-          appBar: AppBar(
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.menu),
-                  color: Colors.black,
-                  onPressed: () {},
-                );
-              },
-            ),
-            title: const Text(
-              'Cuestionario 3',
-              style: TextStyle(color: Colors.black),
-            ),
-            backgroundColor: appbarColor,
-            elevation: 1,
-            centerTitle: true,
-          ),
           bottomNavigationBar: BottomAppBar(
             color: Colors.transparent,
             elevation: 0,

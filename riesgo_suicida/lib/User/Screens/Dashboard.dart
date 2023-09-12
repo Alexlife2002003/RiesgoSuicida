@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
+import 'package:riesgo_suicida/User/util/my_header_drawer.dart';
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
@@ -74,6 +75,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
+
     fetchUserData();
   }
 
@@ -148,28 +150,7 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              color: Colors.black,
-              onPressed: () {
-                Temp();
-              },
-            );
-          },
-        ),
-        title: const Text(
-          '',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: appbarColor,
-        elevation: 1,
-        centerTitle: true,
-      ),
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
