@@ -137,11 +137,11 @@ class _FourthQuiz extends State<FourthQuiz> {
                           data: _data)
                       : ElevatedButton(
                         onPressed: () {
-                           Navigator.push(
+                            Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Temp()),
+                      MaterialPageRoute(builder: (context) => const globals.Temp()),
                     );
-                        },
+                  },
                         child: Text('Finalizar'),
                       ),
                       
