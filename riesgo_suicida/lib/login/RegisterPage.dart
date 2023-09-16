@@ -42,7 +42,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _ageController = TextEditingController();
-  final _generoController = TextEditingController();
+  final _generoController =
+      TextEditingController(text: "Masculino"); // Default value is "Masculino"
   final _programaAcademicoController = TextEditingController();
 
   Future<void> signUserUp() async {
@@ -152,6 +153,54 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     const btnColor = Color.fromARGB(255, 74, 101, 211);
 
+    Widget buildStyledDropdown(
+      String hintText,
+      TextEditingController controller,
+      List<String> items,
+      ValueChanged<String?> onChanged,
+    ) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.grey,
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(0, 3),
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: DropdownButtonFormField<String>(
+              value: controller.text,
+              items: items.map((String item) {
+                return DropdownMenuItem<String>(
+                  value: item,
+                  child: Text(item),
+                );
+              }).toList(),
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                border: InputBorder.none,
+                hintText: hintText,
+                hintStyle: TextStyle(
+                    color: Colors.grey[200],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     Widget buildInputField(String hintText, TextEditingController controller,
         bool obscureText, TextInputType inputType) {
       return Padding(
@@ -238,11 +287,30 @@ class _RegisterPageState extends State<RegisterPage> {
                   buildInputField('Correo Electrónico', _emailController, false,
                       TextInputType.emailAddress),
                   const SizedBox(height: 10),
-                  buildInputField(
-                      'Edad', _ageController, false, TextInputType.number),
-                  const SizedBox(height: 10),
-                  buildInputField(
-                      'Género', _generoController, false, TextInputType.text),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: buildInputField('Edad', _ageController, false,
+                            TextInputType.number),
+                      ),
+                      // Add some spacing between the input fields
+                      Expanded(
+                        flex: 3,
+                        child: buildStyledDropdown(
+                          'Género',
+                          _generoController,
+                          ["Masculino", "Femenino", "Otro"],
+                          (newValue) {
+                            setState(() {
+                              _generoController.text = newValue!;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 10),
                   buildInputField('Programa Academico',
                       _programaAcademicoController, false, TextInputType.text),
