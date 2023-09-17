@@ -75,7 +75,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
               children: [
                 const Positioned(
                   left: 50,
-                  top: 125,
+                  bottom: 125,
                   child: Text(
                     'No',
                     style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
@@ -83,7 +83,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                 ),
                 const Positioned(
                   right: 50,
-                  top: 125,
+                  bottom: 125,
                   child: Text(
                     'Si',
                     style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
