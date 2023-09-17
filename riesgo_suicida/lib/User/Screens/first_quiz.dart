@@ -5,6 +5,7 @@ import 'package:riesgo_suicida/User/util/CardFirst.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:flutter_dialogs/flutter_dialogs.dart';
 
 var suma = 0;
 
@@ -19,9 +20,61 @@ class _FirstQuizState extends State<FirstQuiz> {
   int cardCount = 0;
 
   @override
+  @override
   void initState() {
     super.initState();
     suma = 0;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Schedule the dialog with a delay to avoid calling it during build
+    Future.delayed(Duration.zero, () {
+      showPlatformDialog(
+        context: context,
+        builder: (_) => Dialog(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Text(
+                  "Instrucciones",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10), // Adjust as needed for spacing
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset(
+                  'lib/assets/GIFS/suicida.gif', // Replace with your GIF asset path
+                  // Adjust the height as needed
+                ),
+              ),
+              SizedBox(height: 10), // Adjust as needed for spacing
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  BasicDialogAction(
+                    title: Text("OK"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   @override

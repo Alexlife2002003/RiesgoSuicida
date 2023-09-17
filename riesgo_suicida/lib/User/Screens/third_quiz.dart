@@ -5,6 +5,7 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/User/util/card_third.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
+import 'package:flutter_dialogs/flutter_dialogs.dart';
 
 var suma = 0;
 
@@ -22,6 +23,31 @@ class _ThirdQuizState extends State<ThirdQuiz> {
   void initState() {
     super.initState();
     suma = 0;
+  }
+
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Schedule the dialog with a delay to avoid calling it during build
+    Future.delayed(Duration.zero, () {
+      showPlatformDialog(
+        context: context,
+        builder: (_) => BasicDialogAlert(
+          title: Text("Instrucciones"),
+
+          content: Image.asset(
+              'lib/assets/GIFS/suicida.gif'), // Replace with your GIF asset path
+          actions: <Widget>[
+            BasicDialogAction(
+              title: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   @override
