@@ -195,21 +195,7 @@ class _DashboardState extends State<Dashboard> {
                 const SizedBox(
                   height: 30,
                 ),
-                // Conditional message for 100% completion
-                Visibility(
-                  visible: first == -1 &&
-                      second == -1 &&
-                      third == -1 &&
-                      fourth == -1,
-                  child: const Text(
-                    "Desliza hacia la derecha",
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+
                 Visibility(
                   visible: percentage == 1.0,
                   child: Column(

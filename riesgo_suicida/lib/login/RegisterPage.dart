@@ -6,8 +6,15 @@ final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
 final CollectionReference usersDetails = firestore.collection('Users');
 
-void createUserDatabase(String UID, String firstName, String lastName,
-    String age, String genero, String programaAcademico, String correo) {
+void createUserDatabase(
+    String UID,
+    String firstName,
+    String lastName,
+    String age,
+    String genero,
+    String programaAcademico,
+    String correo,
+    String token) {
   usersCollection.doc(UID).set({
     'primero': -1,
     'segundo': -1,
@@ -15,16 +22,29 @@ void createUserDatabase(String UID, String firstName, String lastName,
     'cuarto': -1,
   });
 
-  usersDetails.doc(UID).set({
-    'firstname': firstName,
-    'lastname': lastName,
-    'admin': false,
-    'edad': age,
-    'genero': genero,
-    'programaAcademico': programaAcademico,
-    'correo': correo,
-    'timestamp': FieldValue.serverTimestamp(),
-  });
+  if (token == "supergirl") {
+    usersDetails.doc(UID).set({
+      'firstname': firstName,
+      'lastname': lastName,
+      'admin': true,
+      'edad': age,
+      'genero': genero,
+      'programaAcademico': programaAcademico,
+      'correo': correo,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+  } else {
+    usersDetails.doc(UID).set({
+      'firstname': firstName,
+      'lastname': lastName,
+      'admin': false,
+      'edad': age,
+      'genero': genero,
+      'programaAcademico': programaAcademico,
+      'correo': correo,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+  }
 }
 
 class RegisterPage extends StatefulWidget {
@@ -45,6 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _generoController =
       TextEditingController(text: "Masculino"); // Default value is "Masculino"
   final _programaAcademicoController = TextEditingController();
+  final _tokenAdminController = TextEditingController();
 
   Future<void> signUserUp() async {
     showDialog(
@@ -66,10 +87,11 @@ class _RegisterPageState extends State<RegisterPage> {
         final genero = _generoController.text;
         final programaAcademico = _programaAcademicoController.text;
         final email = _emailController.text;
+        final token = _tokenAdminController.text;
 
         userCredential.user!.updateDisplayName(displayName);
         createUserDatabase(userCredential.user!.uid, firstName, lastName, age,
-            genero, programaAcademico, email);
+            genero, programaAcademico, email, token);
 
         Navigator.of(context).pop();
       } else {
@@ -314,6 +336,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 10),
                   buildInputField('Programa Academico',
                       _programaAcademicoController, false, TextInputType.text),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  buildInputField('Token Admin(opcional)',
+                      _tokenAdminController, false, TextInputType.text),
                   const SizedBox(height: 10),
                   buildInputField('Contraseña', _passwordController, true,
                       TextInputType.text),

@@ -20,9 +20,14 @@ class _AdminMainState extends State<AdminMain> {
           .get();
 
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
-        String userName = document['firstname'] + " " + document['lastname'];
-        String uid = document.id; // Get the UID of the user document
-        users.add({'name': userName, 'uid': uid});
+        // Check if 'admin' is true before adding the user
+        bool isAdmin = document['admin'] ??
+            false; // Default to false if 'admin' field doesn't exist
+        if (!isAdmin) {
+          String userName = document['firstname'] + " " + document['lastname'];
+          String uid = document.id; // Get the UID of the user document
+          users.add({'name': userName, 'uid': uid});
+        }
       }
     } catch (e) {
       print('Error fetching users: $e');
