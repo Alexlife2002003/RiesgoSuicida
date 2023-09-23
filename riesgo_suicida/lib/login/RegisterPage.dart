@@ -14,7 +14,8 @@ void createUserDatabase(
     String genero,
     String programaAcademico,
     String correo,
-    String token) {
+    String token,
+    String realtoken) {
   usersCollection.doc(UID).set({
     'primero': -1,
     'segundo': -1,
@@ -22,7 +23,7 @@ void createUserDatabase(
     'cuarto': -1,
   });
 
-  if (token == "supergirl") {
+  if (token == realtoken) {
     usersDetails.doc(UID).set({
       'firstname': firstName,
       'lastname': lastName,
@@ -88,10 +89,25 @@ class _RegisterPageState extends State<RegisterPage> {
         final programaAcademico = _programaAcademicoController.text;
         final email = _emailController.text;
         final token = _tokenAdminController.text;
+        String realtoken = "null";
+
+        try {
+          DocumentSnapshot tokenDocument = await FirebaseFirestore.instance
+              .collection('AdminToken')
+              .doc(
+                  'Token') // Replace 'your_document_id' with the actual document ID
+              .get();
+
+          if (tokenDocument.exists) {
+            realtoken = tokenDocument['token'].toString();
+          }
+        } catch (e) {
+          print('Error fetching token: $e');
+        }
 
         userCredential.user!.updateDisplayName(displayName);
         createUserDatabase(userCredential.user!.uid, firstName, lastName, age,
-            genero, programaAcademico, email, token);
+            genero, programaAcademico, email, token, realtoken);
 
         Navigator.of(context).pop();
       } else {
