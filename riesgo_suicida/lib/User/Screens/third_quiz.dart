@@ -33,13 +33,13 @@ class _ThirdQuizState extends State<ThirdQuiz> {
       showPlatformDialog(
         context: context,
         builder: (_) => BasicDialogAlert(
-          title: Text("Instrucciones"),
+          title: const Text("Instrucciones"),
 
           content: Image.asset(
               'lib/assets/GIFS/suicida.gif'), // Replace with your GIF asset path
           actions: <Widget>[
             BasicDialogAction(
-              title: Text("OK"),
+              title: const Text("OK"),
               onPressed: () {
                 Navigator.pop(context);
               },

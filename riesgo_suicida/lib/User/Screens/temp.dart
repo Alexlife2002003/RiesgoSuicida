@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
-import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
-import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
+
 import 'package:riesgo_suicida/User/Screens/first_quiz.dart';
 import 'package:riesgo_suicida/User/Screens/FourthQuiz.dart';
 import 'package:riesgo_suicida/User/Screens/second_quiz.dart';
@@ -69,10 +67,10 @@ class _TempState extends State<Temp> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appbarColor,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         title: Text(
           appbarTitle,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
         elevation: 1,
         centerTitle: true,

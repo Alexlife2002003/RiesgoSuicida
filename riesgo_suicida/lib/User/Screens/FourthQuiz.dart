@@ -5,7 +5,6 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:riesgo_suicida/User/multchoice/quiz.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
 
-import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 
 class FourthQuiz extends StatefulWidget {
@@ -146,7 +145,7 @@ class _FourthQuiz extends State<FourthQuiz> {
                                   builder: (context) => const Temp()),
                             );
                           },
-                          child: Text('Finalizar'),
+                          child: const Text('Finalizar'),
                         ),
                 ),
               ),

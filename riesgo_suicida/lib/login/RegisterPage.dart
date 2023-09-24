@@ -7,15 +7,16 @@ final CollectionReference usersCollection = firestore.collection('Puntajes');
 final CollectionReference usersDetails = firestore.collection('Users');
 
 void createUserDatabase(
-    String UID,
-    String firstName,
-    String lastName,
-    String age,
-    String genero,
-    String programaAcademico,
-    String correo,
-    String token,
-    String realtoken) {
+  String UID,
+  String firstName,
+  String lastName,
+  String age,
+  String genero,
+  String programaAcademico,
+  String correo,
+  String token,
+  String realtoken,
+) {
   usersCollection.doc(UID).set({
     'primero': -1,
     'segundo': -1,
@@ -23,7 +24,7 @@ void createUserDatabase(
     'cuarto': -1,
   });
 
-  if (token == realtoken) {
+  if (token.trim() == realtoken.trim()) {
     usersDetails.doc(UID).set({
       'firstname': firstName,
       'lastname': lastName,
@@ -50,10 +51,11 @@ void createUserDatabase(
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const RegisterPage({super.key, required this.onTap});
+
+  const RegisterPage({Key? key, required this.onTap}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -63,16 +65,37 @@ class _RegisterPageState extends State<RegisterPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _ageController = TextEditingController();
-  final _generoController =
-      TextEditingController(text: "Masculino"); // Default value is "Masculino"
+  final _generoController = TextEditingController(text: "Masculino");
   final _programaAcademicoController = TextEditingController();
   final _tokenAdminController = TextEditingController();
+
+  String realtoken = "null";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchRealToken();
+  }
+
+  Future<void> fetchRealToken() async {
+    DocumentSnapshot tokenDocument = await FirebaseFirestore.instance
+        .collection('AdminToken')
+        .doc('Token')
+        .get();
+
+    if (tokenDocument.exists) {
+      setState(() {
+        realtoken = tokenDocument['token'].toString();
+      });
+    }
+  }
 
   Future<void> signUserUp() async {
     showDialog(
       context: context,
       builder: (_) => const Center(child: CircularProgressIndicator()),
     );
+
     try {
       if (_passwordController.text == _confirmPasswordController.text) {
         final userCredential =
@@ -89,25 +112,19 @@ class _RegisterPageState extends State<RegisterPage> {
         final programaAcademico = _programaAcademicoController.text;
         final email = _emailController.text;
         final token = _tokenAdminController.text;
-        String realtoken = "null";
-
-        try {
-          DocumentSnapshot tokenDocument = await FirebaseFirestore.instance
-              .collection('AdminToken')
-              .doc(
-                  'Token') // Replace 'your_document_id' with the actual document ID
-              .get();
-
-          if (tokenDocument.exists) {
-            realtoken = tokenDocument['token'].toString();
-          }
-        } catch (e) {
-          print('Error fetching token: $e');
-        }
-
+        print("this is the real token: " + realtoken);
         userCredential.user!.updateDisplayName(displayName);
-        createUserDatabase(userCredential.user!.uid, firstName, lastName, age,
-            genero, programaAcademico, email, token, realtoken);
+        createUserDatabase(
+          userCredential.user!.uid,
+          firstName,
+          lastName,
+          age,
+          genero,
+          programaAcademico,
+          email,
+          token,
+          realtoken,
+        );
 
         Navigator.of(context).pop();
       } else {
@@ -134,6 +151,18 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _ageController.dispose();
+    _generoController.dispose();
+    super.dispose();
   }
 
   void _showPrivacyPolicy() {
@@ -176,18 +205,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    _ageController.dispose();
-    _generoController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     const btnColor = Color.fromARGB(255, 74, 101, 211);
 
@@ -225,13 +242,14 @@ class _RegisterPageState extends State<RegisterPage> {
               }).toList(),
               onChanged: onChanged,
               decoration: InputDecoration(
-                labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                 border: InputBorder.none,
                 hintText: hintText,
                 hintStyle: TextStyle(
-                    color: Colors.grey[200],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25),
+                  color: Colors.grey[200],
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
               ),
             ),
           ),
@@ -239,8 +257,12 @@ class _RegisterPageState extends State<RegisterPage> {
       );
     }
 
-    Widget buildInputField(String hintText, TextEditingController controller,
-        bool obscureText, TextInputType inputType) {
+    Widget buildInputField(
+      String hintText,
+      TextEditingController controller,
+      bool obscureText,
+      TextInputType inputType,
+    ) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Container(
@@ -333,7 +355,6 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: buildInputField('Edad', _ageController, false,
                             TextInputType.number),
                       ),
-                      // Add some spacing between the input fields
                       Expanded(
                         flex: 3,
                         child: buildStyledDropdown(

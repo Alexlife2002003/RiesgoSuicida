@@ -38,10 +38,10 @@ class _FirstQuizState extends State<FirstQuiz> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Center(
+              const Center(
                 child: Text(
                   "Instrucciones",
                   style: TextStyle(
@@ -50,7 +50,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                   ),
                 ),
               ),
-              SizedBox(height: 10), // Adjust as needed for spacing
+              const SizedBox(height: 10), // Adjust as needed for spacing
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Image.asset(
@@ -58,12 +58,12 @@ class _FirstQuizState extends State<FirstQuiz> {
                   // Adjust the height as needed
                 ),
               ),
-              SizedBox(height: 10), // Adjust as needed for spacing
+              const SizedBox(height: 10), // Adjust as needed for spacing
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   BasicDialogAction(
-                    title: Text("OK"),
+                    title: const Text("OK"),
                     onPressed: () {
                       Navigator.pop(context);
                     },

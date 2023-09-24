@@ -4,8 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:riesgo_suicida/User/Screens/temp.dart';
-import 'package:riesgo_suicida/User/util/my_header_drawer.dart';
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');

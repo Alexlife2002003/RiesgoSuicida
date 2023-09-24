@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:riesgo_suicida/User/multchoice/quiz.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart' as globals;
-import 'package:riesgo_suicida/User/Screens/Dashboard.dart' as glob;
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
@@ -299,7 +299,7 @@ class _SecondQuiz extends State<SecondQuiz> {
                                   builder: (context) => const Temp()),
                             );
                           },
-                          child: Text('Finalizar'),
+                          child: const Text('Finalizar'),
                         ),
                 ),
               ),

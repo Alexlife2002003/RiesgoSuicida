@@ -32,7 +32,7 @@ class _AdminMenuState extends State<AdminMenu> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appbarColor,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: container,
       drawer: Drawer(

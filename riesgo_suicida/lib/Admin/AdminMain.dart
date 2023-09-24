@@ -38,7 +38,6 @@ class _AdminMainState extends State<AdminMain> {
 
   @override
   Widget build(BuildContext context) {
-    Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     return Scaffold(
       backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
       body: FutureBuilder<List<Map<String, dynamic>>>(

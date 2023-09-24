@@ -1,15 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:riesgo_suicida/Admin/Answers/Desesperanza.dart';
-import 'package:riesgo_suicida/Admin/Answers/Ideacion.dart';
-import 'package:riesgo_suicida/Admin/Answers/Plutchik.dart';
-import 'package:riesgo_suicida/Answers/APGAR_answers.dart';
-import 'package:riesgo_suicida/Answers/Desesperanza_answers.dart';
-import 'package:riesgo_suicida/Answers/Ideacion_answers.dart';
-import 'package:riesgo_suicida/Answers/Plutchik_answers.dart';
-import 'package:riesgo_suicida/User/Screens/Dashboard.dart';
-import 'package:riesgo_suicida/User/Screens/first_quiz.dart';
-import 'package:riesgo_suicida/User/Screens/third_quiz.dart';
 
 var edad = "";
 var genero = "";
@@ -84,7 +74,6 @@ class _TemporalState extends State<Temporal> {
     fetchUserData();
     Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     Color backgroundColor = const Color.fromRGBO(229, 251, 255, 1);
-    Color btnColor = const Color.fromARGB(255, 74, 101, 211);
 
     Color firstCircle = Colors.grey;
     Color secondCircle = Colors.grey;
@@ -205,10 +194,10 @@ class _TemporalState extends State<Temporal> {
           ),
           Container(
             width: 350, // Adjust the width as needed
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,14 +213,14 @@ class _TemporalState extends State<Temporal> {
                         color: firstCircle, // Define your colors here
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
                       'Desesperanza de Beck: $firstquiz',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -245,14 +234,14 @@ class _TemporalState extends State<Temporal> {
                         color: secondCircle, // Define your colors here
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
                       'Ideacion Suicida: $secondquiz',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -266,14 +255,14 @@ class _TemporalState extends State<Temporal> {
                         color: thirdCircle, // Define your colors here
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
                       'Riesgo Suicida de Plutchik: $thirdquiz',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -287,10 +276,10 @@ class _TemporalState extends State<Temporal> {
                         color: fourthCircle, // Define your colors here
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
                       'Apgar Familiar: $fourthquiz',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
