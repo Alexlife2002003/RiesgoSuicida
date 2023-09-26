@@ -72,6 +72,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors
             .transparent, // Set the Scaffold background color to transparent
@@ -95,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Image.asset(
                       'lib/assets/start.png', // Replace 'assets/image.png' with the path to your image asset
-                      width: 200,
+                      width: screenWidth - 150,
                       height: 200,
                     ),
                     const SizedBox(
