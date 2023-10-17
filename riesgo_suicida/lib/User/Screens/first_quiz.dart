@@ -54,7 +54,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Image.asset(
-                  'lib/assets/GIFS/suicida.gif', 
+                  'lib/assets/GIFS/suicida.gif',
                   // Adjust the height as needed
                 ),
               ),
@@ -293,7 +293,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               CardsFirst(
                   id: 10,
                   text:
-                      "Mis pasadas experiencias me han preparado bien para el futuro",
+                      "Mis pasadas experiencias me han preparado bien para mi futuro",
                   color: Colors.white,
                   colorText: Colors.black,
                   valueL: 1,

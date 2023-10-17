@@ -41,7 +41,7 @@ class _SecondQuiz extends State<SecondQuiz> {
       'questionText': 'Razones para vivir/morir ',
       'answers': [
         {'text': 'Porque seguir viviendo vale más que morir', 'score': 0.00},
-        {'text': 'Aproxidamente iguales', 'score': 1.00},
+        {'text': 'Aproximadamente iguales', 'score': 1.00},
         {
           'text': 'Porque la muerte vale más que seguir viviendo',
           'score': 2.00
@@ -96,7 +96,8 @@ class _SecondQuiz extends State<SecondQuiz> {
       ]
     },
     {
-      'questionText': 'Control sobre la actividad suicida/deseos de acting out',
+      'questionText':
+          'Control sobre la actividad suicida/deseos de comportamiento impulsivo',
       'answers': [
         {'text': 'Tiene sentido del control', 'score': 0.00},
         {'text': 'Inseguro', 'score': 1.00},
@@ -154,7 +155,11 @@ class _SecondQuiz extends State<SecondQuiz> {
           'text': 'El método puede tomar tiempo o esfuerzo. Oportunidad escasa',
           'score': 1.00
         },
-        {'text': 'Método y oportunidad accesibles: futura oportunidad o accesibilidad del método previsto', 'score': 2.00},
+        {
+          'text':
+              'Método y oportunidad accesibles: futura oportunidad o accesibilidad del método previsto',
+          'score': 2.00
+        },
       ]
     },
     {
