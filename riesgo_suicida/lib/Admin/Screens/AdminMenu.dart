@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riesgo_suicida/Admin/AdminMain.dart';
+import 'package:riesgo_suicida/Admin/AdminMainExpandable.dart';
 import 'package:riesgo_suicida/User/util/my_header_drawer.dart';
 
 var currentPage = DrawerSections.dashboard;
@@ -26,7 +27,7 @@ class _AdminMenuState extends State<AdminMenu> {
     var container;
     Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     if (currentPage == DrawerSections.dashboard) {
-      container = const AdminMain();
+      container = AdminMainExpandable();
     }
 
     return Scaffold(

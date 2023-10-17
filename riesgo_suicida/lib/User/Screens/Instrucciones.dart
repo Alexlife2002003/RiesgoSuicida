@@ -87,7 +87,7 @@ class InstructionsScreen extends StatelessWidget {
                   ),
                   NumberedSection(
                     number: '6',
-                    title: 'Recomendaciones para tu salud ental:',
+                    title: 'Recomendaciones para tu salud mental:',
                     content:
                         'Después de completar los cuatro quizzes, recibirás recomendaciones personalizadas para el cuidado de tu salud mental. Estas recomendaciones se basarán en tus respuestas y te proporcionarán valiosas herramientas y consejos para mejorar tu bienestar emocional.',
                   ),
