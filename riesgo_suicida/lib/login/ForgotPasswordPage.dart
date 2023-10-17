@@ -107,13 +107,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(
-                  12), // Adjust the radius as per your preference
+                  12),
               child: MaterialButton(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                elevation: 5,
+                padding: const EdgeInsets.all(16),
                 onPressed: passwordReset,
                 color: btnColor,
                 child: const Text(

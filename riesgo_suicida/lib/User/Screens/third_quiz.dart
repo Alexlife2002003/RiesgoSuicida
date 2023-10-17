@@ -202,7 +202,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                 CardsThird(
                     id: 10,
                     text:
-                        "¿Está usted separado/a, divorciado/a o viudo/a o ha terminado recientemente una relación sentimental importante?",
+                        "¿Está usted separado/a, divorciado/a o viudo/a?",
                     color: Colors.white,
                     colorText: Colors.black,
                     valueL: 0,

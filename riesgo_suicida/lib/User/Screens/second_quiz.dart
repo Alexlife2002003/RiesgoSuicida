@@ -154,7 +154,7 @@ class _SecondQuiz extends State<SecondQuiz> {
           'text': 'El método puede tomar tiempo o esfuerzo. Oportunidad escasa',
           'score': 1.00
         },
-        {'text': 'Método y oportunidad accesibles', 'score': 2.00},
+        {'text': 'Método y oportunidad accesibles: futura oportunidad o accesibilidad del método previsto', 'score': 2.00},
       ]
     },
     {
@@ -182,11 +182,11 @@ class _SecondQuiz extends State<SecondQuiz> {
       'answers': [
         {'text': 'Ninguna', 'score': 0.00},
         {
-          'text': 'Parcial(ej. empieza a almacenar pastillas, etc)',
+          'text': 'Parcial(p. ej. empieza a almacenar pastillas, etc)',
           'score': 1.00
         },
         {
-          'text': 'Completa(ej. tiene las pastillas, pistola cargada, etc)',
+          'text': 'Completa(p. ej. tiene las pastillas, pistola cargada, etc)',
           'score': 2.00
         },
       ]

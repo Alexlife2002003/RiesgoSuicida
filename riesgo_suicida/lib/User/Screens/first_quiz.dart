@@ -54,7 +54,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Image.asset(
-                  'lib/assets/GIFS/suicida.gif', // Replace with your GIF asset path
+                  'lib/assets/GIFS/suicida.gif', 
                   // Adjust the height as needed
                 ),
               ),
@@ -382,7 +382,7 @@ class _FirstQuizState extends State<FirstQuiz> {
               CardsFirst(
                   id: 3,
                   text:
-                      "Cuando las cosas van mal me alivia saber que las cosas no pueden permanecer tiempo así",
+                      "Cuando las cosas van mal, me alivia saber que las cosas no pueden permanecer tiempo así",
                   color: darkblue,
                   colorText: Colors.white,
                   valueL: 1,
