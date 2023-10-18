@@ -75,6 +75,25 @@ class _LoginPageState extends State<LoginPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 56,
+                height: 100,
+                child: Image.asset("lib/assets/case.png"),
+              ),
+              SizedBox(width: 25), // Adjust the width for spacing
+              Image.asset(
+                "lib/assets/Ingenieria.png",
+                height: 56,
+              ),
+            ],
+          ),
+        ),
         backgroundColor: Colors
             .transparent, // Set the Scaffold background color to transparent
         body: Container(
@@ -96,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'lib/assets/start.png', // Replace 'assets/image.png' with the path to your image asset
+                      'lib/assets/start.png',
                       width: screenWidth - 150,
                       height: 200,
                     ),
@@ -270,7 +289,7 @@ class _LoginPageState extends State<LoginPage> {
                         GestureDetector(
                           onTap: widget.onTap,
                           child: const Text(
-                            'Registrate ahora',
+                            'Regístrate ahora',
                             style: TextStyle(
                               color: Color.fromARGB(255, 74, 101, 211),
                               fontWeight: FontWeight.bold,

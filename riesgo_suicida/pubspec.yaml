@@ -69,6 +69,8 @@ flutter:
   assets:
     - lib/assets/start.png
     - lib/assets/GIFS/suicida.gif
+    - lib/assets/Ingenieria.png
+    - lib/assets/case.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
