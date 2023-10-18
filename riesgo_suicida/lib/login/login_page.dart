@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(155, 212, 255, 1),
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
