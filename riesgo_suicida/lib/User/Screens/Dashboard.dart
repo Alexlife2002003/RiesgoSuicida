@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:riesgo_suicida/User/Screens/ContactosDeAyuda.dart';
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final CollectionReference usersCollection = firestore.collection('Puntajes');
@@ -23,6 +24,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  void contactosAyuda() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ContactosDeAyuda(),
+        ));
+  }
+
   List<String> recommendations = [
     "Comienza tu día con positividad a través de una afirmación diaria.",
     "Registra tus emociones diariamente para descubrir patrones y desencadenantes.",
@@ -198,26 +207,65 @@ class _DashboardState extends State<Dashboard> {
                   visible: percentage == 1.0,
                   child: Column(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text(
-                          "¡Felicidades! ¡Has completado todos los cuestionarios!",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(58, 135, 193, 1)),
-                          textAlign: TextAlign.center,
+                      if (first >= 0 &&
+                          first <= 8 &&
+                          second >= 0 &&
+                          second <= 12 &&
+                          third >= 0 &&
+                          third <= 5 &&
+                          fourth >= 7 &&
+                          fourth <= 10)
+                        const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(
+                            "¡Felicidades! ¡Has completado todos los cuestionarios!",
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(58, 135, 193, 1)),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
                       const SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Column(
                           children: [
                             if (first >= 9 ||
-                                second >= 8 ||
-                                third >= 19 ||
-                                fourth <= 5) ...{
+                                second >= 13 ||
+                                third >= 6 ||
+                                fourth <= 6) ...{
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 25),
+                                child: GestureDetector(
+                                  onTap: contactosAyuda,
+                                  child: Material(
+                                    elevation: 5,
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(20),
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromRGBO(
+                                            58, 135, 193, 1),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: const Center(
+                                          child: Text(
+                                        'Contactos de ayuda',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
+                                      )),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
                               const Text(
                                 "Aquí tienes algunas recomendaciones:",
                                 style: TextStyle(

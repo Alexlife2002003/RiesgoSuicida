@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.riesgo_suicida">
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
    <application
         android:label="Riesgo Suicida"
         android:name="androidx.multidex.MultiDexApplication"
