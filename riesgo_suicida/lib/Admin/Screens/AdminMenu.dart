@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riesgo_suicida/Admin/AdminMain.dart';
 import 'package:riesgo_suicida/Admin/AdminMainExpandable.dart';
+import 'package:riesgo_suicida/Admin/Screens/agregarContactos.dart';
 import 'package:riesgo_suicida/User/util/my_header_drawer.dart';
 
 var currentPage = DrawerSections.dashboard;
@@ -28,6 +29,9 @@ class _AdminMenuState extends State<AdminMenu> {
     Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     if (currentPage == DrawerSections.dashboard) {
       container = AdminMainExpandable();
+    }
+    if(currentPage==DrawerSections.agregarContactos){
+      container=agregarContactos();
     }
 
     return Scaffold(
@@ -62,6 +66,12 @@ class _AdminMenuState extends State<AdminMenu> {
             Icons.dashboard_outlined,
           ),
           menuItem(
+            2,
+            "Contactos de ayuda",
+            Icons.contacts,
+          ),
+          
+          menuItem(
             6,
             "Cerrar sesión",
             Icons.exit_to_app,
@@ -83,6 +93,10 @@ class _AdminMenuState extends State<AdminMenu> {
       itemBackgroundColor = backgorundDrawer;
     }
 
+    if (currentPage == DrawerSections.agregarContactos && id == 1) {
+      itemBackgroundColor = backgorundDrawer;
+    }
+
     return Material(
       child: InkWell(
         onTap: () {
@@ -90,6 +104,9 @@ class _AdminMenuState extends State<AdminMenu> {
           setState(() {
             if (id == 1) {
               currentPage = DrawerSections.dashboard;
+            }
+            if(id==2){
+              currentPage=DrawerSections.agregarContactos;
             }
 
             if (id == 6) {
@@ -136,6 +153,7 @@ enum DrawerSections {
   firstAnswers,
   secondAnswers,
   thirdAnswers,
-  fourthAnswers
+  fourthAnswers,
+  agregarContactos
 }
 //Remove answers pages

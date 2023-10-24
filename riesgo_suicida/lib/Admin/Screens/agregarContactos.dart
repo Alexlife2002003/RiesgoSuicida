@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:riesgo_suicida/Admin/Screens/formularioContacto.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 
-class ContactosDeAyuda extends StatefulWidget {
-  const ContactosDeAyuda({Key? key}) : super(key: key);
+class agregarContactos extends StatefulWidget {
+  const agregarContactos({Key? key}) : super(key: key);
 
   @override
-  State<ContactosDeAyuda> createState() => _AdminMainState();
+  State<agregarContactos> createState() => _AdminMainState();
 }
 
-class _AdminMainState extends State<ContactosDeAyuda> {
+class _AdminMainState extends State<agregarContactos> {
   List<Map<String, dynamic>> contactos = [];
 
   @override
@@ -57,15 +58,37 @@ class _AdminMainState extends State<ContactosDeAyuda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
-        iconTheme: IconThemeData(color: Colors.black),
-      ),
+      bottomNavigationBar: BottomAppBar(
+        
+  color: Color.fromRGBO(229, 251, 255, 1),
+  child: Container(
+    height: 50, 
+    width: 100,
+    child: ElevatedButton(
+      onPressed: () {
+        print("se presiono");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const formularioContacto()),
+        );
+      },
+      child: Text('Agregar Nuevo Contacto'),
+    ),
+  ),
+),
+
       backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
-      body: ListView(
-        children: contactos.map<Widget>((contacto) {
-          return ContactoExpansionTile(contacto: contacto);
-        }).toList(),
+      body: Column(
+        children: [
+           
+          Expanded(
+            child: ListView(
+              children: contactos.map<Widget>((contacto) {
+                return ContactoExpansionTile(contacto: contacto);
+              }).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -120,6 +143,7 @@ class ContactoInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        
         ListTile(
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
