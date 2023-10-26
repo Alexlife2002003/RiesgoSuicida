@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-
 class agregarContactos extends StatefulWidget {
   const agregarContactos({Key? key}) : super(key: key);
 
@@ -14,6 +13,7 @@ class agregarContactos extends StatefulWidget {
 }
 
 class _AdminMainState extends State<agregarContactos> {
+  Color btnColor = Color.fromARGB(255, 74, 101, 211);
   List<Map<String, dynamic>> contactos = [];
 
   @override
@@ -59,28 +59,35 @@ class _AdminMainState extends State<agregarContactos> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-        
-  color: Color.fromRGBO(229, 251, 255, 1),
-  child: Container(
-    height: 50, 
-    width: 100,
-    child: ElevatedButton(
-      onPressed: () {
-        print("se presiono");
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const formularioContacto()),
-        );
-      },
-      child: Text('Agregar Nuevo Contacto'),
-    ),
-  ),
-),
+        color: Color.fromRGBO(229, 251, 255, 1),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: 50,
 
+              width: 200, // Adjust the width as needed
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(btnColor),
+                ),
+                onPressed: () {
+                  print("se presiono");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const formularioContacto()),
+                  );
+                },
+                child: Text('Agregar nuevo contacto'),
+              ),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
       body: Column(
         children: [
-           
           Expanded(
             child: ListView(
               children: contactos.map<Widget>((contacto) {
@@ -143,7 +150,6 @@ class ContactoInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        
         ListTile(
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
