@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: AdminMainExpandable(),
-    );
-  }
-}
+import 'package:riesgo_suicida/Admin/Screens/AppDrawerAdmin.dart';
+import 'package:riesgo_suicida/Admin/Screens/agregarContactos.dart';
 
 class AdminMainExpandable extends StatefulWidget {
   const AdminMainExpandable({Key? key}) : super(key: key);
@@ -54,12 +43,16 @@ class _AdminMainState extends State<AdminMainExpandable> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
-      body: ListView(
-        children: users.map<Widget>((user) {
-          return UserExpansionTile(user: user);
-        }).toList(),
+    return AppDrawerMain(
+      currentPage: "AdminMainExpandable",
+      appbarText: "Evaluaciones realizadas",
+      content: Scaffold(
+        backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
+        body: ListView(
+          children: users.map<Widget>((user) {
+            return UserExpansionTile(user: user);
+          }).toList(),
+        ),
       ),
     );
   }

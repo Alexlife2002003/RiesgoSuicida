@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:riesgo_suicida/Admin/AdminMain.dart';
+import 'package:riesgo_suicida/Admin/AdminMainExpandable.dart';
 import 'package:riesgo_suicida/Admin/Screens/AdminMenu.dart';
 import 'package:riesgo_suicida/User/Screens/temp.dart';
 import 'package:riesgo_suicida/login/LoginOrRegisterPage.dart';
@@ -27,7 +29,7 @@ class AuthPage extends StatelessWidget {
                   print('is Admin $isAdmin');
                   if (isAdmin) {
                     // User is an admin, navigate to the admin page (Temp)
-                    return const AdminMenu();
+                    return AdminMainExpandable();
                   } else {
                     // User is not an admin, navigate to the login or register page
                     return const Temp();

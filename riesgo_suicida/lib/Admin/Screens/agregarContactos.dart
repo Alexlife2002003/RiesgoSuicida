@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:riesgo_suicida/Admin/Screens/AppDrawerAdmin.dart';
 import 'package:riesgo_suicida/Admin/Screens/formularioContacto.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -57,45 +58,49 @@ class _AdminMainState extends State<agregarContactos> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        color: Color.fromRGBO(229, 251, 255, 1),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              height: 50,
+    return AppDrawerMain(
+      appbarText: "Contactos de apoyo profesional",
+      currentPage: "agregarContactos",
+      content: Scaffold(
+        bottomNavigationBar: BottomAppBar(
+          color: Color.fromRGBO(229, 251, 255, 1),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                height: 50,
 
-              width: 200, // Adjust the width as needed
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(btnColor),
+                width: 200, // Adjust the width as needed
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(btnColor),
+                  ),
+                  onPressed: () {
+                    print("se presiono");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const formularioContacto()),
+                    );
+                  },
+                  child: Text('Agregar nuevo contacto'),
                 ),
-                onPressed: () {
-                  print("se presiono");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const formularioContacto()),
-                  );
-                },
-                child: Text('Agregar nuevo contacto'),
+              ),
+            ],
+          ),
+        ),
+        backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                children: contactos.map<Widget>((contacto) {
+                  return ContactoExpansionTile(contacto: contacto);
+                }).toList(),
               ),
             ),
           ],
         ),
-      ),
-      backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: contactos.map<Widget>((contacto) {
-                return ContactoExpansionTile(contacto: contacto);
-              }).toList(),
-            ),
-          ),
-        ],
       ),
     );
   }
