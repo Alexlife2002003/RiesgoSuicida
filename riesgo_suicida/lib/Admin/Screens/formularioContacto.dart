@@ -52,8 +52,15 @@ class _formularioContactoState extends State<formularioContacto> {
             .collection('Contactos')
             .add(contactData);
         showSnackbar('Contacto agregado correctamente', Colors.green);
-        print('Contact added successfully');
-        Navigator.pop(context);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const agregarContactos();
+            },
+          ),
+        );
       } catch (e) {
         showSnackbar('Error al agregar el contacto', Colors.red);
       }
@@ -76,7 +83,7 @@ class _formularioContactoState extends State<formularioContacto> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: Color.fromARGB(255, 74, 101, 211)),
+                    const BorderSide(color: Color.fromARGB(255, 74, 101, 211)),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               labelText: hintText,
@@ -85,9 +92,9 @@ class _formularioContactoState extends State<formularioContacto> {
                 color: Colors.black,
                 fontSize: 24,
               ),
-              labelStyle: TextStyle(color: Colors.black),
+              labelStyle: const TextStyle(color: Colors.black),
               filled: true,
-              fillColor: Color.fromRGBO(207, 235, 240, 1),
+              fillColor: const Color.fromRGBO(207, 235, 240, 1),
             ),
             style: const TextStyle(color: Colors.black),
             textAlign: TextAlign.center,
@@ -98,18 +105,18 @@ class _formularioContactoState extends State<formularioContacto> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Agregar contacto de ayuda',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildInputField(
@@ -118,7 +125,7 @@ class _formularioContactoState extends State<formularioContacto> {
               false,
               TextInputType.text,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildInputField(
@@ -127,7 +134,7 @@ class _formularioContactoState extends State<formularioContacto> {
               false,
               TextInputType.text,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildInputField(
@@ -136,7 +143,7 @@ class _formularioContactoState extends State<formularioContacto> {
               false,
               TextInputType.text,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildInputField(
@@ -145,7 +152,7 @@ class _formularioContactoState extends State<formularioContacto> {
               false,
               TextInputType.text,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildInputField(
@@ -154,7 +161,7 @@ class _formularioContactoState extends State<formularioContacto> {
               false,
               TextInputType.text,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildInputField(
@@ -163,7 +170,7 @@ class _formularioContactoState extends State<formularioContacto> {
               false,
               TextInputType.phone,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Padding(
@@ -178,7 +185,7 @@ class _formularioContactoState extends State<formularioContacto> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 74, 101, 211),
+                        color: const Color.fromARGB(255, 74, 101, 211),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Center(

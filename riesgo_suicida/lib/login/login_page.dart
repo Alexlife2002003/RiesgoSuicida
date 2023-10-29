@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(155, 212, 255, 1),
+          backgroundColor: const Color.fromRGBO(155, 212, 255, 1),
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 100,
                 child: Image.asset("lib/assets/case.png"),
               ),
-              SizedBox(width: 25), // Adjust the width for spacing
+              const SizedBox(width: 25), // Adjust the width for spacing
               Image.asset(
                 "lib/assets/Ingenieria.png",
                 height: 56,

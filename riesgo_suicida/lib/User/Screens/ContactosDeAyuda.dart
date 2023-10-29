@@ -49,8 +49,16 @@ class _AdminMainState extends State<ContactosDeAyuda> {
 
       setState(() {});
     } catch (e) {
-      print('Error fetching contactos: $e');
+      showSnackbar('Error al obtener contactos', Colors.red);
     }
+  }
+
+  void showSnackbar(String message, Color backgroundColor) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      backgroundColor: backgroundColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -58,7 +66,7 @@ class _AdminMainState extends State<ContactosDeAyuda> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       backgroundColor: const Color.fromRGBO(229, 251, 255, 1),
       body: ListView(
@@ -128,7 +136,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Especialización: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -141,7 +149,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Tipo de Unidad Médica: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -154,7 +162,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Ubicación: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -167,7 +175,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Dirección: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -184,13 +192,13 @@ class ContactoInfo extends StatelessWidget {
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
                     children: <TextSpan>[
-                      TextSpan(
+                      const TextSpan(
                         text: 'Teléfono de Contacto: ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
                         text: contacto['Telefono_Contacto'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue,
                         ),

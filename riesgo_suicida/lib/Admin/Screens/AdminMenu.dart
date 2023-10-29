@@ -28,10 +28,10 @@ class _AdminMenuState extends State<AdminMenu> {
     var container;
     Color appbarColor = const Color.fromRGBO(185, 236, 245, 1);
     if (currentPage == DrawerSections.dashboard) {
-      container = AdminMainExpandable();
+      container = const AdminMainExpandable();
     }
-    if(currentPage==DrawerSections.agregarContactos){
-      container=agregarContactos();
+    if (currentPage == DrawerSections.agregarContactos) {
+      container = const agregarContactos();
     }
 
     return Scaffold(
@@ -70,7 +70,6 @@ class _AdminMenuState extends State<AdminMenu> {
             "Contactos de ayuda",
             Icons.contacts,
           ),
-          
           menuItem(
             6,
             "Cerrar sesión",
@@ -105,8 +104,8 @@ class _AdminMenuState extends State<AdminMenu> {
             if (id == 1) {
               currentPage = DrawerSections.dashboard;
             }
-            if(id==2){
-              currentPage=DrawerSections.agregarContactos;
+            if (id == 2) {
+              currentPage = DrawerSections.agregarContactos;
             }
 
             if (id == 6) {

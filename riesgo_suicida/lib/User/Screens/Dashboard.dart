@@ -28,7 +28,7 @@ class _DashboardState extends State<Dashboard> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ContactosDeAyuda(),
+          builder: (context) => const ContactosDeAyuda(),
         ));
   }
 
@@ -263,7 +263,7 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 25,
                               ),
                               const Text(

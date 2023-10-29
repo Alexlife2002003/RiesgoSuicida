@@ -217,25 +217,26 @@ class _TemporalState extends State<Temporal> {
             children: [
               Row(
                 children: [
-                  Text('Edad: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text('Edad: ',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(edad),
                 ],
               ),
               Row(
                 children: [
-                  Text('Genero: ',
+                  const Text('Genero: ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(genero),
                 ],
               ),
               Row(
                 children: [
-                  Text('Programa Academico: ',
+                  const Text('Programa Academico: ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(programaAcademico),
                 ],
               ),
-              Row(
+              const Row(
                 children: [
                   Text('Correo Electronico: ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -249,7 +250,7 @@ class _TemporalState extends State<Temporal> {
             ],
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ListTile(
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

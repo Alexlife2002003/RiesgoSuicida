@@ -28,13 +28,13 @@ class AppDrawerMain extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(185, 236, 245, 1),
+        backgroundColor: const Color.fromRGBO(185, 236, 245, 1),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         centerTitle: true,
         title: Text(
           appbarText,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       drawer: Drawer(
@@ -59,7 +59,7 @@ class AppDrawerMain extends StatelessWidget {
                       children: [
                         Text(
                           'Bienvenido, $firstName',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                           ),
@@ -74,14 +74,14 @@ class AppDrawerMain extends StatelessWidget {
             ListTile(
               title: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                   Icon(
                     Icons.dashboard_outlined,
                     color: textcolor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text('Evaluaciones realizadas',
@@ -106,14 +106,14 @@ class AppDrawerMain extends StatelessWidget {
             ListTile(
               title: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                   Icon(
                     Icons.contacts,
                     color: textcolor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text('Contactos de ayuda',
@@ -139,14 +139,14 @@ class AppDrawerMain extends StatelessWidget {
             ListTile(
               title: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                   Icon(
                     Icons.exit_to_app,
                     color: textcolor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(

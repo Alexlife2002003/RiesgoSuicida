@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riesgo_suicida/Admin/Screens/AppDrawerAdmin.dart';
+import 'package:riesgo_suicida/Admin/Screens/editarContactos.dart';
 import 'package:riesgo_suicida/Admin/Screens/formularioContacto.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -14,7 +15,7 @@ class agregarContactos extends StatefulWidget {
 }
 
 class _AdminMainState extends State<agregarContactos> {
-  Color btnColor = Color.fromARGB(255, 74, 101, 211);
+  Color btnColor = const Color.fromARGB(255, 74, 101, 211);
   List<Map<String, dynamic>> contactos = [];
 
   @override
@@ -63,7 +64,7 @@ class _AdminMainState extends State<agregarContactos> {
       currentPage: "agregarContactos",
       content: Scaffold(
         bottomNavigationBar: BottomAppBar(
-          color: Color.fromRGBO(229, 251, 255, 1),
+          color: const Color.fromRGBO(229, 251, 255, 1),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -76,14 +77,13 @@ class _AdminMainState extends State<agregarContactos> {
                     backgroundColor: MaterialStateProperty.all(btnColor),
                   ),
                   onPressed: () {
-                    print("se presiono");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const formularioContacto()),
                     );
                   },
-                  child: Text('Agregar nuevo contacto'),
+                  child: const Text('Agregar nuevo contacto'),
                 ),
               ),
             ],
@@ -156,6 +156,21 @@ class ContactoInfo extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
+          trailing: Column(
+            children: [
+              IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => editarContactos(
+                                contacto: contacto,
+                              )));
+                },
+              ),
+            ],
+          ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -164,7 +179,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Especialización: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -177,7 +192,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Tipo de Unidad Médica: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -190,7 +205,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Ubicación: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -203,7 +218,7 @@ class ContactoInfo extends StatelessWidget {
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                       text: 'Dirección: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -220,13 +235,13 @@ class ContactoInfo extends StatelessWidget {
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
                     children: <TextSpan>[
-                      TextSpan(
+                      const TextSpan(
                         text: 'Teléfono de Contacto: ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
                         text: contacto['Telefono_Contacto'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue,
                         ),

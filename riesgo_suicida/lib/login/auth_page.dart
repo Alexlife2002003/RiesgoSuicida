@@ -26,10 +26,10 @@ class AuthPage extends StatelessWidget {
                 if (userSnapshot.hasData && userSnapshot.data != null) {
                   // Check if the user is an admin based on the "admin" variable
                   bool isAdmin = userSnapshot.data!.get('admin') ?? false;
-                  print('is Admin $isAdmin');
+
                   if (isAdmin) {
                     // User is an admin, navigate to the admin page (Temp)
-                    return AdminMainExpandable();
+                    return const AdminMainExpandable();
                   } else {
                     // User is not an admin, navigate to the login or register page
                     return const Temp();
