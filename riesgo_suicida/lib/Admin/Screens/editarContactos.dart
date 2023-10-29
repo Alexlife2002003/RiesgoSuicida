@@ -18,16 +18,20 @@ class _editarContactosState extends State<editarContactos> {
   final _ubicacionController = TextEditingController();
   final _direccionController = TextEditingController();
   final _telefonoController = TextEditingController();
-
   @override
-  Widget build(BuildContext context) {
-    String unidadOriginal = widget.contacto['Nombre_Unidad_Medica'].toString();
-    _unidadMedicaController.text = unidadOriginal;
+  void initState() {
+    super.initState();
+    _unidadMedicaController.text = widget.contacto['Nombre_Unidad_Medica'];
     _especializacionController.text = widget.contacto['Especializacion'];
     _TipoUnidadController.text = widget.contacto['Tipo_Unidad_Medica'];
     _ubicacionController.text = widget.contacto['Ubicacion'];
     _direccionController.text = widget.contacto['Direccion'];
     _telefonoController.text = widget.contacto['Telefono_Contacto'];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    String unidadOriginal = widget.contacto['Nombre_Unidad_Medica'].toString();
 
     double screenWidth = MediaQuery.of(context).size.width;
 

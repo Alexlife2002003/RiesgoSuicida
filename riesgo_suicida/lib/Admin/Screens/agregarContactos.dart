@@ -28,9 +28,7 @@ class _AdminMainState extends State<agregarContactos> {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('Contactos')
-          .orderBy('Nombre_Unidad_Medica',
-              descending:
-                  false) // Cambia el campo para ordenar según tus necesidades
+          .orderBy('Nombre_Unidad_Medica', descending: false) // Alfabetico
           .get();
 
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
