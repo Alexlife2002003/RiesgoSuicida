@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:riesgo_suicida/User/Screens/FactoresProteccion.dart';
+import 'package:riesgo_suicida/User/Screens/MitosRealidades.dart';
 
 import 'package:riesgo_suicida/User/Screens/first_quiz.dart';
 import 'package:riesgo_suicida/User/Screens/FourthQuiz.dart';
@@ -42,6 +44,14 @@ class _TempState extends State<Temp> {
       case DrawerSections.instrucciones:
         appbarTitle = "";
         container = const Instrucciones();
+        break;
+      case DrawerSections.MitosRealidades:
+        appbarTitle="Mitos y Realidades";
+        container=const MitosRealidades();
+        break;
+      case DrawerSections.FactoresProteccion:
+        appbarTitle="Factores de protección";
+        container=const FactoresProteccion();
         break;
       case DrawerSections.first:
         appbarTitle = "Cuestionario 1";
@@ -106,6 +116,12 @@ class _TempState extends State<Temp> {
             "Instrucciones",
             Icons.list,
           ),
+           menuItem(
+            8,
+            "Mitos y Realidades",
+            Icons.fact_check,
+          ),
+          menuItem(9, "Factores de protección", Icons.health_and_safety),
           menuItem(
             2,
             "Cuestionario 1",
@@ -118,6 +134,7 @@ class _TempState extends State<Temp> {
             "Cuestionario 4",
             fourthIcon,
           ),
+          
           menuItem(
             6,
             "Cerrar Sesión",
@@ -148,6 +165,8 @@ class _TempState extends State<Temp> {
       itemBackgroundColor = backgorundDrawer;
     } else if (currentPage == DrawerSections.Fourth && id == 7) {
       itemBackgroundColor = backgorundDrawer;
+    }else if(currentPage==DrawerSections.MitosRealidades && id==8){
+      itemBackgroundColor==backgorundDrawer;
     }
 
     return Material(
@@ -160,6 +179,12 @@ class _TempState extends State<Temp> {
             }
             if (id == 7) {
               currentPage = DrawerSections.instrucciones;
+            }
+            if(id==8){
+              currentPage=DrawerSections.MitosRealidades;
+            }
+            if(id==9){
+              currentPage=DrawerSections.FactoresProteccion;
             }
             if (id == 2 && glob.first == -1) {
               currentPage = DrawerSections.first;
@@ -229,6 +254,8 @@ class _TempState extends State<Temp> {
 enum DrawerSections {
   dashboard,
   instrucciones,
+  MitosRealidades,
+  FactoresProteccion,
   first,
   second,
   third,
