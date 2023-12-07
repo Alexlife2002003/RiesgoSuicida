@@ -168,39 +168,66 @@ class _RegisterPageState extends State<RegisterPage> {
   void _showPrivacyPolicy() {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: Colors.grey.withOpacity(0.9),
-        title: const Text(
-          'Políticas de privacidad',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        content: const SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Privacy policy content
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text(
-              'Close',
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor:
+              Colors.grey.withOpacity(0.9), // Grey and transparent background
+          title: const Text('Políticas de privacidad',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Colors.black,
-              ),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black)), // Title text
+          content: const SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'La Universidad Autónoma de Zacatecas “Francisco García Salinas”, con domicilio en Jardín Juárez #147, Centro Histórico, C.P. 98000, Zacatecas, Zacatecas, es la responsable del tratamiento de los datos personales proporcionados y de protegerlos en términos de lo dispuesto en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados, la Ley de Protección de Datos Personales en Posesión de los Sujetos Obligados del Estado de Zacatecas y demás normatividad que resulte aplicable.',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+                SizedBox(height: 12),
+                Text(
+                  '¿Para qué fines utilizaremos tus datos personales?',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'Tus datos personales serán utilizados con la finalidad de realizar los análisis, estudios, informes y estadísticas pertinentes para llevar a cabo la investigación “Análisis del Riesgo suicida en estudiantes de la Unidad Académica de Ingeniería Eléctrica de la Universidad Autónoma de Zacatecas”, quedando almacenados de forma anónima y no serán utilizados para fines diferentes a los definidos en la misma. El objetivo general de la investigación es analizar el riesgo suicida en estudiantes de la Unidad Académica de Ingeniería Eléctrica de la Universidad Autónoma de Zacatecas, y en específico se pretende: valorar el riesgo suicida de los estudiantes de la población investigada, evaluando intentos autolíticos previos, intensidad de la ideación actual, sentimientos de depresión y desesperanza y otros aspectos relacionados con las tentativas; identificar las expectativas de los estudiantes de la población investigada en relación a su futuro y su bienestar así como la habilidad para salvar las dificultades y conseguir éxito en su vida; y determinar la intencionalidad suicida, o grado de seriedad e intensidad de los estudiantes de la población investigada.',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+                SizedBox(height: 12),
+                Text(
+                  'Para las finalidades anteriores se recabarán los siguientes datos personales:',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'Nombre completo, correo electrónico, edad, programa académico, semestre, género, lugar de residencia (urbana/rural), ' +
+                      'estado civil, así como datos personales sensibles relacionados con tus emociones y creencias religiosas.',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.black)), // Close button text
+            ),
+          ],
+        );
+      },
     );
   }
 
