@@ -157,6 +157,19 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    String leveltext = "";
+    print(first);
+    print(second);
+    print(third);
+    print(fourth);
+    if ((first >= 0 && first <= 8)||(second>=0 && second<=12)||(third>=0 && third<=5)||(fourth>=7 && fourth<=10)) {
+      leveltext = "BUSCA AYUDA PARA ENCONTRAR HERRAMIENTAS EMOCIONALES Y CONTINUAR CON TU SENTIDO DE VIDA.";
+    }
+     if((first >= 9 && first <= 14)||(second>=13 && second<=24)||(third>=6 && third<=10)||(fourth>=4 && fourth<=6)){
+      leveltext="BUSCA AYUDA PARA ESTABILIZAR TUS EMOCIONES Y MEJORAR TU SENTIDO DE VIDA. ";
+    } if((first >= 15 && first <= 20)||(second>=25 && second<=38)||(third>=11 && third<=15)||(fourth>=0 && fourth<=3)){
+      leveltext="BUSCA AYUDA INMEDIATA/URGENTE PARA ESTABILIZAR TUS EMOCIONES Y ENCONTRAR RAZONES PARA TU SENTIDO DE VIDA.";
+    }
     return Scaffold(
       body: Container(
         constraints: const BoxConstraints.expand(),
@@ -272,6 +285,9 @@ class _DashboardState extends State<Dashboard> {
                                     fontSize: 18, color: Colors.white),
                                 textAlign: TextAlign.center,
                               ),
+                              RecommendationCard(
+                                recommendation: leveltext,
+                              )
                             } else ...{
                               const Text(
                                 "No se tienen recomendaciones.",
@@ -281,53 +297,6 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             },
                             const SizedBox(height: 10),
-                            if (first >= 9) ...{
-                              Column(
-                                children: getTwoUniqueRandomRecommendations(
-                                        recommendations)
-                                    .map(
-                                      (recommendation) => RecommendationCard(
-                                          recommendation: recommendation),
-                                    )
-                                    .toList(),
-                              ),
-                            },
-                            if (second >= 8) ...{
-                              const SizedBox(height: 20),
-                              Column(
-                                children: getTwoUniqueRandomRecommendations(
-                                        recommendations2)
-                                    .map(
-                                      (recommendation) => RecommendationCard(
-                                          recommendation: recommendation),
-                                    )
-                                    .toList(),
-                              ),
-                            },
-                            if (third >= 19) ...{
-                              const SizedBox(height: 20),
-                              Column(
-                                children: getTwoUniqueRandomRecommendations(
-                                        recommendations3)
-                                    .map(
-                                      (recommendation) => RecommendationCard(
-                                          recommendation: recommendation),
-                                    )
-                                    .toList(),
-                              ),
-                            },
-                            if (fourth <= 5) ...{
-                              const SizedBox(height: 20),
-                              Column(
-                                children: getTwoUniqueRandomRecommendations(
-                                        recommendations4)
-                                    .map(
-                                      (recommendation) => RecommendationCard(
-                                          recommendation: recommendation),
-                                    )
-                                    .toList(),
-                              ),
-                            },
                           ],
                         ),
                       ),

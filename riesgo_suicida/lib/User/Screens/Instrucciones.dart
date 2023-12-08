@@ -128,13 +128,17 @@ class NumberedSection extends StatelessWidget {
           textAlign: TextAlign.justify,
         ),
         const SizedBox(height: 5),
-        Text(
-          content,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.black,
+       
+        Padding(
+          padding: const EdgeInsets.only(left:15.0),
+          child: Text(
+            content,
+            style: const TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.justify,
           ),
-          textAlign: TextAlign.justify,
         ),
         const SizedBox(height: 10),
       ],

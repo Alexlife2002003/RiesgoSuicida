@@ -166,7 +166,7 @@ class _TemporalState extends State<Temporal> {
                     ),
                     Text('  $edad'),
                     const Text(
-                      ' Programa Academico:',
+                      ' Programa Academico:\n',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),

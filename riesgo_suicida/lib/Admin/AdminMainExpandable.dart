@@ -85,7 +85,7 @@ class _UserExpansionTileState extends State<UserExpansionTile> {
           onExpansionChanged: (expanded) {
             toggleExpand();
           },
-          backgroundColor: isExpanded ? Colors.grey : null,
+          backgroundColor: isExpanded ? Color.fromRGBO(229, 251, 255, 1) : null,
           children: <Widget>[
             Temporal(uid: widget.user['uid'], fullname: widget.user['name']),
           ],
@@ -233,9 +233,14 @@ class _TemporalState extends State<Temporal> {
                 children: [
                   const Text('Programa Academico: ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(programaAcademico),
+                
                 ],
               ),
+                Row(
+                  children: [
+                    Text(programaAcademico),
+                  ],
+                ),
               const Row(
                 children: [
                   Text('Correo Electronico: ',
