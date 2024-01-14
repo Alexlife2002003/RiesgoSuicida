@@ -47,6 +47,7 @@ dependencies:
   linear_progress_bar: ^1.1.0
   flutter_dialogs: ^3.0.0
   url_launcher: ^6.0.6
+  flutter_dotenv: ^5.1.0
   permission_handler: 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,7 @@ flutter:
     - lib/assets/GIFS/suicida.gif
     - lib/assets/Ingenieria.png
     - lib/assets/case.png
+    - .env
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

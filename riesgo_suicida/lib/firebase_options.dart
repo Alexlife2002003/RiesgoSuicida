@@ -3,6 +3,23 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+String apiKeyWeb = dotenv.env['API_KEY_WEB'] ?? "NO-API";
+String appIdWeb = dotenv.env['APP_ID_WEB'] ?? "NO-API";
+String messagingSenderId = dotenv.env['MESSAGING_SENDER_ID'] ?? "NO-API";
+String projectId = dotenv.env['PROJECT_ID'] ?? "NO-API";
+
+String authDomain = dotenv.env['AUTH_DOMAIN'] ?? "NO-API";
+String storageBucket = dotenv.env['STORAGE_BUCKET'] ?? "NO-API";
+String measurementId= dotenv.env['MEASUREMENT_ID'] ?? "NO-API";
+String apiKeyAndroid = dotenv.env['API_KEY_ANDROID'] ?? "NO-API";
+
+String appIdAndroid = dotenv.env['APP_ID_ANDROID'] ?? "NO-API";
+String apiKeyIosMacos = dotenv.env['API_KEY_IOS_MACOS'] ?? "NO-API";
+String appIdIosMacos= dotenv.env['APP_ID_IOS_MACOS'] ?? "NO-API";
+String iosClientIdMacos = dotenv.env['IOS_cLIENT_ID_MACOS'] ?? "NO-API";
+
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -43,43 +60,43 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDa_xmFms8EWF8GHCKsZBq8uOS73WQ4zaA',
-    appId: '1:1065200420625:web:518a296dfacfef4375aeb0',
-    messagingSenderId: '1065200420625',
-    projectId: 'mental-health-504cf',
-    authDomain: 'mental-health-504cf.firebaseapp.com',
-    storageBucket: 'mental-health-504cf.appspot.com',
-    measurementId: 'G-6RTSFPENQV',
+  static  FirebaseOptions web = FirebaseOptions(
+    apiKey: apiKeyWeb,
+    appId: appIdWeb,
+    messagingSenderId: messagingSenderId,
+    projectId: projectId,
+    authDomain: authDomain,
+    storageBucket: storageBucket,
+    measurementId: measurementId,
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAygUUhzX_MYSM-pVhoFaFjYVd3Svozg6Q',
-    appId: '1:1065200420625:android:10d3701358b0800775aeb0',
-    messagingSenderId: '1065200420625',
-    projectId: 'mental-health-504cf',
-    storageBucket: 'mental-health-504cf.appspot.com',
+  static  FirebaseOptions android = FirebaseOptions(
+    apiKey: apiKeyAndroid,
+    appId: appIdAndroid,
+    messagingSenderId: messagingSenderId,
+    projectId: projectId,
+    storageBucket: storageBucket,
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAOJg01xtj-c-wgrbU-MgFaUpoQy2Th4bY',
-    appId: '1:1065200420625:ios:eec27c5f6eb9d31875aeb0',
-    messagingSenderId: '1065200420625',
-    projectId: 'mental-health-504cf',
-    storageBucket: 'mental-health-504cf.appspot.com',
+  static  FirebaseOptions ios = FirebaseOptions(
+    apiKey: apiKeyIosMacos,
+    appId: appIdIosMacos,
+    messagingSenderId: messagingSenderId,
+    projectId: projectId,
+    storageBucket: storageBucket,
     iosClientId:
-        '1065200420625-gjolr336t9vg7q6hqtsm9s4b4v77lec3.apps.googleusercontent.com',
+        iosClientIdMacos,
     iosBundleId: 'com.example.riesgoSuicida',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAOJg01xtj-c-wgrbU-MgFaUpoQy2Th4bY',
-    appId: '1:1065200420625:ios:eec27c5f6eb9d31875aeb0',
-    messagingSenderId: '1065200420625',
-    projectId: 'mental-health-504cf',
-    storageBucket: 'mental-health-504cf.appspot.com',
+  static  FirebaseOptions macos = FirebaseOptions(
+    apiKey: apiKeyIosMacos,
+    appId: appIdIosMacos,
+    messagingSenderId: messagingSenderId,
+    projectId: projectId,
+    storageBucket: storageBucket,
     iosClientId:
-        '1065200420625-gjolr336t9vg7q6hqtsm9s4b4v77lec3.apps.googleusercontent.com',
+        iosClientIdMacos,
     iosBundleId: 'com.example.riesgoSuicida',
   );
 }
