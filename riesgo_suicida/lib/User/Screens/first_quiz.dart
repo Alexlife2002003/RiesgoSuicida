@@ -138,7 +138,7 @@ class _FirstQuizState extends State<FirstQuiz> {
                 right: 50,
                 bottom: 125,
                 child: Text(
-                  'Si',
+                  'Sí',
                   style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
                 ),
               ),

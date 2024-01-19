@@ -111,7 +111,7 @@ class _ThirdQuizState extends State<ThirdQuiz> {
                   right: 50,
                   bottom: 125,
                   child: Text(
-                    'Si',
+                    'Sí',
                     style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
                   ),
                 ),

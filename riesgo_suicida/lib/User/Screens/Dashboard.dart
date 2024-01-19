@@ -158,17 +158,34 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     String leveltext = "";
+    Color levelColor = Colors.white;
     print(first);
     print(second);
     print(third);
     print(fourth);
-    if ((first >= 0 && first <= 8)||(second>=0 && second<=12)||(third>=0 && third<=5)||(fourth>=7 && fourth<=10)) {
-      leveltext = "BUSCA AYUDA PARA ENCONTRAR HERRAMIENTAS EMOCIONALES Y CONTINUAR CON TU SENTIDO DE VIDA.";
+    if ((first >= 0 && first <= 8) ||
+        (second >= 0 && second <= 12) ||
+        (third >= 0 && third <= 5) ||
+        (fourth >= 7 && fourth <= 10)) {
+      levelColor = Colors.green;
+      leveltext =
+        "Busca ayuda para encontrar herramientas emocionales y continuar con tu sentido de vida.";
     }
-     if((first >= 9 && first <= 14)||(second>=13 && second<=24)||(third>=6 && third<=10)||(fourth>=4 && fourth<=6)){
-      leveltext="BUSCA AYUDA PARA ESTABILIZAR TUS EMOCIONES Y MEJORAR TU SENTIDO DE VIDA. ";
-    } if((first >= 15 && first <= 20)||(second>=25 && second<=38)||(third>=11 && third<=15)||(fourth>=0 && fourth<=3)){
-      leveltext="BUSCA AYUDA INMEDIATA/URGENTE PARA ESTABILIZAR TUS EMOCIONES Y ENCONTRAR RAZONES PARA TU SENTIDO DE VIDA.";
+    if ((first >= 9 && first <= 14) ||
+        (second >= 13 && second <= 24) ||
+        (third >= 6 && third <= 10) ||
+        (fourth >= 4 && fourth <= 6)) {
+      levelColor = Colors.yellow;
+      leveltext =
+          "Busca ayuda para estabilizar tus emociones y mejorar tu sentido de vida.";
+    }
+    if ((first >= 15 && first <= 20) ||
+        (second >= 25 && second <= 38) ||
+        (third >= 11 && third <= 15) ||
+        (fourth >= 0 && fourth <= 3)) {
+      levelColor = Colors.red;
+      leveltext =
+          "Busca ayuda inmediata/urgente para estabilizar tus emociones y encontrar razones para tu sentido de vida.";
     }
     return Scaffold(
       body: Container(
@@ -287,6 +304,7 @@ class _DashboardState extends State<Dashboard> {
                               ),
                               RecommendationCard(
                                 recommendation: leveltext,
+                                color: levelColor,
                               )
                             } else ...{
                               const Text(
@@ -314,8 +332,9 @@ class _DashboardState extends State<Dashboard> {
 
 class RecommendationCard extends StatelessWidget {
   final String recommendation;
+  final Color color;
 
-  const RecommendationCard({required this.recommendation});
+  const RecommendationCard({required this.recommendation,required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -324,7 +343,7 @@ class RecommendationCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: color,
         borderRadius: BorderRadius.circular(8),
         boxShadow: const [
           BoxShadow(
