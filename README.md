@@ -7,6 +7,10 @@ en el pubsec podemos ver la dependencia flutter_swipable de la cual estamos usan
 para su correcto funcionamiento, en su linea 132, es necesario hacer un cambio 
 se debe cambiar `overflow:Overflow.visible` por `clipBehavior: Clip.none`
 
+# Download Link
+
+🔗[You can download here](https://alexlife2002003.github.io/RiesgoSuicida-HTML/)
+
 ## 📸 Screenshots
 
 ## 📚 Dependencies
