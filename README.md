@@ -13,6 +13,25 @@ se debe cambiar `overflow:Overflow.visible` por `clipBehavior: Clip.none`
 
 ## 📸 Screenshots
 
+[admin_agregar_contacto]: screenshots/admin_agregar_contacto.jpg 'Agregar contactos de apoyo'
+[admin_contactos_ayuda]: screenshots/admin_contactos_ayuda.jpg 'Visualizar los contactos de ayuda'
+[centros_apoyo]: screenshots/centros_apoyo.jpg 'Visualizar como usuarios los centros de apoyo'
+[examen_opciones]: screenshots/examen_opciones.jpg 'Primer tipo de examen'
+[examen_si_no]: screenshots/examen_si_no.jpg 'Segundo tipo de examen'
+[login]: screenshots/login.jpg 'Login'
+[registro]: screenshots/registro.jpg 'Registro'
+[resultado_evaluaciones]: screenshots/resultado_evaluaciones.jpg 'Resultados para el administrador'
+[resultados]: screenshots/resultados.jpg 'Resultados para el usuario'
+<!-- Table -->
+|  Agregar contactos administrador  |  Ver contactos de ayuda administrador  |  Ver centros de apoyo usuario  |
+| :----------: |  :----------:  |   :----------:  |
+| ![Agregar contactos de apoyo][admin_agregar_contacto]| ![Visualizar los contactos de ayuda][admin_contactos_ayuda]| ![Visualizar como usuarios los centros de apoyo][centros_apoyo]|
+|Primer tipo de examen |Segundo tipo de examen | Registro|
+| ![Primer tipo de examen][examen_opciones] | ![Segundo tipo de examen][examen_si_no] | ![Registro][registro] |
+|Resultados para el administrador| Resultados para el usuario||
+| ![Resultador para el administrador][resultado_evaluaciones] | ![Resultados para el usuario][resultados] ||
+
+
 ## 📚 Dependencies
 
 | Name                                                                                  | Version       | Description                                                                                                                                |
