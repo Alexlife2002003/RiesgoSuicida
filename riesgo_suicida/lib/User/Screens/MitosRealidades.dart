@@ -58,7 +58,7 @@ class _MitosRealidadesState extends State<MitosRealidades> {
                   "3",
                   "Solo las personas mayores y con problemas graves se suicidan",
                   "Actualmente, para la población joven de entre 15 y 29 años es la principal causa de muerte. Además, ningún problema se ha de menospreciar, lo que para alguien no es importante para otra persona puede ser fundamental."),
-              Sections("4", "“Quien se suicida tiene una enfermedad mental”",
+              Sections("4", "Quien se suicida tiene una enfermedad mental",
                   "Tener trastornos mentales suponen un factor de riesgo para desarrollar conductas suicidas, pero no es un requisito necesario. La mayoría de las personas que se suicidan no tienen ninguna enfermedad mental."),
               Sections(
                   "5",

@@ -125,7 +125,7 @@ class NumberedSection extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Color.fromRGBO(58, 135, 193, 1),
           ),
-          textAlign: TextAlign.justify,
+         
         ),
         const SizedBox(height: 5),
        
@@ -137,7 +137,7 @@ class NumberedSection extends StatelessWidget {
               fontSize: 18,
               color: Colors.black,
             ),
-            textAlign: TextAlign.justify,
+
           ),
         ),
         const SizedBox(height: 10),
