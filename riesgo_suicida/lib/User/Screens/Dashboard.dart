@@ -168,15 +168,17 @@ class _DashboardState extends State<Dashboard> {
         (third >= 0 && third <= 5) ||
         (fourth >= 7 && fourth <= 10)) {
       levelColor = Colors.green;
-      leveltext =
-        "Busca ayuda para encontrar herramientas emocionales y continuar con tu sentido de vida.";
+      leveltext = "Condición de riesgo Bajo-leve: " +
+          "Sentimientos de desesperanza, o ideas en torno a la muerte (pensamientos o fantasías de muerte poco frecuentes durante los últimos días). Sin planes o preparativos para hacerse daño ni intentos de suicidio previos o autolesiones sin la intención de terminar con su vida en el último." +
+          "Busca ayuda para encontrar herramientas emocionales y continuar con tu sentido de vida.";
     }
     if ((first >= 9 && first <= 14) ||
         (second >= 13 && second <= 24) ||
         (third >= 6 && third <= 10) ||
         (fourth >= 4 && fourth <= 6)) {
       levelColor = Colors.yellow;
-      leveltext =
+      leveltext = "Condición de riesgo Medio: " +
+          "Sentimientos de desesperanza o manifiesta ideación suicida (ideas y deseos de muerte constantes) durante el último mes, pero sin preparativos o presenta autolesiones en los últimos meses sin intención de acabar con su vida." +
           "Busca ayuda para estabilizar tus emociones y mejorar tu sentido de vida.";
     }
     if ((first >= 15 && first <= 20) ||
@@ -184,7 +186,8 @@ class _DashboardState extends State<Dashboard> {
         (third >= 11 && third <= 15) ||
         (fourth >= 0 && fourth <= 3)) {
       levelColor = Colors.red;
-      leveltext =
+      leveltext = "Condición de riesgo Alto-extremo " +
+          "Ideación suicida (ideas y deseos de muerte, frecuentes e intensos) con planes y preparativos de cómo acabar con su vida. Desesperanza crónica y autolesiones (heridas autoinglingidas) severas o algún intento de suicidio en los últimos meses. La persona ha realizado una auto lesión severa o grave con intención de morir que requiere un tratamiento médico urgente. " +
           "Busca ayuda inmediata/urgente para estabilizar tus emociones y encontrar razones para tu sentido de vida.";
     }
     return Scaffold(
@@ -297,11 +300,12 @@ class _DashboardState extends State<Dashboard> {
                                 height: 25,
                               ),
                               const Text(
-                                "Aquí tienes algunas recomendaciones:",
+                                "Con base a la información proporcionada, se puede interpretar que es muy probable que exista una:",
                                 style: TextStyle(
-                                    fontSize: 18, color: Colors.white),
+                                    fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.center,
                               ),
+                              SizedBox(height: 10,),
                               RecommendationCard(
                                 recommendation: leveltext,
                                 color: levelColor,
@@ -334,7 +338,7 @@ class RecommendationCard extends StatelessWidget {
   final String recommendation;
   final Color color;
 
-  const RecommendationCard({required this.recommendation,required this.color});
+  const RecommendationCard({required this.recommendation, required this.color});
 
   @override
   Widget build(BuildContext context) {
